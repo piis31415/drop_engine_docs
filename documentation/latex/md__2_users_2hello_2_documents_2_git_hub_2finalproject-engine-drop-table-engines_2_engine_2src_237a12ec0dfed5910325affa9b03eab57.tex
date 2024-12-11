@@ -1,0 +1,131 @@
+\chapter{README}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57}\index{README@{README}}
+\href{https://www.npmjs.com/package/resedit}{\texttt{ }} \href{https://github.com/jet2jet/resedit-js}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9110}{}\doxysection{\texorpdfstring{resedit-\/js}{resedit-\/js}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9110}
+resedit-\/js is a library that manipulates resouces contained by Windows Executable files. All implementations are written in Java\+Script (Type\+Script), so there are no further restrictions for running environment.
+
+This library is not tested well for modifying and/or signing executables yet. Please be careful with the emitted binaries.
+
+To use in command line, consider using \href{https://www.npmjs.com/package/resedit-cli}{\texttt{ resedit-\/js-\/cli}}.
+
+The demo page\+: \href{https://www.pg-fl.jp/program/resedit/index.en.htm}{\texttt{ resedit demo}}
+
+
+\begin{DoxyItemize}
+\item Install
+\item Supported formats
+\item Parsing signed executables
+\item Signing executables with resedit-\/js
+\item Notes
+\item Examples
+\item License
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9111}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9111}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ resedit}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9112}{}\doxysubsection{\texorpdfstring{Supported formats}{Supported formats}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9112}
+
+\begin{DoxyItemize}
+\item Windows Executables (PE Format, such as {\ttfamily .exe} and {\ttfamily .dll}), both 32-\/bit and 64-\/bit, are supported.
+\begin{DoxyItemize}
+\item Executables for 16-\/bit Windows is not supported.
+\end{DoxyItemize}
+\item {\ttfamily .res} file is not supported now.
+\item PNG-\/based icon data is supported on `require(\textquotesingle{}resedit').Resource.\+Icon\+Group\+Entry\`{} class.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9113}{}\doxysubsection{\texorpdfstring{Parsing signed executables}{Parsing signed executables}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9113}
+
+\begin{DoxyItemize}
+\item Parsing signed executables (by using Authenticode or etc.) is not allowed by default and an exception will be thrown if {\ttfamily Nt\+Executable.\+from} receives a signed binary.
+\item To parse signed, {\ttfamily \{ ignore\+Cert\+: true \}} object must be passed to the second argument of {\ttfamily Nt\+Executable.\+from}.
+\item Although the base executable data is signed, {\ttfamily Nt\+Executable.\+generate} will generate unsigned executable binary. If you want to re-\/sign it, you must use generate-\/function with signing (see below) or any other signing tool such as Microsoft {\ttfamily signtool}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9114}{}\doxysubsection{\texorpdfstring{Signing executables with resedit-\/js}{Signing executables with resedit-\/js}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9114}
+resedit-\/js provides basic signing process {\ttfamily generate\+Executable\+With\+Sign} function, which is based on \href{https://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/authenticode_pe.docx}{\texttt{ Authenticode specification}} and related RFCs.
+
+To keep resedit-\/js generic library, the followings are required to use signing process.
+
+
+\begin{DoxyItemize}
+\item Encryption / calculating hash (digest) process (e.\+g. Node.\+js built-\/in {\ttfamily crypto} module)
+\begin{DoxyItemize}
+\item A private key data is implicitly required to encrypt data.
+\end{DoxyItemize}
+\item DER-\/format certificate binary (such as {\ttfamily \texorpdfstring{$\ast$}{*}.cer} file data or {\ttfamily \texorpdfstring{$\ast$}{*}.p7b} file data with DER-\/format), which is paired with the private key used by encryption process.
+\item (optional) Generating timestamp data, especially communicating with TSA server (e.\+g. HTTP/\+HTTPS API)
+\end{DoxyItemize}
+
+These requirements are represented as \href{./src/main/sign/SignerObject.ts}{\texttt{ {\ttfamily Signer\+Object}}}. The caller of {\ttfamily generate\+Executable\+With\+Sign} function must implement this object to sign executables.
+
+An example code is here\+: \href{./examples/sign/signTest.js}{\texttt{ sign\+Test.\+js}}
+
+Note that resedit-\/js only provides basic signing process, and provides as beta version. For example adding more attributes/informations to certificates are not supported now.
+
+\begin{quote}
+Some digest algorithms, such as SHA3 algorithms, might not be supported by current Windows. \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9115}{}\doxysubsection{\texorpdfstring{Notes}{Notes}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9115}
+
+\begin{DoxyItemize}
+\item {\bfseries{It is not strongly recommended that the destination executable file is equal to the source executable file (which is not an intermediate data).}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9116}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9116}
+For more APIs, please see {\ttfamily dist} directory of the package. And, \href{./src/test}{\texttt{ some test codes}} may help you for usages.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ PELibrary\ from\ 'pe-\/library';}
+\DoxyCodeLine{import\ *\ as\ ResEdit\ from\ 'resedit';}
+\DoxyCodeLine{import\ *\ as\ fs\ from\ 'fs';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ load\ and\ parse\ data}
+\DoxyCodeLine{const\ data\ =\ fs.readFileSync('MyApp.exe');}
+\DoxyCodeLine{//\ (the\ Node.js\ Buffer\ instance\ can\ be\ specified\ directly\ to\ NtExecutable.from)}
+\DoxyCodeLine{const\ exe\ =\ PELibrary.NtExecutable.from(data);}
+\DoxyCodeLine{const\ res\ =\ PELibrary.NtExecutableResource.from(exe);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ rewrite\ resources}
+\DoxyCodeLine{//\ -\/\ You\ can\ use\ helper\ classes\ as\ followings:}
+\DoxyCodeLine{//\ \ \ -\/\ ResEdit.Resource.IconGroupEntry:\ access\ icon\ resource\ data}
+\DoxyCodeLine{//\ \ \ -\/\ ResEdit.Resource.StringTable:\ access\ string\ resource\ data}
+\DoxyCodeLine{//\ \ \ -\/\ ResEdit.Resource.VersionInfo:\ access\ version\ info\ data}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/\ replace\ icons}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ load\ icon\ data\ from\ file}
+\DoxyCodeLine{//\ (you\ can\ use\ ResEdit.Data.IconFile\ to\ parse\ icon\ data)}
+\DoxyCodeLine{const\ iconFile\ =\ ResEdit.Data.IconFile.from(fs.readFileSync('MyIcon.ico'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{ResEdit.Resource.IconGroupEntry.replaceIconsForResource(}
+\DoxyCodeLine{\ \ //\ destEntries}
+\DoxyCodeLine{\ \ res.entries,}
+\DoxyCodeLine{\ \ //\ iconGroupID}
+\DoxyCodeLine{\ \ 101,}
+\DoxyCodeLine{\ \ //\ lang\ ('lang:\ 1033'\ means\ 'en-\/US')}
+\DoxyCodeLine{\ \ 1033,}
+\DoxyCodeLine{\ \ //\ icons\ (map\ IconFileItem\ to\ IconItem/RawIconItem)}
+\DoxyCodeLine{\ \ iconFile.icons.map((item)\ =>\ item.data)}
+\DoxyCodeLine{);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ -\/-\/\ replace\ version}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ viList\ =\ ResEdit.Resource.VersionInfo.fromEntries(res.entries);}
+\DoxyCodeLine{const\ vi\ =\ viList[0];}
+\DoxyCodeLine{//\ setFileVersion\ will\ set\ \`{}vi.fixedInfo.fileVersionMS`/`fileVersionLS`\ and\ 'FileVersion'\ string\ value}
+\DoxyCodeLine{//\ ('1033'\ means\ 'en-\/US')}
+\DoxyCodeLine{vi.setFileVersion(1,\ 0,\ 0,\ 0,\ 1033);}
+\DoxyCodeLine{//\ ('lang:\ 1033'\ means\ 'en-\/US',\ 'codepage:\ 1200'\ is\ the\ default\ codepage)}
+\DoxyCodeLine{vi.setStringValues(}
+\DoxyCodeLine{\ \ \{\ lang:\ 1033,\ codepage:\ 1200\ \},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ FileDescription:\ 'My\ application',}
+\DoxyCodeLine{\ \ \ \ ProductName:\ 'My\ product',}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{);}
+\DoxyCodeLine{vi.outputToResourceEntries(res.entries);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ write\ to\ another\ binary}
+\DoxyCodeLine{res.outputResource(exe);}
+\DoxyCodeLine{const\ newBinary\ =\ exe.generate();}
+\DoxyCodeLine{fs.writeFileSync('MyApp\_modified.exe',\ Buffer.from(newBinary));}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9117}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_237a12ec0dfed5910325affa9b03eab57_autotoc_md9117}
+\href{./LICENSE}{\texttt{ MIT License}} 

@@ -1,0 +1,45 @@
+\chapter{serialize-\/error \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/serialize-\/error"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/serialize-\/error.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d}\index{serialize-\/error $<$a href="{}https://travis-\/ci.org/sindresorhus/serialize-\/error"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/serialize-\/error.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{serialize-\/error $<$a href=""https://travis-\/ci.org/sindresorhus/serialize-\/error"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/serialize-\/error.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9401}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9401}%
+
+
+\begin{quote}
+Serialize/deserialize an error into a plain object \end{quote}
+Useful if you for example need to {\ttfamily JSON.\+stringify()} or {\ttfamily process.\+send()} the error.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9402}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9402}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ serialize-\/error}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9403}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9403}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{serializeError,\ deserializeError\}\ =\ require('serialize-\/error');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ error\ =\ new\ Error('🦄');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(error);}
+\DoxyCodeLine{//=>\ [Error:\ 🦄]}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ serialized\ =\ serializeError(error)}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(serialized);}
+\DoxyCodeLine{//=>\ \{name:\ 'Error',\ message:\ '🦄',\ stack:\ 'Error:\ 🦄\(\backslash\)n\ \ \ \ at\ Object.<anonymous>\ …'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ deserialized\ =\ deserializeError(serialized);}
+\DoxyCodeLine{//=>\ [Error:\ 🦄]}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9404}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9404}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9405}{}\doxysubsection{\texorpdfstring{serialize\+Error(value)}{serialize\+Error(value)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9405}
+Type\+: {\ttfamily Error \texorpdfstring{$\vert$}{|} unknown}
+
+Serialize an {\ttfamily Error} object into a plain object.
+
+Non-\/error values are passed through. Custom properties are preserved. Non-\/enumerable properties are kept non-\/enumerable (name, message, stack). Enumerable properties are kept enumerable (all properties besides the non-\/enumerable ones). Circular references are handled.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9406}{}\doxysubsection{\texorpdfstring{deserialize\+Error(value)}{deserialize\+Error(value)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_269bf108ba35a31c263b5d7664fa53b4d_autotoc_md9406}
+Type\+: {\ttfamily \{\mbox{[}key\+: string\mbox{]}\+: unknown\} \texorpdfstring{$\vert$}{|} unknown}
+
+Deserialize a plain object or any value into an {\ttfamily Error} object.
+
+{\ttfamily Error} objects are passed through. Non-\/error values are wrapped in a {\ttfamily Non\+Error} error. Custom properties are preserved. Circular references are handled. 

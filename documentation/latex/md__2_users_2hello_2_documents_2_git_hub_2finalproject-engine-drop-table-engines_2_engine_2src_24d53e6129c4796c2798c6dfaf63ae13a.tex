@@ -1,0 +1,305 @@
+\chapter{Data\+View}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a}\index{DataView@{DataView}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7757}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7757}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} class corresponds to the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView}{\texttt{ Java\+Script {\ttfamily Data\+View}}} class.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7758}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7758}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7759}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7759}
+Allocates a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance with a given {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_data_view}{Napi::DataView}}\ Napi::DataView::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ arrayBuffer);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} array\+Buffer} \+: {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} underlying the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7760}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7760}
+Allocates a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance with a given {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_data_view}{Napi::DataView}}\ Napi::DataView::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ arrayBuffer,\ \textcolor{keywordtype}{size\_t}\ byteOffset);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} array\+Buffer} \+: {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} underlying the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset} \+: The byte offset within the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} from which to start projecting the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7761}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7761}
+Allocates a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance with a given {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_data_view}{Napi::DataView}}\ Napi::DataView::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ arrayBuffer,\ \textcolor{keywordtype}{size\_t}\ byteOffset,\ \textcolor{keywordtype}{size\_t}\ byteLength);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} array\+Buffer} \+: {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} underlying the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset} \+: The byte offset within the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} from which to start projecting the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Length} \+: Number of elements in the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7762}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7762}
+Initializes an empty instance of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} class.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_data_view}{Napi::DataView}}();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7763}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7763}
+Initializes a wrapper instance of an existing {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_data_view}{Napi::DataView}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} reference to wrap.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7764}{}\doxysubsection{\texorpdfstring{Array\+Buffer}{Array\+Buffer}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7764}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ \mbox{\hyperlink{class_napi_1_1_data_view_a9ab069e4da2932751b2133282d19d71f}{Napi::DataView::ArrayBuffer}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the backing array buffer.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7765}{}\doxysubsection{\texorpdfstring{Byte\+Offset}{Byte\+Offset}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7765}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_napi_1_1_data_view_aa30cc2ba4ac676efb7f602ed425249ee}{Napi::DataView::ByteOffset}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the offset into the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}} where the array starts, in bytes.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7766}{}\doxysubsection{\texorpdfstring{Byte\+Length}{Byte\+Length}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7766}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_napi_1_1_data_view_a6ba26debdf1ff9b46b820be6c7119b3c}{Napi::DataView::ByteLength}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the length of the array, in bytes.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7767}{}\doxysubsection{\texorpdfstring{Get\+Float32}{Get\+Float32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7767}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float}\ Napi::DataView::GetFloat32(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a signed 32-\/bit float (float) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7768}{}\doxysubsection{\texorpdfstring{Get\+Float64}{Get\+Float64}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7768}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{double}\ Napi::DataView::GetFloat64(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a signed 64-\/bit float (double) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7769}{}\doxysubsection{\texorpdfstring{Get\+Int8}{Get\+Int8}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7769}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{int8\_t\ Napi::DataView::GetInt8(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a signed 8-\/bit integer (byte) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7770}{}\doxysubsection{\texorpdfstring{Get\+Int16}{Get\+Int16}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7770}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{int16\_t\ Napi::DataView::GetInt16(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a signed 16-\/bit integer (short) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7771}{}\doxysubsection{\texorpdfstring{Get\+Int32}{Get\+Int32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7771}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{int32\_t\ Napi::DataView::GetInt32(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a signed 32-\/bit integer (long) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7772}{}\doxysubsection{\texorpdfstring{Get\+Uint8}{Get\+Uint8}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7772}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint8\_t\ Napi::DataView::GetUint8(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a unsigned 8-\/bit integer (unsigned byte) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7773}{}\doxysubsection{\texorpdfstring{Get\+Uint16}{Get\+Uint16}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7773}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint16\_t\ Napi::DataView::GetUint16(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a unsigned 16-\/bit integer (unsigned short) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7774}{}\doxysubsection{\texorpdfstring{Get\+Uint32}{Get\+Uint32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7774}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint32\_t\ Napi::DataView::GetUint32(\textcolor{keywordtype}{size\_t}\ byteOffset)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\end{DoxyItemize}
+
+Returns a unsigned 32-\/bit integer (unsigned long) at the specified byte offset from the start of the {\ttfamily \doxylink{class_napi_1_1_data_view}{Napi\+::\+Data\+View}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7775}{}\doxysubsection{\texorpdfstring{Set\+Float32}{Set\+Float32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7775}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetFloat32(\textcolor{keywordtype}{size\_t}\ byteOffset,\ \textcolor{keywordtype}{float}\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7776}{}\doxysubsection{\texorpdfstring{Set\+Float64}{Set\+Float64}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7776}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetFloat64(\textcolor{keywordtype}{size\_t}\ byteOffset,\ \textcolor{keywordtype}{double}\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7777}{}\doxysubsection{\texorpdfstring{Set\+Int8}{Set\+Int8}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7777}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetInt8(\textcolor{keywordtype}{size\_t}\ byteOffset,\ int8\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7778}{}\doxysubsection{\texorpdfstring{Set\+Int16}{Set\+Int16}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7778}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetInt16(\textcolor{keywordtype}{size\_t}\ byteOffset,\ int16\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7779}{}\doxysubsection{\texorpdfstring{Set\+Int32}{Set\+Int32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7779}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetInt32(\textcolor{keywordtype}{size\_t}\ byteOffset,\ int32\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7780}{}\doxysubsection{\texorpdfstring{Set\+Uint8}{Set\+Uint8}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7780}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetUint8(\textcolor{keywordtype}{size\_t}\ byteOffset,\ uint8\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7781}{}\doxysubsection{\texorpdfstring{Set\+Uint16}{Set\+Uint16}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7781}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetUint16(\textcolor{keywordtype}{size\_t}\ byteOffset,\ uint16\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7782}{}\doxysubsection{\texorpdfstring{Set\+Uint32}{Set\+Uint32}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a_autotoc_md7782}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::DataView::SetUint32(\textcolor{keywordtype}{size\_t}\ byteOffset,\ uint32\_t\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Offset}\+: The offset, in byte, from the start of the view where to read the data.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value to set. 
+\end{DoxyItemize}

@@ -1,0 +1,22 @@
+/* style elements for the overall page div */
+header {
+    margin: 2%;
+}
+section {
+    margin: 2%;
+}
+
+/* style elements for the game screenshots */
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+    padding: 5%;
+}
+
+.image-row img {
+    width: 25%;
+    height: auto;
+    border: 1px solid #ccc;
+}

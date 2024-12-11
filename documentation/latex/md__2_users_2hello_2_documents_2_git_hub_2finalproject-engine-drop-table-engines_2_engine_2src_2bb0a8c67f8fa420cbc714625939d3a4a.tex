@@ -1,0 +1,21 @@
+\chapter{minipass-\/fetch}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a}\index{minipass-\/fetch@{minipass-\/fetch}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7344}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7344}%
+
+
+An implementation of window.\+fetch in Node.\+js using Minipass streams
+
+This is a fork (or more precisely, a reimplementation) of \href{http://npm.im/node-fetch}{\texttt{ node-\/fetch}}. All streams have been replaced with \href{http://npm.im/minipass}{\texttt{ minipass streams}}.
+
+The goal of this module is to stay in sync with the API presented by {\ttfamily node-\/fetch}, with the exception of the streaming interface provided.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7345}{}\doxysection{\texorpdfstring{Why}{Why}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7345}
+Minipass streams are faster and more deterministic in their timing contract than node-\/core streams, making them a better fit for many server-\/side use cases.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7346}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2bb0a8c67f8fa420cbc714625939d3a4a_autotoc_md7346}
+See \href{http://npm.im/node-fetch}{\texttt{ node-\/fetch}}
+
+Differences from {\ttfamily node-\/fetch} (and, by extension, from the What\+WG Fetch specification)\+:
+
+
+\begin{DoxyItemize}
+\item Returns \href{http://npm.im/minipass}{\texttt{ minipass}} streams instead of node-\/core streams.
+\item Supports the full set of \href{https://nodejs.org/api/https.html\#https_https_request_options_callback}{\texttt{ TLS Options that may be provided to {\ttfamily https.\+request()}}} when making {\ttfamily https} requests. 
+\end{DoxyItemize}

@@ -1,0 +1,163 @@
+\chapter{Electron Rebuild}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b}\index{Electron Rebuild@{Electron Rebuild}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md658}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md658}%
+
+
+\href{https://circleci.com/gh/electron/rebuild}{\texttt{ }} \href{https://npm.im/@electron/rebuild}{\texttt{ }} \href{https://codecov.io/gh/electron/rebuild}{\texttt{ }}
+
+This executable rebuilds native Node.\+js modules against the version of Node.\+js that your Electron project is using. This allows you to use native Node.\+js modules in Electron apps without your system version of Node.\+js matching exactly (which is often not the case, and sometimes not even possible).\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md659}{}\doxysubsection{\texorpdfstring{How does it work?}{How does it work?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md659}
+Install the package with {\ttfamily -\/-\/save-\/dev}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ @electron/rebuild}
+
+\end{DoxyCode}
+
+
+Then, whenever you install a new npm package, rerun electron-\/rebuild\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$(npm\ bin)/electron-\/rebuild}
+
+\end{DoxyCode}
+
+
+Or if you\textquotesingle{}re on Windows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\(\backslash\)node\_modules\(\backslash\).bin\(\backslash\)electron-\/rebuild.cmd}
+
+\end{DoxyCode}
+ If you have a good node-\/gyp config but you see an error about a missing element on Windows like {\ttfamily Could not load the Visual C++ component "{}\+VCBuild.\+exe"{}}, try to launch electron-\/rebuild in an npm script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}scripts"{}:\ \{}
+\DoxyCodeLine{\ \ "{}rebuild"{}:\ "{}electron-\/rebuild\ -\/f\ -\/w\ yourmodule"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+and then
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ run\ rebuild}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md660}{}\doxysubsection{\texorpdfstring{What are the requirements?}{What are the requirements?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md660}
+Node v12.\+13.\+0 or higher is required. Building native modules from source uses \href{https://github.com/nodejs/node-gyp\#installation}{\texttt{ {\ttfamily node-\/gyp}}}, refer to the link for its installation/runtime requirements.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md661}{}\doxysubsection{\texorpdfstring{CLI Arguments}{CLI Arguments}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md661}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Usage:\ electron-\/rebuild\ -\/-\/version\ [version]\ -\/-\/module-\/dir\ [path]}
+\DoxyCodeLine{}
+\DoxyCodeLine{Options:}
+\DoxyCodeLine{\ \ -\/v,\ -\/-\/version\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ version\ of\ Electron\ to\ build\ against\ [string]}
+\DoxyCodeLine{\ \ -\/f,\ -\/-\/force\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Force\ rebuilding\ modules,\ even\ if\ we\ would\ skip}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ otherwise\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ -\/a,\ -\/-\/arch\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Override\ the\ target\ architecture\ to\ something}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other\ than\ your\ system's\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ -\/m,\ -\/-\/module-\/dir\ \ \ \ \ \ \ \ \ \ \ \ \ The\ path\ to\ the\ node\_modules\ directory\ to\ rebuild}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ -\/w,\ -\/-\/which-\/module\ \ \ \ \ \ \ \ \ \ \ A\ specific\ module\ to\ build,\ or\ comma\ separated}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list\ of\ modules.\ Modules\ will\ only\ be\ rebuilt\ if}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ they\ also\ match\ the\ types\ of\ dependencies\ being}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rebuilt\ (see\ -\/-\/types).\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ -\/o,\ -\/-\/only\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Only\ build\ specified\ module,\ or\ comma\ separated}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ list\ of\ modules.\ All\ others\ are\ ignored.\ [string]}
+\DoxyCodeLine{\ \ -\/e,\ -\/-\/electron-\/prebuilt-\/dir\ \ The\ path\ to\ the\ prebuilt\ electron\ module\ [string]}
+\DoxyCodeLine{\ \ -\/d,\ -\/-\/dist-\/url\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Custom\ header\ tarball\ URL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ -\/t,\ -\/-\/types\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ types\ of\ dependencies\ to\ rebuild.\ \ Comma}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ separated\ list\ of\ "{}prod"{},\ "{}dev"{}\ and\ "{}optional"{}.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Default\ is\ "{}prod,optional"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ -\/p,\ -\/-\/parallel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rebuild\ in\ parallel,\ this\ is\ enabled\ by\ default}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ on\ macOS\ and\ Linux\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ -\/s,\ -\/-\/sequential\ \ \ \ \ \ \ \ \ \ \ \ \ Rebuild\ modules\ sequentially,\ this\ is\ enabled\ by}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default\ on\ Windows\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ -\/b,\ -\/-\/debug\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Build\ debug\ version\ of\ modules\ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ \ \ \ \ -\/-\/prebuild-\/tag-\/prefix\ \ \ \ GitHub\ tag\ prefix\ passed\ to\ prebuild-\/install.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Default\ is\ "{}v"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [string]}
+\DoxyCodeLine{\ \ \ \ \ \ -\/-\/force-\/abi\ \ \ \ \ \ \ \ \ \ \ \ \ \ Override\ the\ ABI\ version\ for\ the\ version\ of}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Electron\ you\ are\ targeting.\ \ Only\ use\ when}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ targeting\ Nightly\ releases.\ \ \ \ \ \ \ \ \ \ \ \ \ \ [number]}
+\DoxyCodeLine{\ \ \ \ \ \ -\/-\/use-\/electron-\/clang\ \ \ \ \ Use\ the\ clang\ executable\ that\ Electron\ used\ when}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ building\ its\ binary.\ This\ will\ guarantee\ compiler}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ compatibility\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ \ \ \ \ -\/-\/disable-\/pre-\/gyp-\/copy\ \ \ Disables\ the\ pre-\/gyp\ copy\ step\ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ \ \ \ \ -\/-\/build-\/from-\/source\ \ \ \ \ \ Skips\ prebuild\ download\ and\ rebuilds\ module\ from}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ source.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+\DoxyCodeLine{\ \ -\/h,\ -\/-\/help\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Show\ help\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [boolean]}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md662}{}\doxysubsection{\texorpdfstring{How can I use this with \href{https://github.com/electron/forge}{\texttt{ Electron Forge}}?}{How can I use this with \href{https://github.com/electron/forge}{\texttt{ Electron Forge}}?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md662}
+This package is automatically used with Electron Forge when packaging an Electron app.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md663}{}\doxysubsection{\texorpdfstring{How can I integrate this into \href{https://github.com/electron/packager}{\texttt{ Electron Packager}}?}{How can I integrate this into \href{https://github.com/electron/packager}{\texttt{ Electron Packager}}?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md663}
+electron-\/rebuild provides a function compatible with the \href{https://electron.github.io/packager/main/interfaces/electronpackager.options.html\#aftercopy}{\texttt{ {\ttfamily after\+Copy} hook}} for Electron Packager. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ packager\ from\ '@electron/packager';}
+\DoxyCodeLine{import\ rebuild\ from\ '@electron/rebuild';}
+\DoxyCodeLine{}
+\DoxyCodeLine{packager(\{}
+\DoxyCodeLine{\ \ //\ …\ other\ options}
+\DoxyCodeLine{\ \ afterCopy:\ [(buildPath,\ electronVersion,\ platform,\ arch,\ callback)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ rebuild(\{\ buildPath,\ electronVersion,\ arch\ \})}
+\DoxyCodeLine{\ \ \ \ \ \ .then(()\ =>\ callback())}
+\DoxyCodeLine{\ \ \ \ \ \ .catch((error)\ =>\ callback(error));}
+\DoxyCodeLine{\ \ \}],}
+\DoxyCodeLine{\ \ //\ …\ other\ options}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md664}{}\doxysubsection{\texorpdfstring{How can I integrate this with \href{https://github.com/prebuild/prebuild}{\texttt{ prebuild}}?}{How can I integrate this with \href{https://github.com/prebuild/prebuild}{\texttt{ prebuild}}?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md664}
+If your module uses \href{https://github.com/prebuild/prebuild}{\texttt{ prebuild}} for creating prebuilt binaries, it also uses \href{https://github.com/prebuild/prebuild-install}{\texttt{ prebuild-\/install}} to download them. If this is the case, then {\ttfamily electron-\/rebuild} will run {\ttfamily prebuild-\/install} to download the correct binaries from the project\textquotesingle{}s Git\+Hub Releases instead of rebuilding them.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md665}{}\doxysubsection{\texorpdfstring{How can I integrate this into Grunt / Gulp / Whatever?}{How can I integrate this into Grunt / Gulp / Whatever?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2935ed7ea3af969bfe653876e2e0be91b_autotoc_md665}
+electron-\/rebuild is also a library that you can require into your app or build process. It has a very simple API\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ rebuild\ from\ '@electron/rebuild';}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Public:\ Rebuilds\ a\ node\_modules\ directory\ with\ the\ given\ Electron\ version.}
+\DoxyCodeLine{//}
+\DoxyCodeLine{//\ options:\ Object\ with\ the\ following\ properties}
+\DoxyCodeLine{//\ \ \ \ \ buildPath\ -\/\ An\ absolute\ path\ to\ your\ app's\ directory.\ \ (The\ directory\ that\ contains\ your\ node\_modules)}
+\DoxyCodeLine{//\ \ \ \ \ electronVersion\ -\/\ The\ version\ of\ Electron\ to\ rebuild\ for}
+\DoxyCodeLine{//\ \ \ \ \ arch\ (optional)\ -\/\ Default:\ process.arch\ -\/\ The\ arch\ to\ rebuild\ for}
+\DoxyCodeLine{//\ \ \ \ \ extraModules\ (optional)\ -\/\ Default:\ []\ -\/\ An\ array\ of\ modules\ to\ rebuild\ as\ well\ as\ the\ detected\ modules}
+\DoxyCodeLine{//\ \ \ \ \ onlyModules\ (optional)\ -\/\ Default:\ null\ -\/\ An\ array\ of\ modules\ to\ rebuild,\ ONLY\ these\ module\ names\ will\ be\ rebuilt.}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ "{}types"{}\ property\ will\ be\ ignored\ if\ this\ option\ is\ set.}
+\DoxyCodeLine{//\ \ \ \ \ force\ (optional)\ -\/\ Default:\ false\ -\/\ Force\ a\ rebuild\ of\ modules\ regardless\ of\ their\ current\ build\ state}
+\DoxyCodeLine{//\ \ \ \ \ headerURL\ (optional)\ -\/\ Default:\ https://www.electronjs.org/headers\ -\/\ The\ URL\ to\ download\ Electron\ header\ files\ from}
+\DoxyCodeLine{//\ \ \ \ \ types\ (optional)\ -\/\ Default:\ ['prod',\ 'optional']\ -\/\ The\ types\ of\ modules\ to\ rebuild}
+\DoxyCodeLine{//\ \ \ \ \ mode\ (optional)\ -\/\ The\ rebuild\ mode,\ either\ 'sequential'\ or\ 'parallel'\ -\/\ Default\ varies\ per\ platform\ (probably\ shouldn't\ mess\ with\ this\ one)}
+\DoxyCodeLine{//\ \ \ \ \ useElectronClang\ (optional)\ -\/\ Whether\ to\ use\ the\ clang\ executable\ that\ Electron\ used\ when\ building\ its\ binary.\ This\ will\ guarantee\ compiler\ compatibility}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Returns\ a\ Promise\ indicating\ whether\ the\ operation\ succeeded\ or\ not}
+
+\end{DoxyCode}
+
+
+A full build process might look something like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ childProcess\ =\ require('child\_process');}
+\DoxyCodeLine{const\ pathToElectron\ =\ require('electron');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ rebuild(\{}
+\DoxyCodeLine{\ \ \ \ buildPath:\ \_\_dirname,}
+\DoxyCodeLine{\ \ \ \ electronVersion:\ '1.4.12'}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ \ \ .then(()\ =>\ console.info('Rebuild\ Successful'))}
+\DoxyCodeLine{\ \ \ \ .catch((e)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.error("{}Building\ modules\ didn't\ work!"{});}
+\DoxyCodeLine{\ \ \ \ \ \ console.error(e);}
+\DoxyCodeLine{\ \ \ \ \});}
+
+\end{DoxyCode}
+ 

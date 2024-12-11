@@ -1,0 +1,60 @@
+\chapter{Callback\+Scope}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974}\index{CallbackScope@{CallbackScope}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7724}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7724}%
+
+
+There are cases (for example, resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-\/\+API calls.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7725}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7725}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7726}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7726}
+Creates a new callback scope on the stack.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::CallbackScope::CallbackScope(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_callback\_scope\ scope);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily Napi\+::\+Callback\+Scope}.
+\item {\ttfamily \mbox{[}in\mbox{]} scope}\+: The pre-\/existing {\ttfamily napi\+\_\+callback\+\_\+scope} or {\ttfamily Napi\+::\+Callback\+Scope}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7727}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7727}
+Creates a new callback scope on the stack.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::CallbackScope::CallbackScope(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_async\_context\ context);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily Napi\+::\+Callback\+Scope}.
+\item {\ttfamily \mbox{[}in\mbox{]} async\+\_\+context}\+: The pre-\/existing {\ttfamily napi\+\_\+async\+\_\+context} or {\ttfamily \doxylink{class_napi_1_1_async_context}{Napi\+::\+Async\+Context}}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7728}{}\doxysubsection{\texorpdfstring{Destructor}{Destructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7728}
+Deletes the instance of {\ttfamily Napi\+::\+Callback\+Scope} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{virtual}\ Napi::CallbackScope::\string~CallbackScope();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7729}{}\doxysubsection{\texorpdfstring{Env}{Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7729}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ Napi::CallbackScope::Env()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}} associated with the {\ttfamily Napi\+::\+Callback\+Scope}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7730}{}\doxysection{\texorpdfstring{Operator}{Operator}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974_autotoc_md7730}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::CallbackScope::operator\ napi\_callback\_scope()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the N-\/\+API {\ttfamily napi\+\_\+callback\+\_\+scope} wrapped by the {\ttfamily Napi\+::\+Callback\+Scope} object. This can be used to mix usage of the C N-\/\+API and node-\/addon-\/api. 

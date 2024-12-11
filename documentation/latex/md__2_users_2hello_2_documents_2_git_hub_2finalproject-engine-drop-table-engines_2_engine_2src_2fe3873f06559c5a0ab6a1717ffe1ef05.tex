@@ -1,0 +1,123 @@
+\chapter{Reference (template)}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05}\index{Reference (template)@{Reference (template)}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7972}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7972}%
+
+
+Holds a counted reference to a \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b6af9b196bdac7e5584911d15516149a}{{\ttfamily Napi\+::Value}}{0} object; initially a weak reference unless otherwise specified, may be changed to/from a strong reference by adjusting the refcount.
+
+The referenced {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} is not immediately destroyed when the reference count is zero; it is merely then eligible for garbage-\/collection if there are no other references to the {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}}.
+
+{\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} objects allocated in static space, such as a global static instance, must call the {\ttfamily Suppress\+Destruct} method to prevent its destructor, running at program shutdown time, from attempting to reset the reference when the environment is no longer valid.
+
+The following classes inherit, either directly or indirectly, from {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}}\+:
+
+
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e432084de2b65fa3a24ecaa86283e7f}{{\ttfamily Napi\+::Object\+Wrap}}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e}{{\ttfamily Napi\+::Object\+Reference}}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2569dc4492d2005a5d241ff441d786744}{{\ttfamily Napi\+::Function\+Reference}}{0}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7973}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7973}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7974}{}\doxysubsection{\texorpdfstring{Factory Method}{Factory Method}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7974}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_reference}{Napi::Reference<T>}}\ Napi::Reference::New(\textcolor{keyword}{const}\ T\&\ value,\ uint32\_t\ initialRefcount\ =\ 0);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value which is to be referenced.
+\item {\ttfamily \mbox{[}in\mbox{]} initial\+Refcount}\+: The initial reference count.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7975}{}\doxysubsection{\texorpdfstring{Empty Constructor}{Empty Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7975}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::Reference::Reference();}
+
+\end{DoxyCode}
+
+
+Creates a new {\itshape empty} {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7976}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7976}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::Reference::Reference(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The N-\/\+API primitive value to be held by the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7977}{}\doxysubsection{\texorpdfstring{Env}{Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7977}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ Napi::Reference::Env()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}} value in which the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} was instantiated.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7978}{}\doxysubsection{\texorpdfstring{Is\+Empty}{Is\+Empty}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7978}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ Napi::Reference::IsEmpty()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Determines whether the value held by the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} is empty.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7979}{}\doxysubsection{\texorpdfstring{Value}{Value}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7979}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T\ Napi::Reference::Value()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the value held by the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7980}{}\doxysubsection{\texorpdfstring{Ref}{Ref}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7980}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint32\_t\ Napi::Reference::Ref();}
+
+\end{DoxyCode}
+
+
+Increments the reference count for the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} and returns the resulting reference count. Throws an error if the increment fails.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7981}{}\doxysubsection{\texorpdfstring{Unref}{Unref}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7981}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint32\_t\ Napi::Reference::Unref();}
+
+\end{DoxyCode}
+
+
+Decrements the reference count for the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} and returns the resulting reference count. Throws an error if the decrement fails.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7982}{}\doxysubsection{\texorpdfstring{Reset (Empty)}{Reset (Empty)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7982}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::Reference::Reset();}
+
+\end{DoxyCode}
+
+
+Sets the value held by the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} to be empty.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7983}{}\doxysubsection{\texorpdfstring{Reset}{Reset}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7983}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::Reference::Reset(\textcolor{keyword}{const}\ T\&\ value,\ uint32\_t\ refcount\ =\ 0);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value which is to be referenced.
+\item {\ttfamily \mbox{[}in\mbox{]} initial\+Refcount}\+: The initial reference count.
+\end{DoxyItemize}
+
+Sets the value held by the {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7984}{}\doxysubsection{\texorpdfstring{Suppress\+Destruct}{Suppress\+Destruct}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05_autotoc_md7984}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::Reference::SuppressDestruct();}
+
+\end{DoxyCode}
+
+
+Call this method on a {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} that is declared as static data to prevent its destructor, running at program shutdown time, from attempting to reset the reference when the environment is no longer valid. 

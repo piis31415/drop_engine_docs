@@ -1,0 +1,256 @@
+\chapter{Thread\+Safe\+Function}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df}\index{ThreadSafeFunction@{ThreadSafeFunction}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8003}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8003}%
+
+
+Java\+Script functions can normally only be called from a native addon\textquotesingle{}s main thread. If an addon creates additional threads, then node-\/addon-\/api functions that require a {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}}, {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}}, or {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}} must not be called from those threads.
+
+When an addon has additional threads and Java\+Script functions need to be invoked based on the processing completed by those threads, those threads must communicate with the addon\textquotesingle{}s main thread so that the main thread can invoke the Java\+Script function on their behalf. The thread-\/safe function APIs provide an easy way to do this.
+
+These APIs provide the type {\ttfamily Napi\+::\+Thread\+Safe\+Function} as well as APIs to create, destroy, and call objects of this type. {\ttfamily Napi\+::\+Thread\+Safe\+Function\+::\+New()} creates a persistent reference that holds a Java\+Script function which can be called from multiple threads. The calls happen asynchronously. This means that values with which the Java\+Script callback is to be called will be placed in a queue, and, for each value in the queue, a call will eventually be made to the Java\+Script function.
+
+{\ttfamily Napi\+::\+Thread\+Safe\+Function} objects are destroyed when every thread which uses the object has called {\ttfamily Release()} or has received a return status of {\ttfamily napi\+\_\+closing} in response to a call to {\ttfamily Blocking\+Call()} or {\ttfamily Non\+Blocking\+Call()}. The queue is emptied before the {\ttfamily Napi\+::\+Thread\+Safe\+Function} is destroyed. It is important that {\ttfamily Release()} be the last API call made in conjunction with a given {\ttfamily Napi\+::\+Thread\+Safe\+Function}, because after the call completes, there is no guarantee that the {\ttfamily Napi\+::\+Thread\+Safe\+Function} is still allocated. For the same reason it is also important that no more use be made of a thread-\/safe function after receiving a return value of {\ttfamily napi\+\_\+closing} in response to a call to {\ttfamily Blocking\+Call()} or {\ttfamily Non\+Blocking\+Call()}. Data associated with the {\ttfamily Napi\+::\+Thread\+Safe\+Function} can be freed in its {\ttfamily Finalizer} callback which was passed to {\ttfamily Thread\+Safe\+Function\+::\+New()}.
+
+Once the number of threads making use of a {\ttfamily Napi\+::\+Thread\+Safe\+Function} reaches zero, no further threads can start making use of it by calling {\ttfamily Acquire()}. In fact, all subsequent API calls associated with it, except {\ttfamily Release()}, will return an error value of {\ttfamily napi\+\_\+closing}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8004}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8004}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8005}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8005}
+Creates a new empty instance of {\ttfamily Napi\+::\+Thread\+Safe\+Function}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::Function::ThreadSafeFunction();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8006}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8006}
+Creates a new instance of the {\ttfamily Napi\+::\+Thread\+Safe\+Function} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::ThreadSafeFunction::ThreadSafeFunction(napi\_threadsafe\_function\ tsfn);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily tsfn}\+: The {\ttfamily napi\+\_\+threadsafe\+\_\+function} which is a handle for an existing thread-\/safe function.
+\end{DoxyItemize}
+
+Returns a non-\/empty {\ttfamily Napi\+::\+Thread\+Safe\+Function} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8007}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8007}
+Creates a new instance of the {\ttfamily Napi\+::\+Thread\+Safe\+Function} object. The {\ttfamily New} function has several overloads for the various optional parameters\+: skip the optional parameter for that specific overload.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Function\&\ callback,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Object\&\ resource,}
+\DoxyCodeLine{\ \ \ \ ResourceString\ resourceName,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ maxQueueSize,}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ initialThreadCount,}
+\DoxyCodeLine{\ \ \ \ ContextType*\ context,}
+\DoxyCodeLine{\ \ \ \ Finalizer\ finalizeCallback,}
+\DoxyCodeLine{\ \ \ \ FinalizerDataType*\ data);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily Napi\+::\+Thread\+Safe\+Function} object.
+\item {\ttfamily callback}\+: The {\ttfamily Function} to call from another thread.
+\item {\ttfamily \mbox{[}optional\mbox{]} resource}\+: An object associated with the async work that will be passed to possible async\+\_\+hooks init hooks.
+\item {\ttfamily resource\+Name}\+: A Java\+Script string to provide an identifier for the kind of resource that is being provided for diagnostic information exposed by the async\+\_\+hooks API.
+\item {\ttfamily max\+Queue\+Size}\+: Maximum size of the queue. {\ttfamily 0} for no limit.
+\item {\ttfamily initial\+Thread\+Count}\+: The initial number of threads, including the main thread, which will be making use of this function.
+\item {\ttfamily \mbox{[}optional\mbox{]} context}\+: Data to attach to the resulting {\ttfamily Thread\+Safe\+Function}.
+\item {\ttfamily \mbox{[}optional\mbox{]} finalize\+Callback}\+: Function to call when the {\ttfamily Thread\+Safe\+Function} is being destroyed. This callback will be invoked on the main thread when the thread-\/safe function is about to be destroyed. It receives the context and the finalize data given during construction (if given), and provides an opportunity for cleaning up after the threads e.\+g. by calling {\ttfamily uv\+\_\+thread\+\_\+join()}. It is important that, aside from the main loop thread, there be no threads left using the thread-\/safe function after the finalize callback completes. Must implement {\ttfamily void operator()(\+Env env, Data\+Type\texorpdfstring{$\ast$}{*} data,   Context\texorpdfstring{$\ast$}{*} hint)}, skipping {\ttfamily data} or {\ttfamily hint} if they are not provided. Can be retreived via {\ttfamily Get\+Context()}.
+\item {\ttfamily \mbox{[}optional\mbox{]} data}\+: Data to be passed to {\ttfamily finalize\+Callback}.
+\end{DoxyItemize}
+
+Returns a non-\/empty {\ttfamily Napi\+::\+Thread\+Safe\+Function} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8008}{}\doxysubsection{\texorpdfstring{Acquire}{Acquire}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8008}
+Add a thread to this thread-\/safe function object, indicating that a new thread will start making use of the thread-\/safe function.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{napi\_status\ Napi::ThreadSafeFunction::Acquire()}
+
+\end{DoxyCode}
+
+
+Returns one of\+:
+\begin{DoxyItemize}
+\item {\ttfamily napi\+\_\+ok}\+: The thread has successfully acquired the thread-\/safe function for its use.
+\item {\ttfamily napi\+\_\+closing}\+: The thread-\/safe function has been marked as closing via a previous call to {\ttfamily Abort()}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8009}{}\doxysubsection{\texorpdfstring{Release}{Release}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8009}
+Indicate that an existing thread will stop making use of the thread-\/safe function. A thread should call this API when it stops making use of this thread-\/safe function. Using any thread-\/safe APIs after having called this API has undefined results in the current thread, as it may have been destroyed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{napi\_status\ Napi::ThreadSafeFunction::Release()}
+
+\end{DoxyCode}
+
+
+Returns one of\+:
+\begin{DoxyItemize}
+\item {\ttfamily napi\+\_\+ok}\+: The thread-\/safe function has been successfully released.
+\item {\ttfamily napi\+\_\+invalid\+\_\+arg}\+: The thread-\/safe function\textquotesingle{}s thread-\/count is zero.
+\item {\ttfamily napi\+\_\+generic\+\_\+failure}\+: A generic error occurred when attemping to release the thread-\/safe function.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8010}{}\doxysubsection{\texorpdfstring{Abort}{Abort}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8010}
+"{}\+Abort"{} the thread-\/safe function. This will cause all subsequent APIs associated with the thread-\/safe function except {\ttfamily Release()} to return {\ttfamily napi\+\_\+closing} even before its reference count reaches zero. In particular, {\ttfamily Blocking\+Call} and {\ttfamily Non\+Blocking\+Call()} will return {\ttfamily napi\+\_\+closing}, thus informing the threads that it is no longer possible to make asynchronous calls to the thread-\/safe function. This can be used as a criterion for terminating the thread. Upon receiving a return value of {\ttfamily napi\+\_\+closing} from a thread-\/safe function call a thread must make no further use of the thread-\/safe function because it is no longer guaranteed to be allocated.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{napi\_status\ Napi::ThreadSafeFunction::Abort()}
+
+\end{DoxyCode}
+
+
+Returns one of\+:
+\begin{DoxyItemize}
+\item {\ttfamily napi\+\_\+ok}\+: The thread-\/safe function has been successfully aborted.
+\item {\ttfamily napi\+\_\+invalid\+\_\+arg}\+: The thread-\/safe function\textquotesingle{}s thread-\/count is zero.
+\item {\ttfamily napi\+\_\+generic\+\_\+failure}\+: A generic error occurred when attemping to abort the thread-\/safe function.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8011}{}\doxysubsection{\texorpdfstring{Blocking\+Call / Non\+Blocking\+Call}{Blocking\+Call / Non\+Blocking\+Call}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8011}
+Calls the Javascript function in either a blocking or non-\/blocking fashion.
+\begin{DoxyItemize}
+\item {\ttfamily Blocking\+Call()}\+: the API blocks until space becomes available in the queue. Will never block if the thread-\/safe function was created with a maximum queue size of {\ttfamily 0}.
+\item {\ttfamily Non\+Blocking\+Call()}\+: will return {\ttfamily napi\+\_\+queue\+\_\+full} if the queue was full, preventing data from being successfully added to the queue.
+\end{DoxyItemize}
+
+There are several overloaded implementations of {\ttfamily Blocking\+Call()} and {\ttfamily Non\+Blocking\+Call()} for use with optional parameters\+: skip the optional parameter for that specific overload.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{napi\_status\ Napi::ThreadSafeFunction::BlockingCall(DataType*\ data,\ Callback\ callback)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{}
+\DoxyCodeLine{napi\_status\ Napi::ThreadSafeFunction::NonBlockingCall(DataType*\ data,\ Callback\ callback)\ \textcolor{keyword}{const}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}optional\mbox{]} data}\+: Data to pass to {\ttfamily callback}.
+\item {\ttfamily \mbox{[}optional\mbox{]} callback}\+: C++ function that is invoked on the main thread. The callback receives the {\ttfamily Thread\+Safe\+Function}\textquotesingle{}s Java\+Script callback function to call as an {\ttfamily \doxylink{class_napi_1_1_function}{Napi\+::\+Function}} in its parameters and the {\ttfamily Data\+Type\texorpdfstring{$\ast$}{*}} data pointer (if provided). Must implement {\ttfamily void operator()(\+Napi\+::\+Env env, Function   js\+Callback, Data\+Type\texorpdfstring{$\ast$}{*} data)}, skipping {\ttfamily data} if not provided. It is not necessary to call into Java\+Script via {\ttfamily Make\+Callback()} because N-\/\+API runs {\ttfamily callback} in a context appropriate for callbacks.
+\end{DoxyItemize}
+
+Returns one of\+:
+\begin{DoxyItemize}
+\item {\ttfamily napi\+\_\+ok}\+: The call was successfully added to the queue.
+\item {\ttfamily napi\+\_\+queue\+\_\+full}\+: The queue was full when trying to call in a non-\/blocking method.
+\item {\ttfamily napi\+\_\+closing}\+: The thread-\/safe function is aborted and cannot accept more calls.
+\item {\ttfamily napi\+\_\+invalid\+\_\+arg}\+: The thread-\/safe function is closed.
+\item {\ttfamily napi\+\_\+generic\+\_\+failure}\+: A generic error occurred when attemping to add to the queue.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8012}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df_autotoc_md8012}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <napi.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_napi}{Napi}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::thread\ nativeThread;}
+\DoxyCodeLine{ThreadSafeFunction\ tsfn;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Value}}\ Start(\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_callback_info}{CallbackInfo}}\&\ info\ )}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env\ =\ info.Env();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (\ info.Length()\ <\ 2\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ TypeError::New(\ env,\ \textcolor{stringliteral}{"{}Expected\ two\ arguments"{}}\ );}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ !info[0].IsFunction()\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ TypeError::New(\ env,\ \textcolor{stringliteral}{"{}Expected\ first\ arg\ to\ be\ function"{}}\ );}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\ !info[1].IsNumber()\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ TypeError::New(\ env,\ \textcolor{stringliteral}{"{}Expected\ second\ arg\ to\ be\ number"{}}\ );}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ count\ =\ info[1].As<\mbox{\hyperlink{class_napi_1_1_number}{Number}}>().Int32Value();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ a\ ThreadSafeFunction}}
+\DoxyCodeLine{\ \ tsfn\ =\ ThreadSafeFunction::New(}
+\DoxyCodeLine{\ \ \ \ \ \ env,}
+\DoxyCodeLine{\ \ \ \ \ \ info[0].As<Function>(),\ \ \textcolor{comment}{//\ JavaScript\ function\ called\ asynchronously}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{"{}Resource\ Name"{}},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Name}}
+\DoxyCodeLine{\ \ \ \ \ \ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unlimited\ queue}}
+\DoxyCodeLine{\ \ \ \ \ \ 1,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Only\ one\ thread\ will\ use\ this\ initially}}
+\DoxyCodeLine{\ \ \ \ \ \ [](\ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ )\ \{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Finalizer\ used\ to\ clean\ threads\ up}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ nativeThread.join();}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ a\ native\ thread}}
+\DoxyCodeLine{\ \ nativeThread\ =\ std::thread(\ [count]\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ callback\ =\ [](\ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_function}{Function}}\ jsCallback,\ \textcolor{keywordtype}{int}*\ value\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Transform\ native\ data\ into\ JS\ data,\ passing\ it\ to\ the\ provided\ }}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ \`{}jsCallback`\ -\/-\/\ the\ TSFN's\ JavaScript\ function.}}
+\DoxyCodeLine{\ \ \ \ \ \ jsCallback.Call(\ \{Number::New(\ env,\ *value\ )\}\ );}
+\DoxyCodeLine{\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ We're\ finished\ with\ the\ data.}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{delete}\ value;}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ count;\ i++\ )}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Create\ new\ data}}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordtype}{int}*\ value\ =\ \textcolor{keyword}{new}\ int(\ clock()\ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{comment}{//\ Perform\ a\ blocking\ call}}
+\DoxyCodeLine{\ \ \ \ \ \ napi\_status\ status\ =\ tsfn.BlockingCall(\ value,\ callback\ );}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ status\ !=\ napi\_ok\ )}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ error}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ std::this\_thread::sleep\_for(\ std::chrono::seconds(\ 1\ )\ );}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Release\ the\ thread-\/safe\ function}}
+\DoxyCodeLine{\ \ \ \ tsfn.Release();}
+\DoxyCodeLine{\ \ \}\ );}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ Boolean::New(env,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ Init(\ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_object}{Object}}\ exports\ )}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ exports.\mbox{\hyperlink{class_napi_1_1_object_a96eae03d64989f9a893897b37f9eb1b8}{Set}}(\ \textcolor{stringliteral}{"{}start"{}},\ Function::New(\ env,\ Start\ )\ );}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ exports;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{NODE\_API\_MODULE(\ clock,\ Init\ )}
+
+\end{DoxyCode}
+
+
+The above code can be used from Java\+Script as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ start\ \}\ =\ require('bindings')('clock');}
+\DoxyCodeLine{}
+\DoxyCodeLine{start(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}JavaScript\ callback\ called\ with\ arguments"{},\ Array.from(arguments));}
+\DoxyCodeLine{\},\ 5);}
+
+\end{DoxyCode}
+
+
+When executed, the output will show the value of {\ttfamily clock()} five times at one second intervals\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{JavaScript\ callback\ called\ with\ arguments\ [\ 84745\ ]}
+\DoxyCodeLine{JavaScript\ callback\ called\ with\ arguments\ [\ 103211\ ]}
+\DoxyCodeLine{JavaScript\ callback\ called\ with\ arguments\ [\ 104516\ ]}
+\DoxyCodeLine{JavaScript\ callback\ called\ with\ arguments\ [\ 105104\ ]}
+\DoxyCodeLine{JavaScript\ callback\ called\ with\ arguments\ [\ 105691\ ]}
+
+\end{DoxyCode}
+ 

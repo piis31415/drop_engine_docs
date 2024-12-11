@@ -1,0 +1,233 @@
+\chapter{@electron/osx-\/sign \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/@electron/osx-\/sign"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/@electron/osx-\/sign.\+svg"{} alt="{}npm"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://circleci.\+com/gh/electron/osx-\/sign"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/circleci/build/github/electron/osx-\/sign"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e}\index{"@electron/osx-\/sign $<$a href="{}https://npmjs.org/package/"@electron/osx-\/sign"{} $>$$<$img src="{}https://img.shields.io/npm/v/"@electron/osx-\/sign.svg"{} alt="{}npm"{}/$>$$<$/a$>$ $<$a href="{}https://circleci.com/gh/electron/osx-\/sign"{} $>$$<$img src="{}https://img.shields.io/circleci/build/github/electron/osx-\/sign"{} alt="{}Build Status"{}/$>$$<$/a$>$@{"@electron/osx-\/sign $<$a href=""https://npmjs.org/package/"@electron/osx-\/sign"" $>$$<$img src=""https://img.shields.io/npm/v/"@electron/osx-\/sign.svg"" alt=""npm""/$>$$<$/a$>$ $<$a href=""https://circleci.com/gh/electron/osx-\/sign"" $>$$<$img src=""https://img.shields.io/circleci/build/github/electron/osx-\/sign"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md510}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md510}%
+
+
+Codesign Electron mac\+OS apps\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md511}{}\doxysection{\texorpdfstring{About}{About}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md511}
+\href{https://github.com/electron/osx-sign}{\texttt{ {\ttfamily @electron/osx-\/sign}}} minimizes the extra work needed to eventually prepare your apps for shipping, providing options that work out of the box for most applications. Additional configuration is available via its API.
+
+There are two main functionalities exposed via this package\+:
+\begin{DoxyItemize}
+\item Signing mac\+OS apps via {\ttfamily sign} functions. Under the hood, this uses the {\ttfamily codesign} utility.
+\item Creating {\ttfamily .pkg} installer packages via {\ttfamily flat} functions. Under the hood, this uses the {\ttfamily productbuild} utility.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md512}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md512}
+{\ttfamily @electron/osx-\/sign} is integrated into other Electron packaging tools, and can be configured accordingly\+:
+\begin{DoxyItemize}
+\item \href{https://electron.github.io/packager/main/types/OsxSignOptions.html}{\texttt{ Electron Packager}}
+\item \href{https://www.electronforge.io/guides/code-signing/code-signing-macos}{\texttt{ Electron Forge}}
+\end{DoxyItemize}
+
+You can also install {\ttfamily @electron/osx-\/sign} separately if your packaging pipeline does not involve those tools\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ @electron/osx-\/sign}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md513}{}\doxysection{\texorpdfstring{Code signing}{Code signing}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md513}
+The signing procedure implemented in this package is based on what described in Electron\textquotesingle{}s \href{https://github.com/electron/electron/blob/main/docs/tutorial/code-signing.md}{\texttt{ Code Signing Guide}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md514}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md514}
+
+\begin{DoxyItemize}
+\item You must be a registered member of the \href{https://developer.apple.com/programs/}{\texttt{ Apple Developer Program}}. Please note that you could be charged by Apple in order to get issued with the required certificates.
+\item You must have \href{https://developer.apple.com/xcode/}{\texttt{ Xcode}} installed from the \href{https://apps.apple.com/us/app/xcode/id497799835}{\texttt{ Mac App Store}}. It is not recommended to download your copy from other 3rd party sources for security reasons.
+\item You must have Xcode Command Line Tools installed. To check whether it is available, try {\ttfamily xcode-\/select -\/-\/install} and follow the instructions.
+\item To distribute your app on the Mac App Store, You must create a Mac App on \href{https://appstoreconnect.apple.com/}{\texttt{ App Store Connect}}.
+\item You must give your app a unique Bundle ID.
+\item You must give your app a version number.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md515}{}\doxysubsection{\texorpdfstring{Certificates}{Certificates}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md515}
+In order to distribute your application either inside or outside the Mac App Store, you will have to have the following certificates from Apple after becoming a registered developer.
+
+Certificates can be created through the \href{https://developer.apple.com/account/resources/certificates/add}{\texttt{ Certificates, Identities \& Profiles}} page in the Apple Developer website or via \href{https://help.apple.com/xcode/mac/current/\#/dev3a05256b8}{\texttt{ Account Preferences in Xcode}}.
+
+For distribution inside the Mac App Store, you will need to create\+:
+\begin{DoxyItemize}
+\item Mac App Distribution\+: {\ttfamily 3rd Party Mac Developer Application\+: \texorpdfstring{$\ast$}{*} (\texorpdfstring{$\ast$}{*})}
+\item Mac Installer Distribution\+: {\ttfamily 3rd Party Mac Developer Installer\+: \texorpdfstring{$\ast$}{*} (\texorpdfstring{$\ast$}{*})}
+\end{DoxyItemize}
+
+For distribution outside the Mac App Store\+:
+\begin{DoxyItemize}
+\item Developer ID Application\+: {\ttfamily Developer ID Application\+: \texorpdfstring{$\ast$}{*} (\texorpdfstring{$\ast$}{*})}
+\item Developer ID Installer\+: {\ttfamily Developer ID Installer\+: \texorpdfstring{$\ast$}{*} (\texorpdfstring{$\ast$}{*})}
+\end{DoxyItemize}
+
+After you create the necessary certifications, download them and open each so that they are installed in your keychain. We recommend installing them in your system default keychain so that {\ttfamily @electron/osx-\/sign} can detect them automatically.
+
+{\bfseries{Note\+:}} They appear to come in pairs. It is preferred to have every one of them installed so not to are about which is not yet installed for future works. However, if you may only want to distribute outside the Mac App Store, there is no need to have the 3rd Party Mac Developer ones installed and vice versa.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md516}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md516}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ signAsync\ \}\ =\ require('@electron/osx-\/sign')}
+\DoxyCodeLine{const\ opts\ =\ \{}
+\DoxyCodeLine{\ \ app:\ 'path/to/my.app'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{signAsync(opts)}
+\DoxyCodeLine{\ \ .then(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Application\ signed}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .catch(function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Handle\ the\ error}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+The only mandatory option for {\ttfamily sign\+Async} is a path to your {\ttfamily .app} package. Configuration for most Electron apps should work out of the box. For full configuration options, see the \mbox{[}API documentation\mbox{]}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md517}{}\doxysubsection{\texorpdfstring{Usage examples}{Usage examples}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md517}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md518}{}\doxysubsubsection{\texorpdfstring{Signing for Mac App Store distribution}{Signing for Mac App Store distribution}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md518}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ signAsync\ \}\ =\ require('@electron/osx-\/sign')}
+\DoxyCodeLine{const\ opts\ =\ \{}
+\DoxyCodeLine{\ \ app:\ 'path/to/my.app',}
+\DoxyCodeLine{\ \ //\ optional\ parameters\ for\ additional\ customization}
+\DoxyCodeLine{\ \ platform:\ "{}mas"{},\ //\ should\ be\ auto-\/detected\ if\ your\ app\ was\ packaged\ for\ MAS\ via\ Packager\ or\ Forge}
+\DoxyCodeLine{\ \ type:\ "{}distribution"{},\ //\ defaults\ to\ "{}distribution"{}\ for\ submission\ to\ App\ Store\ Connect}
+\DoxyCodeLine{\ \ provisioningProfile:\ 'path/to/my.provisionprofile',\ //\ defaults\ to\ the\ current\ working\ directory}
+\DoxyCodeLine{\ \ keychain:\ 'my-\/keychain',\ //\ defaults\ to\ the\ system\ default\ login\ keychain}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{signAsync(opts)}
+\DoxyCodeLine{\ \ .then(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Application\ signed}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .catch(function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Handle\ the\ error}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+Mac App Store apps require a \href{https://www.electronjs.org/docs/latest/tutorial/mac-app-store-submission-guide\#prepare-provisioning-profile}{\texttt{ Provisioning Profile}} for submission to App Store Connect. We recommend having the provisioning profile for distribution placed in the current working directory and the signing identity installed in the default keychain.
+
+The app is not expected to run after codesigning since there is no provisioned device, and it is intended only for submission to App Store Connect. Since {\ttfamily @electron/osx-\/sign} adds the entry {\ttfamily com.\+apple.\+developer.\+team-\/identifier} to a temporary copy of the specified entitlements file (with the default option {\ttfamily pre\+Auto\+Entitlements}), distribution builds can no longer be run directly.
+
+To run an app codesigned for distribution locally after codesigning, you may manually add {\ttfamily Electron\+Team\+ID} in your {\ttfamily Info.\+plist} and {\ttfamily com.\+apple.\+security.\+application-\/groups} in the entitlements file, and set {\ttfamily pre\+Auto\+Entitlements\+: false} for {\ttfamily @electron/osx-\/sign} to avoid this extra bit. Note that "{}certain features are only allowed across apps whose team-\/identifier value match"{} (\href{https://developer.apple.com/library/content/technotes/tn2415/_index.html\#//apple_ref/doc/uid/DTS40016427-CH1-ENTITLEMENTSLIST}{\texttt{ Technical Note TN2415}}).
+
+Alternatively, set the app\textquotesingle{}s {\ttfamily type} to {\ttfamily development} to codesign a development version of your app, which will allow it to be run on your development provisioned machine. Apps signed for development will not be eligible for submission via App Store Connect.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md519}{}\doxysubsubsection{\texorpdfstring{Signing with {\ttfamily -\/-\/deep}}{Signing with {\ttfamily -\/-\/deep}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md519}
+Some subresources that you may include in your Electron app may need to be signed with {\ttfamily -\/-\/deep}. This is not typically safe to apply to the entire Electron app and therefore should be applied to {\itshape just} your file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{signAsync(\{}
+\DoxyCodeLine{\ \ app:\ 'path/to/my.app',}
+\DoxyCodeLine{\ \ optionsForFile:\ (filePath)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ For\ our\ one\ specific\ file\ we\ can\ pass\ extra\ options\ to\ be\ merged}
+\DoxyCodeLine{\ \ \ \ //\ with\ the\ default\ options}
+\DoxyCodeLine{\ \ \ \ if\ (path.basename(filePath)\ ===\ 'myStrangeFile.jar')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ additionalArguments:\ ['-\/-\/deep'],}
+\DoxyCodeLine{\ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Just\ use\ the\ default\ options\ for\ everything\ else}
+\DoxyCodeLine{\ \ \ \ return\ null;}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md520}{}\doxysubsubsection{\texorpdfstring{Signing legacy versions of Electron}{Signing legacy versions of Electron}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md520}
+{\ttfamily @electron/osx-\/sign} maintains backwards compatibility with older versions of Electron, but generally assumes that you are on the latest stable version.
+
+If you are running an older unsupported version of Electron, you should pass in the {\ttfamily version} option as such\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{signAsync(\{}
+\DoxyCodeLine{\ \ app:\ 'path/to/my.app',}
+\DoxyCodeLine{\ \ version:\ '0.34.0',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md521}{}\doxysection{\texorpdfstring{Flat installer packaging}{Flat installer packaging}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md521}
+This module also handles the creation of flat installer packages ({\ttfamily .pkg} installers).
+
+\begin{DoxyNote}{Note}
+Modern {\ttfamily .pkg} installers are also named "{}flat"{} packages for historical purposes. Prior to Mac OS X Leopard (10.\+5), installation packages were organized in hierarchical directories. OS X Leopard introduced a new flat package format that is used for modern {\ttfamily .pkg} installers.
+\end{DoxyNote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md522}{}\doxysubsection{\texorpdfstring{API usage}{API usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md522}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ flatAsync\ \}\ =\ require('@electron/osx-\/sign')}
+\DoxyCodeLine{flatAsync(\{}
+\DoxyCodeLine{\ \ app:\ 'path/to/my.app'}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{\ \ .then(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Application\ flattened}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .catch(function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Handle\ the\ error}
+\DoxyCodeLine{\ \ \})}
+
+\end{DoxyCode}
+
+
+The only mandatory option for {\ttfamily flat\+Async} is a path to your {\ttfamily .app} package. For full configuration options, see the \mbox{[}API documentation\mbox{]}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md523}{}\doxysection{\texorpdfstring{CLI}{CLI}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md523}
+{\ttfamily @electron/osx-\/sign} also exposes a legacy command-\/line interface (CLI) for both signing and installer generation. However, we recommend using the Java\+Script API as it has a more complete API surface (e.\+g. {\ttfamily options\+For\+File} is only available via JS).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ install\ the\ package\ locally\ into\ devDependencies}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ @electron/osx-\/sign}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Sign\ a\ packaged\ .app\ bundle}
+\DoxyCodeLine{npx\ electron-\/osx-\/sign\ path/to/my.app\ [options\ ...]}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Create\ a\ .pkg\ installer\ from\ a\ packaged\ .app\ bundle}
+\DoxyCodeLine{npx\ electron-\/osx-\/flat\ path/to/my.app\ [options\ ...]}
+
+\end{DoxyCode}
+
+
+For full options, use the {\ttfamily -\/-\/help} flag for either command.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md524}{}\doxysection{\texorpdfstring{Debug}{Debug}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md524}
+The \href{https://www.npmjs.com/package/debug}{\texttt{ {\ttfamily debug}}} module is used to display advanced logs and messages. If you are having problems with signing your app with {\ttfamily @electron/osx-\/sign}, run your signing scripts with the {\ttfamily DEBUG=electron-\/osx-\/sign\texorpdfstring{$\ast$}{*}} environment variable.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md525}{}\doxysection{\texorpdfstring{Test}{Test}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28aa4f9b61e40d47dfe7e901f98b3e89e_autotoc_md525}
+The project\textquotesingle{}s configured to run automated tests on Circle\+CI.
+
+If you wish to manually test the module, first comment out {\ttfamily opts.\+identity} in {\ttfamily test/basic.\+js} to enable auto discovery. Then run the command {\ttfamily npm test} from the dev directory.
+
+When this command is run for the first time\+: {\ttfamily @electron/get} will download mac\+OS Electron releases defined in {\ttfamily test/config.\+json}, and save to {\ttfamily \texorpdfstring{$\sim$}{\string~}/.electron/}, which might take up less than 1GB of disk space.
+
+A successful testing should look something like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ test}
+\DoxyCodeLine{}
+\DoxyCodeLine{>\ electron-\/osx-\/sign@0.4.17\ pretest\ electron-\/osx-\/sign}
+\DoxyCodeLine{>\ rimraf\ test/work}
+\DoxyCodeLine{}
+\DoxyCodeLine{>\ electron-\/osx-\/sign@0.4.17\ test\ electron-\/osx-\/sign}
+\DoxyCodeLine{>\ standard\ \&\&\ tape\ test}
+\DoxyCodeLine{}
+\DoxyCodeLine{Calling\ @electron/get\ before\ running\ tests...}
+\DoxyCodeLine{Running\ tests...}
+\DoxyCodeLine{TAP\ version\ 13}
+\DoxyCodeLine{\#\ setup}
+\DoxyCodeLine{\#\ defaults-\/test:v7.0.0-\/beta.3-\/darwin-\/x64}
+\DoxyCodeLine{ok\ 1\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v7.0.0-\/beta.3-\/mas-\/x64}
+\DoxyCodeLine{ok\ 2\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v6.0.3-\/darwin-\/x64}
+\DoxyCodeLine{ok\ 3\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v6.0.3-\/mas-\/x64}
+\DoxyCodeLine{ok\ 4\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v5.0.10-\/darwin-\/x64}
+\DoxyCodeLine{ok\ 5\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v5.0.10-\/mas-\/x64}
+\DoxyCodeLine{ok\ 6\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v4.2.9-\/darwin-\/x64}
+\DoxyCodeLine{ok\ 7\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v4.2.9-\/mas-\/x64}
+\DoxyCodeLine{ok\ 8\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v3.1.2-\/darwin-\/x64}
+\DoxyCodeLine{ok\ 9\ app\ signed}
+\DoxyCodeLine{\#\ defaults-\/test:v3.1.2-\/mas-\/x64}
+\DoxyCodeLine{ok\ 10\ app\ signed}
+\DoxyCodeLine{\#\ teardown}
+\DoxyCodeLine{}
+\DoxyCodeLine{1..10}
+\DoxyCodeLine{\#\ tests\ 10}
+\DoxyCodeLine{\#\ pass\ \ 10}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ ok}
+
+\end{DoxyCode}
+ 

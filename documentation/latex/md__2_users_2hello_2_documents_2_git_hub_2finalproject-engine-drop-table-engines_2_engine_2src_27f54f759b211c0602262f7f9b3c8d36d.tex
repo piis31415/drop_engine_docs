@@ -1,0 +1,31 @@
+\chapter{wcwidth}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d}\index{wcwidth@{wcwidth}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10740}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10740}%
+
+
+Determine columns needed for a fixed-\/size wide-\/character string
+
+\DoxyHorRuler{0}
+
+
+wcwidth is a simple Java\+Script port of \href{http://man7.org/linux/man-pages/man3/wcswidth.3.html}{\texttt{ wcwidth}} implemented in C by Markus Kuhn.
+
+Java\+Script port \href{https://github.com/mycoboco/wcwidth.js}{\texttt{ originally}} written by Woong Jun \href{mailto:woong.jun@gmail.com}{\texttt{ woong.\+jun@gmail.\+com}} (\href{http://code.woong.org/}{\texttt{ http\+://code.\+woong.\+org/}})\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10742}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10742}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'한'.length\ \ \ \ //\ =>\ 1}
+\DoxyCodeLine{wcwidth('한');\ \ \ //\ =>\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{'한글'.length\ \ \ \ //\ =>\ 2}
+\DoxyCodeLine{wcwidth('한글');\ //\ =>\ 4}
+
+\end{DoxyCode}
+
+
+{\ttfamily wcwidth()} and its string version, {\ttfamily wcswidth()} are defined by IEEE Std 1002.\+1-\/2001, a.\+k.\+a. POSIX.\+1-\/2001, and return the number of columns used to represent the given wide character and string.
+
+Markus\textquotesingle{}s implementation assumes the wide character given to those functions to be encoded in ISO 10646, which is almost true for Java\+Script\textquotesingle{}s characters.
+
+\mbox{[}Further explaination here\mbox{]}(docs)\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10743}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27f54f759b211c0602262f7f9b3c8d36d_autotoc_md10743}
+MIT 

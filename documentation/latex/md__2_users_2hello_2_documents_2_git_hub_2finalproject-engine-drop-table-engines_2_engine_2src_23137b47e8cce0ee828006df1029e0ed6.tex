@@ -1,0 +1,35 @@
+\chapter{NSIS}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6}\index{NSIS@{NSIS}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2326}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2326}%
+
+
+⚠️ {\bfseries{It is developer documentation.}} If your are looking for usage guide, see \href{https://electron.build/nsis}{\texttt{ user documentation}}.
+
+NSIS stands for Nullsoft Scriptable Install System. electron-\/builder utilizes a \href{https://github.com/electron-userland/electron-builder-binaries}{\texttt{ customized version}} of it and uses {\ttfamily Nsis\+Multi\+User} plugin to handle installation for single user or all users on the computer.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2327}{}\doxysection{\texorpdfstring{Some links}{Some links}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2327}
+\href{http://www.mathiaswestin.net/2012/09/how-to-make-per-user-installation-with.html}{\texttt{ http\+://www.\+mathiaswestin.\+net/2012/09/how-\/to-\/make-\/per-\/user-\/installation-\/with.\+html}}
+
+\href{https://msdn.microsoft.com/en-us/library/windows/desktop/dd378457(v=vs.85).aspx\#FOLDERID_UserProgramFiles}{\texttt{ https\+://msdn.\+microsoft.\+com/en-\/us/library/windows/desktop/dd378457(v=vs.\+85).\+aspx\#\+FOLDERID\+\_\+\+User\+Program\+Files}}
+
+\href{https://github.com/Drizin/NsisMultiUser}{\texttt{ https\+://github.\+com/\+Drizin/\+Nsis\+Multi\+User}}
+
+NSIS vs Inno Setup — it is not easy to choose because both are far from ideal, e.\+g. inno also doesn\textquotesingle{}t have built-\/in per-\/user installation implementation — \href{http://stackoverflow.com/questions/34330668/inno-setup-custom-dialog-with-per-user-or-per-machine-installation}{\texttt{ http\+://stackoverflow.\+com/questions/34330668/inno-\/setup-\/custom-\/dialog-\/with-\/per-\/user-\/or-\/per-\/machine-\/installation}}.
+
+\href{http://stackoverflow.com/questions/2565215/checking-if-the-application-is-running-in-nsis-before-uninstalling}{\texttt{ http\+://stackoverflow.\+com/questions/2565215/checking-\/if-\/the-\/application-\/is-\/running-\/in-\/nsis-\/before-\/uninstalling}}
+
+One-\/click installer\+: \href{http://forums.winamp.com/showthread.php?t=300479}{\texttt{ http\+://forums.\+winamp.\+com/showthread.\+php?t=300479}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2328}{}\doxysection{\texorpdfstring{Localization (l10n)}{Localization (l10n)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2328}
+For translators, the strings to be displayed are included in \href{https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/nsis/assistedMessages.yml}{\texttt{ {\ttfamily assisted\+Messages.\+yml}}} and \mbox{[}{\ttfamily messages.\+yml}\mbox{]}\href{https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/nsis/messages.yml}{\texttt{ https\+://github.\+com/electron-\/userland/electron-\/builder/blob/master/packages/app-\/builder-\/lib/templates/nsis/messages.\+yml}}).
+
+As for other strings in NSIS, head to \href{https://github.com/electron-userland/electron-builder-binaries}{\texttt{ electron-\/userland/electron-\/builder-\/binaries}} or the upstream repository on \href{https://sourceforge.net/p/nsis/code/HEAD/tree/}{\texttt{ Sorceforge}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2329}{}\doxysection{\texorpdfstring{GUID}{GUID}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2329}
+See \href{https://electron.build/nsis}{\texttt{ docs}}.
+
+We use UUID v5 to generate sha-\/1 name-\/based UUID.
+
+\href{http://stackoverflow.com/questions/3029994/convert-uri-to-guid}{\texttt{ http\+://stackoverflow.\+com/questions/3029994/convert-\/uri-\/to-\/guid}} \href{https://alexandrebrisebois.wordpress.com/2013/11/14/create-predictable-guids-for-your-windows-azure-table-storage-entities/}{\texttt{ https\+://alexandrebrisebois.\+wordpress.\+com/2013/11/14/create-\/predictable-\/guids-\/for-\/your-\/windows-\/azure-\/table-\/storage-\/entities/}} \href{https://github.com/Squirrel/Squirrel.Windows/pull/658}{\texttt{ https\+://github.\+com/\+Squirrel/\+Squirrel.\+Windows/pull/658}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2330}{}\doxysection{\texorpdfstring{Compression}{Compression}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23137b47e8cce0ee828006df1029e0ed6_autotoc_md2330}
+NSIS LZMA compression is slower and worse compared to external {\ttfamily 7za} compression. Slower because {\ttfamily 7za} is multi-\/threaded, worse because LZMA codec implementation is outdated and BCJ2 filter is not enabled. Difference for test app — 4 MB (before\+: 36.\+3 after\+: 32.\+8).
+
+And compression time is also greatly reduced.
+
+Since NSIS is awesome, no disadvantages in our approach — \href{http://nsis.sourceforge.net/Reference/SetCompress}{\texttt{ compression is disabled}} before {\ttfamily File /oname=app.\+7z "{}\$\{\+APP\+\_\+\+ARCHIVE\}"{}} and enabled after (it is the reasons why {\ttfamily SOLID} compression is not used). So, opposite to Squirrel.\+Windows, archive is not twice compressed.
+
+So, in your custom NSIS scripts you should not use any compression instructions. Only {\ttfamily Set\+Compress} if you need to disable compression for already archived file. 

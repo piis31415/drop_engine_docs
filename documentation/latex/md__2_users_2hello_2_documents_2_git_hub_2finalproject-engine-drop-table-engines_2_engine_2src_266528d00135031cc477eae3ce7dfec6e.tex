@@ -1,0 +1,105 @@
+\chapter{Setup}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e}\index{Setup@{Setup}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7985}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7985}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7986}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7986}
+Before starting to use {\bfseries{N-\/\+API}} you need to assure you have the following prerequisites\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Node.\+JS}} see\+: \href{https://nodejs.org/}{\texttt{ Installing Node.\+js}}
+\item {\bfseries{Node.\+js native addon build tool}}
+\begin{DoxyItemize}
+\item {\bfseries{\doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2}{node-\/gyp}{0}}}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7987}{}\doxysection{\texorpdfstring{Installation and usage}{Installation and usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e_autotoc_md7987}
+To use {\bfseries{N-\/\+API}} in a native module\+:
+
+
+\begin{DoxyEnumerate}
+\item Add a dependency on this package to {\ttfamily package.\+json}\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{"{}dependencies"{}:\ \{}
+\DoxyCodeLine{\ \ "{}node-\/addon-\/api"{}:\ "{}*"{},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Reference this package\textquotesingle{}s include directory and gyp file in {\ttfamily binding.\+gyp}\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'include\_dirs':\ ["{}<!@(node\ -\/p\ \(\backslash\)"{}require('node-\/addon-\/api').include\(\backslash\)"{})"{}],}
+\DoxyCodeLine{'dependencies':\ ["{}<!(node\ -\/p\ \(\backslash\)"{}require('node-\/addon-\/api').gyp\(\backslash\)"{})"{}],}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Decide whether the package will enable C++ exceptions in the N-\/\+API wrapper. The base ABI-\/stable C APIs do not throw or handle C++ exceptions, but the N-\/\+API C++ wrapper classes may {\itshape optionally} \href{https://nodejs.github.io/node-addon-api/class_napi_1_1_error.html}{\texttt{ integrate C++ and Java\+Script exception-\/handling}}. To enable that capability, C++ exceptions must be enabled in {\ttfamily binding.\+gyp}\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'cflags!':\ [\ '-\/fno-\/exceptions'\ ],}
+\DoxyCodeLine{'cflags\_cc!':\ [\ '-\/fno-\/exceptions'\ ],}
+\DoxyCodeLine{'xcode\_settings':\ \{}
+\DoxyCodeLine{\ \ 'GCC\_ENABLE\_CPP\_EXCEPTIONS':\ 'YES',}
+\DoxyCodeLine{\ \ 'CLANG\_CXX\_LIBRARY':\ 'libc++',}
+\DoxyCodeLine{\ \ 'MACOSX\_DEPLOYMENT\_TARGET':\ '10.7',}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{'msvs\_settings':\ \{}
+\DoxyCodeLine{\ \ 'VCCLCompilerTool':\ \{\ 'ExceptionHandling':\ 1\ \},}
+\DoxyCodeLine{\},}
+
+\end{DoxyCode}
+
+
+Alternatively, disable use of C++ exceptions in N-\/\+API\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'defines':\ [\ 'NAPI\_DISABLE\_CPP\_EXCEPTIONS'\ ],}
+
+\end{DoxyCode}
+
+\begin{DoxyEnumerate}
+\item If you would like your native addon to support OSX, please also add the following settings in the {\ttfamily binding.\+gyp} file\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{['OS=="{}mac"{}',\ \{}
+\DoxyCodeLine{\ \ \ \ 'cflags+':\ ['-\/fvisibility=hidden'],}
+\DoxyCodeLine{\ \ \ \ 'xcode\_settings':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'GCC\_SYMBOLS\_PRIVATE\_EXTERN':\ 'YES',\ \#\ -\/fvisibility=hidden}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}]}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Include {\ttfamily \doxylink{napi_8h_source}{napi.\+h}} in the native module code. To ensure only ABI-\/stable APIs are used, DO NOT include {\ttfamily node.\+h}, {\ttfamily nan.\+h}, or {\ttfamily v8.\+h}.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ ++}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}napi.h"{}}}
+
+\end{DoxyCode}
+
+
+At build time, the N-\/\+API back-\/compat library code will be used only when the targeted node version {\itshape does not} have N-\/\+API built-\/in.
+
+The preprocessor directive {\ttfamily NODE\+\_\+\+ADDON\+\_\+\+API\+\_\+\+DISABLE\+\_\+\+DEPRECATED} can be defined at compile time before including {\ttfamily \doxylink{napi_8h_source}{napi.\+h}} to skip the definition of deprecated APIs. 

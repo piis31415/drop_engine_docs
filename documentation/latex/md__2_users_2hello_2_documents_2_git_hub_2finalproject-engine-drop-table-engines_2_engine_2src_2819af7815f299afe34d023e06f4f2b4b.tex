@@ -1,0 +1,33 @@
+\chapter{http-\/proxy-\/agent}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b}\index{http-\/proxy-\/agent@{http-\/proxy-\/agent}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5839}{}\doxysubsection{\texorpdfstring{An HTTP(s) proxy {\ttfamily http.\+Agent} implementation for HTTP}{An HTTP(s) proxy {\ttfamily http.\+Agent} implementation for HTTP}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5839}
+This module provides an {\ttfamily http.\+Agent} implementation that connects to a specified HTTP or HTTPS proxy server, and can be used with the built-\/in {\ttfamily http} module.
+
+{\bfseries{Note\+:}} For HTTP proxy usage with the {\ttfamily https} module, check out \href{../https-proxy-agent}{\texttt{ {\ttfamily https-\/proxy-\/agent}}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5840}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5840}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ http\ from\ 'http';}
+\DoxyCodeLine{import\ \{\ HttpProxyAgent\ \}\ from\ 'http-\/proxy-\/agent';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ agent\ =\ new\ HttpProxyAgent('http://168.63.76.32:3128');}
+\DoxyCodeLine{}
+\DoxyCodeLine{http.get('http://nodejs.org/api/',\ \{\ agent\ \},\ (res)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('"{}response"{}\ event!',\ res.headers);}
+\DoxyCodeLine{\ \ res.pipe(process.stdout);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5841}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5841}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5842}{}\doxysubsection{\texorpdfstring{new Http\+Proxy\+Agent(proxy\+: string \texorpdfstring{$\vert$}{|} URL, options?\+: Http\+Proxy\+Agent\+Options)}{new Http\+Proxy\+Agent(proxy\+: string \texorpdfstring{$\vert$}{|} URL, options?\+: Http\+Proxy\+Agent\+Options)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2819af7815f299afe34d023e06f4f2b4b_autotoc_md5842}
+The {\ttfamily Http\+Proxy\+Agent} class implements an {\ttfamily http.\+Agent} subclass that connects to the specified "{}\+HTTP(s) proxy server"{} in order to proxy HTTP requests.
+
+The {\ttfamily proxy} argument is the URL for the proxy server.
+
+The {\ttfamily options} argument accepts the usual {\ttfamily http.\+Agent} constructor options, and some additional properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily headers} -\/ Object containing additional headers to send to the proxy server in each request. This may also be a function that returns a headers object.
+
+{\bfseries{NOTE\+:}} If your proxy does not strip these headers from the request, they will also be sent to the destination server. 
+\end{DoxyItemize}

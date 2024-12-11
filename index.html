@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website for game portfolio">
+    <meta name="author" content="Helen Zhou">
+
+    <link rel="stylesheet" href="./website.css">
+    <title>Game!</title>
+</head>
+
+<body>
+    <header>
+        <h1>Game Portfolio</h1>
+    </header>
+
+    <section id="introduction">
+        <h2>Game and Game Engine Introduction</h2>
+        <p>Hello! Our game engine is focused on <b>rhythm games,</b> a genre of game that focuses heavily on music and performing actions accurate to the rhythm of provided music.</p>
+        <p>Our GUI is constructed in Typescript using React.js and electron.</p>
+        <p>Because we have a music-centered idea, our engine allows for MIDI input, through use of the PortMidi library (needs to be installed separately).</p>
+        <p>Please do note that one of our dependencies, DerelictPortMidi, is currently incompatible with posix-based systems, although it does compile on Mac and Windows. We have made a pull request for the package to fix this issue, but this is unlikely to be resolved anytime soon due to the last commit being six years ago.</p>
+    </section>
+
+    <section id="video">
+        <h2>Part 1: Game in Action!</h2>
+
+        <h4>Trailer Video</h4>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ILb-LkgVhto?si=XKYEYkYfIDK041yE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
+        <h4>Game Screenshots</h4>
+        <div class="image-row">
+            <img src="./websiteImages/puppy.jpg" alt="first game screenshot" />
+            <img src="./websiteImages/puppy.jpg" alt="second game screenshot" />
+            <img src="./websiteImages/puppy.jpg" alt="third game screenshot" />
+        </div>
+        <p>some information about the screenshots</p>
+    </section>
+
+    <section id="documentation">
+        <h2>Part 2: Link to Documentation</h2>
+        <p><a href="./documentation/html/annotated.html"> Here</a> is a link to our documentation, which is generated using Docxygen.</p>
+    </section>
+
+    <section>
+        <h2>Part 3: Engine Architecture</h2>
+        <img src="./websiteImages/puppy.jpg" alt="engine architecture" />
+        <p>some details about the engine architecture</p>
+    </section>
+
+    <section id="binary">
+        <h2>Part 4: Link to Binary</h2>
+    </section>
+
+    <section id="post mortem">
+        <h2>Part 5: Post Mortem</h2>
+        <p>Given more time, we think we could have done more with the MIDI capabilities of the project. MIDI input also allows for velocity data, how hard the note was pressed, and incorporating this data into a game would have been interesting and worthwhile.</p>
+        <p>This documentation website could also be polished up a bit more :)</p>
+    </section>
+</body>
+
+</html>

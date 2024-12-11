@@ -1,0 +1,26 @@
+\chapter{Asynchronous operations}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e0fc6d9e899f865bc8516295092586e}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e0fc6d9e899f865bc8516295092586e}\index{Asynchronous operations@{Asynchronous operations}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e0fc6d9e899f865bc8516295092586e_autotoc_md7628}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e0fc6d9e899f865bc8516295092586e_autotoc_md7628}%
+
+
+Node.\+js native add-\/ons often need to execute long running tasks and to avoid blocking the {\bfseries{event loop}} they have to run them asynchronously from the {\bfseries{event loop}}. In the Node.\+js model of execution the event loop thread represents the thread where Java\+Script code is executing. The node.\+js guidance is to avoid blocking other work queued on the event loop thread. Therefore, we need to do this work on another thread.
+
+All this means that native add-\/ons need to leverage async helpers from libuv as part of their implementation. This allows them to schedule work to be executed asynchronously so that their methods can return in advance of the work being completed.
+
+Node Addon API provides an interface to support functions that cover the most common asynchronous use cases. There is an abstract classes to implement asynchronous operations\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e975c9e39ecf1ae2860f6ca1ec11e877}{{\ttfamily Napi\+::Async\+Worker}}{0}}}
+\end{DoxyItemize}
+
+These class helps manage asynchronous operations through an abstraction of the concept of moving data between the {\bfseries{event loop}} and {\bfseries{worker threads}}.
+
+Also, the above class may not be appropriate for every scenario. When using any other asynchronous mechanism, the following API is necessary to ensure an asynchronous operation is properly tracked by the runtime\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f2a9fbce65b54f7b84a66ad8dc91ff23}{Async\+Context}{0}}}
+\item {\bfseries{\doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a77b15863c3c705cf159638536cd9974}{Callback\+Scope}{0}}} 
+\end{DoxyItemize}

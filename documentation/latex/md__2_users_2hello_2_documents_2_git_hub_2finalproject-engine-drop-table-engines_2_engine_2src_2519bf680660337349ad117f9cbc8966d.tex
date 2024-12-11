@@ -1,0 +1,46 @@
+\chapter{Zip\+Stream}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d}\index{ZipStream@{ZipStream}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11238}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11238}%
+
+
+zip-\/stream is a streaming zip archive generator based on the {\ttfamily Zip\+Archive\+Output\+Stream} prototype found in the \href{https://www.npmjs.org/package/compress-commons}{\texttt{ compress-\/commons}} project.
+
+It was originally created to be a successor to \href{https://npmjs.org/package/zipstream}{\texttt{ zipstream}}.
+
+Visit the \href{http://archiverjs.com/zip-stream}{\texttt{ API documentation}} for a list of all methods available.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11239}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11239}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ zip-\/stream\ -\/-\/save}
+
+\end{DoxyCode}
+
+
+You can also use {\ttfamily npm install \href{https://github.com/archiverjs/node-zip-stream/archive/master.tar.gz}{\texttt{ https\+://github.\+com/archiverjs/node-\/zip-\/stream/archive/master.\+tar.\+gz}}} to test upcoming versions.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11240}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11240}
+This module is meant to be wrapped internally by other modules and therefore lacks any queue management. This means you have to wait until the previous entry has been fully consumed to add another. Nested callbacks should be used to add multiple entries. There are modules like \href{https://npmjs.org/package/async}{\texttt{ async}} that ease the so called "{}callback hell"{}.
+
+If you want a module that handles entry queueing and much more, you should check out \href{https://npmjs.org/package/archiver}{\texttt{ archiver}} which uses this module internally.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Packer\ =\ require('zip-\/stream');}
+\DoxyCodeLine{const\ archive\ =\ new\ Packer();\ //\ OR\ new\ Packer(options)}
+\DoxyCodeLine{}
+\DoxyCodeLine{archive.on('error',\ function(err)\ \{}
+\DoxyCodeLine{\ \ throw\ err;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ pipe\ archive\ where\ you\ want\ it\ (ie\ fs,\ http,\ etc)}
+\DoxyCodeLine{//\ listen\ to\ the\ destination's\ end,\ close,\ or\ finish\ event}
+\DoxyCodeLine{}
+\DoxyCodeLine{archive.entry('string\ contents',\ \{\ name:\ 'string.txt'\ \},\ function(err,\ entry)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{\ \ archive.entry(null,\ \{\ name:\ 'directory/'\ \},\ function(err,\ entry)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{\ \ \ \ archive.finish();}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11241}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2519bf680660337349ad117f9cbc8966d_autotoc_md11241}
+Concept inspired by Antoine van Wel\textquotesingle{}s \href{https://npmjs.org/package/zipstream}{\texttt{ zipstream}} module, which is no longer being updated. 

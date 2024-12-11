@@ -1,0 +1,85 @@
+\doxysection{Component\+Position Class Reference}
+\hypertarget{class_component_position}{}\label{class_component_position}\index{ComponentPosition@{ComponentPosition}}
+Inheritance diagram for Component\+Position\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_component_position}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_position_aebfc3ef4b62ff2d2c2439ee128e70524}\label{class_component_position_aebfc3ef4b62ff2d2c2439ee128e70524} 
+{\bfseries this} (int x, int y, int w, int h)
+\item 
+\Hypertarget{class_component_position_ab96d7ab181b06785adbe3b69930bc5bc}\label{class_component_position_ab96d7ab181b06785adbe3b69930bc5bc} 
+void {\bfseries Input} ()
+\item 
+\Hypertarget{class_component_position_adad196c550d24209a48b4de4e99b55c9}\label{class_component_position_adad196c550d24209a48b4de4e99b55c9} 
+void {\bfseries Update} ()
+\item 
+\Hypertarget{class_component_position_a093c9875e10c3061be727729f9371140}\label{class_component_position_a093c9875e10c3061be727729f9371140} 
+void {\bfseries Render} ()
+\item 
+\Hypertarget{class_component_position_ac2586b95f09e6d4fb590e8481bc0876f}\label{class_component_position_ac2586b95f09e6d4fb590e8481bc0876f} 
+void {\bfseries Move} (int x, int y)
+\item 
+\Hypertarget{class_component_position_a67f6a1f6babc5e38636b9167a5ab9094}\label{class_component_position_a67f6a1f6babc5e38636b9167a5ab9094} 
+void {\bfseries Move\+To} (int x, int y)
+\item 
+\Hypertarget{class_component_position_ab34d807eac8ed80a46fe289ba9003886}\label{class_component_position_ab34d807eac8ed80a46fe289ba9003886} 
+void {\bfseries Rotate\+Clockwise} (double angle)
+\item 
+\Hypertarget{class_component_position_aae35b3e20c726c56f88004e882b35725}\label{class_component_position_aae35b3e20c726c56f88004e882b35725} 
+void {\bfseries Scale} (double amount)
+\item 
+\Hypertarget{class_component_position_ac9d7a88e1064a0cfc53d72a5dbd8eb42}\label{class_component_position_ac9d7a88e1064a0cfc53d72a5dbd8eb42} 
+SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*} {\bfseries Get\+Rect\+Ref} ()
+\item 
+\Hypertarget{class_component_position_afd2d9c920738c9d6ce0a77c77ce7da07}\label{class_component_position_afd2d9c920738c9d6ce0a77c77ce7da07} 
+int {\bfseries Get\+CenterX} ()
+\item 
+\Hypertarget{class_component_position_a9006703fb4a2c985eef9639c6f826fd9}\label{class_component_position_a9006703fb4a2c985eef9639c6f826fd9} 
+int {\bfseries Get\+CenterY} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_position_ab758a732556354a1d345c8761a1aa601}\label{class_component_position_ab758a732556354a1d345c8761a1aa601} 
+static \mbox{\hyperlink{class_component_position}{Component\+Position}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_position_adc6b9dff040f579418eed96ed5ff7c5a}\label{class_component_position_adc6b9dff040f579418eed96ed5ff7c5a} 
+SDL\+\_\+\+Rect {\bfseries m\+Base\+Rect}
+\item 
+\Hypertarget{class_component_position_a90805dbaa311602f11d223cf0eed4ce0}\label{class_component_position_a90805dbaa311602f11d223cf0eed4ce0} 
+SDL\+\_\+\+Rect {\bfseries m\+Rect}
+\item 
+\Hypertarget{class_component_position_afb9cf5a619ffcf40c9f34e822dbb05dd}\label{class_component_position_afb9cf5a619ffcf40c9f34e822dbb05dd} 
+double {\bfseries m\+Angle} = 0.\+0
+\item 
+\Hypertarget{class_component_position_a040718380dcba270c86e2586ff6cd48a}\label{class_component_position_a040718380dcba270c86e2586ff6cd48a} 
+double {\bfseries m\+Scale} = 1.\+0
+\item 
+\Hypertarget{class_component_position_a1c67694b42e6d6164c7088b16699faa6}\label{class_component_position_a1c67694b42e6d6164c7088b16699faa6} 
+int {\bfseries w\+Delta} = 0
+\item 
+\Hypertarget{class_component_position_a8c50751cf0696ba49b4e9b0d363c1962}\label{class_component_position_a8c50751cf0696ba49b4e9b0d363c1962} 
+int {\bfseries h\+Delta} = 0
+\item 
+\Hypertarget{class_component_position_a595a27b49fec1c0a10964b7c8ae7ebe3}\label{class_component_position_a595a27b49fec1c0a10964b7c8ae7ebe3} 
+int {\bfseries x\+Delta} = 0
+\item 
+\Hypertarget{class_component_position_ad60df2d735e7daf42a1830546a133bb2}\label{class_component_position_ad60df2d735e7daf42a1830546a133bb2} 
+int {\bfseries y\+Delta} = 0
+\item 
+\Hypertarget{class_component_position_a5e3e7465086bf0e7eaedaf1c59a5986f}\label{class_component_position_a5e3e7465086bf0e7eaedaf1c59a5986f} 
+double {\bfseries angle\+Delta} = 0.\+0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/component.\+d\end{DoxyCompactItemize}

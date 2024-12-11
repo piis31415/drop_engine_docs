@@ -1,0 +1,144 @@
+\chapter{Typed\+Array\+Of}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425}\index{TypedArrayOf@{TypedArrayOf}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8029}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8029}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} class corresponds to the various \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray}{\texttt{ Java\+Script {\ttfamily Typed\+Array}}} classes.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8030}{}\doxysection{\texorpdfstring{Typedefs}{Typedefs}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8030}
+The common Java\+Script {\ttfamily Typed\+Array} types are pre-\/defined for each of use\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<int8\_t>}}\ \mbox{\hyperlink{namespace_napi_a1c4d0ae55df60578c54c3836a193f08d}{Int8Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<uint8\_t>}}\ \mbox{\hyperlink{namespace_napi_a8d1a335266cab4c07386d8bb819de18e}{Uint8Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<int16\_t>}}\ \mbox{\hyperlink{namespace_napi_a5c482e8090350e4639120fc530c6d38c}{Int16Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<uint16\_t>}}\ \mbox{\hyperlink{namespace_napi_a2bcd0629fa40dca2d0a16dbd4b5f5670}{Uint16Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<int32\_t>}}\ \mbox{\hyperlink{namespace_napi_ad3df4ffafa0b5bfef0b2ef9d1032328b}{Int32Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<uint32\_t>}}\ \mbox{\hyperlink{namespace_napi_a62b0894d8037a158becd81e8dc387864}{Uint32Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<float>}}\ \mbox{\hyperlink{namespace_napi_aaf9f002975a6733cade583355783bd96}{Float32Array}};}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf<double>}}\ \mbox{\hyperlink{namespace_napi_a8f508b586ea6d604e425f65151059016}{Float64Array}};}
+
+\end{DoxyCode}
+
+
+The one exception is the {\ttfamily Uint8\+Clamped\+Array} which requires explicit initialization\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Uint8Array::New(env,\ length,\ napi\_uint8\_clamped\_array)}
+
+\end{DoxyCode}
+
+
+Note that while it\textquotesingle{}s possible to create a "{}clamped"{} array the {\itshape clamping} behavior is only applied in Java\+Script.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8031}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8031}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8032}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8032}
+Allocates a new {\ttfamily \doxylink{class_napi_1_1_typed_array}{Napi\+::\+Typed\+Array}} instance with a given length. The underlying {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} is allocated automatically to the desired number of elements.
+
+The array type parameter can normally be omitted (because it is inferred from the template parameter T), except when creating a "{}clamped"{} array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf}}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a4fa1b4e4ee88ff6f57bdcb9f12fd3c32}{Napi::TypedArrayOf::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ elementLength,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_typedarray\_type\ type);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} element\+Length}\+: The length to be allocated, in elements.
+\item {\ttfamily \mbox{[}in\mbox{]} type}\+: The type of array to allocate (optional).
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8033}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8033}
+Wraps the provided {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} into a new {\ttfamily \doxylink{class_napi_1_1_typed_array}{Napi\+::\+Typed\+Array}} instance.
+
+The array {\ttfamily type} parameter can normally be omitted (because it is inferred from the template parameter {\ttfamily T}), except when creating a "{}clamped"{} array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of}{Napi::TypedArrayOf}}\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a4fa1b4e4ee88ff6f57bdcb9f12fd3c32}{Napi::TypedArrayOf::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ elementLength,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ arrayBuffer,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bufferOffset,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_typedarray\_type\ type);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} element\+Length}\+: The length to array, in elements.
+\item {\ttfamily \mbox{[}in\mbox{]} array\+Buffer}\+: The backing {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} buffer\+Offset}\+: The offset into the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} where the array starts, in bytes.
+\item {\ttfamily \mbox{[}in\mbox{]} type}\+: The type of array to allocate (optional).
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8034}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8034}
+Initializes an empty instance of the {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} class.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_typed_array_of_a6dabf3a93d11ced4314a2c8d6c473fb9}{Napi::TypedArrayOf::TypedArrayOf}}();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8035}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8035}
+Initializes a wrapper instance of an existing {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_typed_array_of_a6dabf3a93d11ced4314a2c8d6c473fb9}{Napi::TypedArrayOf::TypedArrayOf}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The {\ttfamily \doxylink{class_napi_1_1_typed_array_of}{Napi\+::\+Typed\+Array\+Of}} reference to wrap.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8036}{}\doxysubsection{\texorpdfstring{operator \mbox{[}\mbox{]}}{operator \mbox{[}\mbox{]}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8036}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T\&\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a78529687ce0f257cf574241e422bb915}{Napi::TypedArrayOf::operator\ []}}(\textcolor{keywordtype}{size\_t}\ index);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item \`{}\mbox{[}in\mbox{]} index\+: The element index into the array.
+\end{DoxyItemize}
+
+Returns the element found at the given index.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8037}{}\doxysubsection{\texorpdfstring{operator \mbox{[}\mbox{]}}{operator \mbox{[}\mbox{]}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8037}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ T\&\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a78529687ce0f257cf574241e422bb915}{Napi::TypedArrayOf::operator\ []}}(\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item \`{}\mbox{[}in\mbox{]} index\+: The element index into the array.
+\end{DoxyItemize}
+
+Returns the element found at the given index.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8038}{}\doxysubsection{\texorpdfstring{Data}{Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8038}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T*\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a0833ec706f0962434cc72349b0ebe443}{Napi::TypedArrayOf::Data}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a pointer into the backing {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} which is offset to point to the start of the array.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8039}{}\doxysubsection{\texorpdfstring{Data}{Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425_autotoc_md8039}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{class_napi_1_1_typed_array_of_a0833ec706f0962434cc72349b0ebe443}{Napi::TypedArrayOf::Data}}()\ const}
+
+\end{DoxyCode}
+
+
+Returns a pointer into the backing {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} which is offset to point to the start of the array. 

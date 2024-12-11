@@ -1,0 +1,95 @@
+\chapter{Promise}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790}\index{Promise@{Promise}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7949}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7949}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_promise}{Napi\+::\+Promise}} class, along with its {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} class, implement the ability to create, resolve, and reject Promise objects.
+
+The basic approach is to create a {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object and return to your caller the value returned by the {\ttfamily Napi\+::\+Promise\+::\+Deferred\+::\+Promise} method. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ YourFunction(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_callback_info}{Napi::CallbackInfo}}\&\ info)\ \{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ your\ code\ goes\ here...}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_promise_1_1_deferred}{Napi::Promise::Deferred}}\ deferred\ =\ Napi::Promise::Deferred::New(info.Env());}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ deferred\ needs\ to\ survive\ this\ call...}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ deferred.Promise();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Later, when the asynchronous process completes, call either the {\ttfamily Resolve} or {\ttfamily Reject} method on the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object created earlier\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{deferred.Resolve(String::New(info.Env(),\ \textcolor{stringliteral}{"{}OK"{}}));}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7950}{}\doxysection{\texorpdfstring{Promise\+::\+Deferred Methods}{Promise\+::\+Deferred Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7950}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7951}{}\doxysubsection{\texorpdfstring{Factory Method}{Factory Method}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7951}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_promise_1_1_deferred}{Napi::Promise::Deferred}}\ Napi::Promise::Deferred::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to create the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7952}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7952}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_promise_1_1_deferred}{Napi::Promise::Deferred}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7953}{}\doxysubsection{\texorpdfstring{Env}{Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7953}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ Napi::Promise::Deferred::Env()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the Env environment this {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object is associated with.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7954}{}\doxysubsection{\texorpdfstring{Promise}{Promise}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7954}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_promise}{Napi::Promise}}\ Napi::Promise::Deferred::Promise()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_promise}{Napi\+::\+Promise}} object held by the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7955}{}\doxysubsection{\texorpdfstring{Resolve}{Resolve}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7955}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::Promise::Deferred::Resolve(napi\_value\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Resolves the {\ttfamily \doxylink{class_napi_1_1_promise}{Napi\+::\+Promise}} object held by the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The N-\/\+API primitive value with which to resolve the {\ttfamily \doxylink{class_napi_1_1_promise}{Napi\+::\+Promise}}.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7956}{}\doxysubsection{\texorpdfstring{Reject}{Reject}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790_autotoc_md7956}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::Promise::Deferred::Reject(napi\_value\ value)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Rejects the Promise object held by the {\ttfamily \doxylink{class_napi_1_1_promise_1_1_deferred}{Napi\+::\+Promise\+::\+Deferred}} object.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The N-\/\+API primitive value with which to reject the {\ttfamily \doxylink{class_napi_1_1_promise}{Napi\+::\+Promise}}. 
+\end{DoxyItemize}

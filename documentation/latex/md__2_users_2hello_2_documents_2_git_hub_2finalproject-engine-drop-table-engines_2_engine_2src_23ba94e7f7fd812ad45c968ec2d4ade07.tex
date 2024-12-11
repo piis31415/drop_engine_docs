@@ -1,0 +1,119 @@
+\chapter{cli-\/truncate \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/cli-\/truncate"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/cli-\/truncate.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07}\index{cli-\/truncate $<$a href="{}https://travis-\/ci.org/sindresorhus/cli-\/truncate"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/cli-\/truncate.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{cli-\/truncate $<$a href=""https://travis-\/ci.org/sindresorhus/cli-\/truncate"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/cli-\/truncate.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3212}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3212}%
+
+
+\begin{quote}
+Truncate a string to a specific width in the terminal \end{quote}
+Gracefully handles \href{https://en.wikipedia.org/wiki/ANSI_escape_code\#Colors_and_Styles}{\texttt{ ANSI escapes}}. Like a string styled with \href{https://github.com/chalk/chalk}{\texttt{ {\ttfamily chalk}}}. It also supports Unicode surrogate pairs and fullwidth characters.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3213}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3213}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ cli-\/truncate}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3214}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3214}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ cliTruncate\ =\ require('cli-\/truncate');}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorn',\ 4);}
+\DoxyCodeLine{//=>\ 'uni…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Truncate\ at\ different\ positions}
+\DoxyCodeLine{cliTruncate('unicorn',\ 4,\ \{position:\ 'start'\});}
+\DoxyCodeLine{//=>\ '…orn'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorn',\ 4,\ \{position:\ 'middle'\});}
+\DoxyCodeLine{//=>\ 'un…n'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 6,\ \{position:\ 'end'\})}
+\DoxyCodeLine{//=>\ 'unico…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('\(\backslash\)u001B[31municorn\(\backslash\)u001B[39m',\ 4);}
+\DoxyCodeLine{//=>\ '\(\backslash\)u001B[31muni\(\backslash\)u001B[39m…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Truncate\ Unicode\ surrogate\ pairs}
+\DoxyCodeLine{cliTruncate('uni\(\backslash\)uD83C\(\backslash\)uDE00corn',\ 5);}
+\DoxyCodeLine{//=>\ 'uni\(\backslash\)uD83C\(\backslash\)uDE00…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Truncate\ fullwidth\ characters}
+\DoxyCodeLine{cliTruncate('안녕하세요',\ 3);}
+\DoxyCodeLine{//=>\ '안…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Truncate\ the\ paragraph\ to\ the\ terminal\ width}
+\DoxyCodeLine{const\ paragraph\ =\ 'Lorem\ ipsum\ dolor\ sit\ amet,\ consectetuer\ adipiscing\ elit.\ Aenean\ commodo\ ligula\ eget\ dolor.\ Aenean\ massa.';}
+\DoxyCodeLine{cliTruncate(paragraph,\ process.stdout.columns));}
+\DoxyCodeLine{//=>\ 'Lorem\ ipsum\ dolor\ sit\ amet,\ consectetuer\ adipiscing…'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3215}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3215}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3216}{}\doxysubsection{\texorpdfstring{cli\+Truncate(text, columns, options?)}{cli\+Truncate(text, columns, options?)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3216}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3217}{}\doxysubsubsection{\texorpdfstring{text}{text}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3217}
+Type\+: {\ttfamily string}
+
+Text to truncate.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3218}{}\doxysubsubsection{\texorpdfstring{columns}{columns}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3218}
+Type\+: {\ttfamily number}
+
+Columns to occupy in the terminal.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3219}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3219}
+Type\+: {\ttfamily object}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3220}{}\doxysubsubsubsection{\texorpdfstring{position}{position}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3220}
+Type\+: {\ttfamily string}\textbackslash{} Default\+: `\textquotesingle{}end'{\ttfamily \textbackslash{} Values\+:}\textquotesingle{}start\textquotesingle{}\textquotesingle{}middle\textquotesingle{}\textquotesingle{}end\textquotesingle{}\`{}
+
+Position to truncate the string.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3221}{}\doxysubsubsubsection{\texorpdfstring{space}{space}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3221}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Add a space between the text and the ellipsis.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cliTruncate('unicorns',\ 5,\ \{space:\ false\});}
+\DoxyCodeLine{//=>\ 'unic…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns',\ 5,\ \{space:\ true\});}
+\DoxyCodeLine{//=>\ 'uni\ …'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns',\ 6,\ \{position:\ 'start',\ space:\ true\});}
+\DoxyCodeLine{//=>\ '…\ orns'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns',\ 7,\ \{position:\ 'middle',\ space:\ true\});}
+\DoxyCodeLine{//=>\ 'uni\ …\ s'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3222}{}\doxysubsubsubsection{\texorpdfstring{prefer\+Truncation\+On\+Space}{prefer\+Truncation\+On\+Space}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3222}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Truncate the string from a whitespace if it is within 3 characters from the actual breaking point.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 20,\ \{position:\ 'start',\ preferTruncationOnSpace:\ true\})}
+\DoxyCodeLine{//=>\ '…rainbow\ dragons'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ without\ preferTruncationOnSpace}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 20,\ \{position:\ 'start'\})}
+\DoxyCodeLine{//=>\ '…rns\ rainbow\ dragons'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 20,\ \{position:\ 'middle',\ preferTruncationOnSpace:\ true\})}
+\DoxyCodeLine{//=>\ 'unicorns…dragons'}
+\DoxyCodeLine{}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 6,\ \{position:\ 'end',\ preferTruncationOnSpace:\ true\})}
+\DoxyCodeLine{//=>\ 'unico…'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ preferTruncationOnSpace\ would\ have\ no\ effect\ if\ space\ isn't\ found\ within\ next\ 3\ indexes}
+\DoxyCodeLine{cliTruncate('unicorns\ rainbow\ dragons',\ 6,\ \{position:\ 'middle',\ preferTruncationOnSpace:\ true\})}
+\DoxyCodeLine{//=>\ 'uni…ns'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3223}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23ba94e7f7fd812ad45c968ec2d4ade07_autotoc_md3223}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/chalk/wrap-ansi}{\texttt{ wrap-\/ansi}} -\/ Wordwrap a string with ANSI escape codes
+\item \href{https://github.com/chalk/slice-ansi}{\texttt{ slice-\/ansi}} -\/ Slice a string with ANSI escape codes
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-cli-truncate?utm_source=npm-cli-truncate&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

@@ -1,0 +1,178 @@
+\chapter{README}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22}\index{README@{README}}
+ 🎉 announcing \href{https://github.com/dotenvx/dotenvx}{\texttt{ dotenvx}}. {\itshape run anywhere, multi-\/environment, encrypted envs}. 
+
+~
+
+
+
+
+
+ \textsuperscript{ \href{https://github.com/sponsors/motdotla}{\texttt{ Dotenv libraries are supported by the community.}} } 
+
+ \textsuperscript{Special thanks to\+:} ~\newline
+ ~\newline
+ \href{https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=dotenv_p_20220831}{\texttt{   {\bfseries{Warp is a blazingly fast, Rust-\/based terminal reimagined to work like a modern app.}}  \textsuperscript{Get more done in the CLI with real text editing, block-\/based output, and AI command search.}  }} ~\newline
+ \href{https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=dotenv&utm_source=github}{\texttt{   {\bfseries{Your App, Enterprise Ready.}}  \textsuperscript{Add Single Sign-\/\+On, Multi-\/\+Factor Auth, and more, in minutes instead of months.}  }} ~\newline
+ \href{https://runalloy.com/?utm_source=github&utm_medium=referral&utm_campaign=1224_dotenv}{\texttt{   {\bfseries{Launch user-\/facing integrations faster}}  \textsuperscript{Easily spin up hundreds of integrations. Sign up free or read our docs first}  }} \DoxyHorRuler{0}
+ \hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3928}{}\doxysection{\texorpdfstring{dotenv-\/expand \href{https://www.npmjs.com/package/dotenv-expand}{\texttt{ }}}{dotenv-\/expand \href{https://www.npmjs.com/package/dotenv-expand}{\texttt{ }}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3928}
+
+
+Dotenv-\/expand adds variable expansion on top of \href{http://github.com/motdotla/dotenv}{\texttt{ dotenv}}. If you find yourself needing to expand environment variables already existing on your machine, then dotenv-\/expand is your tool.
+
+\href{https://github.com/feross/standard}{\texttt{ }} \mbox{[}\mbox{]}(LICENSE) \href{https://codecov.io/gh/motdotla/dotenv-expand}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3929}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3929}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ locally\ (recommended)}
+\DoxyCodeLine{npm\ install\ dotenv-\/expand\ -\/-\/save}
+
+\end{DoxyCode}
+
+
+Or installing with yarn? {\ttfamily yarn add dotenv-\/expand}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3930}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3930}
+Create a {\ttfamily .env} file in the root of your project\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PASSWORD="{}s1mpl3"{}}
+\DoxyCodeLine{DB\_PASS=\$PASSWORD}
+
+\end{DoxyCode}
+
+
+As early as possible in your application, import and configure dotenv and then expand dotenv\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ dotenvExpand\ =\ require('dotenv-\/expand')}
+\DoxyCodeLine{}
+\DoxyCodeLine{dotenvExpand(dotenv.config())}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(process.env)\ //\ remove\ this\ after\ you've\ confirmed\ it\ is\ expanding}
+
+\end{DoxyCode}
+
+
+That\textquotesingle{}s it. {\ttfamily process.\+env} now has the expanded keys and values you defined in your {\ttfamily .env} file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{dotenvExpand(dotenv.config())}
+\DoxyCodeLine{}
+\DoxyCodeLine{...}
+\DoxyCodeLine{}
+\DoxyCodeLine{connectdb(process.env.DB\_PASS)}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3931}{}\doxysubsubsection{\texorpdfstring{Preload}{Preload}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3931}
+\begin{quote}
+Note\+: Consider using \href{https://github.com/dotenvx/dotenvx}{\texttt{ {\ttfamily dotenvx}}} instead of preloading. I am now doing (and recommending) so.
+
+It serves the same purpose (you do not need to require and load dotenv), has built-\/in expansion support, adds better debugging, and works with ANY language, framework, or platform. – \href{https://github.com/motdotla}{\texttt{ motdotla}} \end{quote}
+You can use the {\ttfamily -\/-\/require} ({\ttfamily -\/r}) \href{https://nodejs.org/api/cli.html\#cli_r_require_module}{\texttt{ command line option}} to preload dotenv \& dotenv-\/expand. By doing this, you do not need to require and load dotenv or dotenv-\/expand in your application code. This is the preferred approach when using {\ttfamily import} instead of {\ttfamily require}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ -\/r\ dotenv-\/expand/config\ your\_script.js}
+
+\end{DoxyCode}
+
+
+The configuration options below are supported as command line arguments in the format {\ttfamily dotenv\+\_\+config\+\_\+\texorpdfstring{$<$}{<}option\texorpdfstring{$>$}{>}=value}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ -\/r\ dotenv-\/expand/config\ your\_script.js\ dotenv\_config\_path=/custom/path/to/your/env/vars}
+
+\end{DoxyCode}
+
+
+Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ DOTENV\_CONFIG\_<OPTION>=value\ node\ -\/r\ dotenv-\/expand/config\ your\_script.js}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ DOTENV\_CONFIG\_ENCODING=latin1\ node\ -\/r\ dotenv-\/expand/config\ your\_script.js\ dotenv\_config\_path=/custom/path/to/.env}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3932}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3932}
+See \href{https://github.com/motdotla/dotenv-expand/blob/master/tests/.env.test}{\texttt{ tests/.env.\+test}} for simple and complex examples of variable expansion in your {\ttfamily .env} file.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3933}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3933}
+{\ttfamily dotenv-\/expand} exposes one function\+:
+
+
+\begin{DoxyItemize}
+\item expand
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3934}{}\doxysubsubsection{\texorpdfstring{Expand}{Expand}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3934}
+{\ttfamily expand} will expand your environment variables.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ env\ =\ \{}
+\DoxyCodeLine{\ \ parsed:\ \{}
+\DoxyCodeLine{\ \ \ \ BASIC:\ 'basic',}
+\DoxyCodeLine{\ \ \ \ BASIC\_EXPAND:\ '\$\{BASIC\}',}
+\DoxyCodeLine{\ \ \ \ BASIC\_EXPAND\_SIMPLE:\ '\$BASIC'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(dotenvExpand.expand(env))}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3935}{}\doxysubsubsubsection{\texorpdfstring{Options}{Options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3935}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3936}{}\doxysubsubsubsubsection{\texorpdfstring{process\+Env}{process\+Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3936}
+Default\+: {\ttfamily process.\+env}
+
+Specify an object to write your secrets to. Defaults to {\ttfamily process.\+env} environment variables.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ myEnv\ =\ \{\}}
+\DoxyCodeLine{const\ env\ =\ \{}
+\DoxyCodeLine{\ \ processEnv:\ myEnv,}
+\DoxyCodeLine{\ \ parsed:\ \{}
+\DoxyCodeLine{\ \ \ \ HELLO:\ 'World'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{dotenvExpand.expand(env)}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(myEnv.HELLO)\ //\ World}
+\DoxyCodeLine{console.log(process.env.HELLO)\ //\ undefined}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3937}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3937}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3938}{}\doxysubsubsection{\texorpdfstring{What rules does the expansion engine follow?}{What rules does the expansion engine follow?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3938}
+The expansion engine roughly has the following rules\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \$KEY} will expand any env with the name {\ttfamily KEY}
+\item {\ttfamily \$\{KEY\}} will expand any env with the name {\ttfamily KEY}
+\item {\ttfamily \textbackslash{}\$KEY} will escape the {\ttfamily \$KEY} rather than expand
+\item {\ttfamily \$\{KEY\+:-\/default\}} will first attempt to expand any env with the name {\ttfamily KEY}. If not one, then it will return {\ttfamily default}
+\item {\ttfamily \$\{KEY-\/default\}} will first attempt to expand any env with the name {\ttfamily KEY}. If not one, then it will return {\ttfamily default}
+\end{DoxyItemize}
+
+You can see a full list of rules \href{https://dotenvx.com/docs/env-file\#interpolation}{\texttt{ here}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3939}{}\doxysubsubsection{\texorpdfstring{How can I avoid expanding pre-\/existing envs (already in my {\ttfamily process.\+env}, for example {\ttfamily pas\$word})?}{How can I avoid expanding pre-\/existing envs (already in my {\ttfamily process.\+env}, for example {\ttfamily pas\$word})?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3939}
+Modify your {\ttfamily dotenv.\+config} to write to an empty object and pass that to {\ttfamily dotenv\+Expand.\+process\+Env}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ dotenv\ =\ require('dotenv')}
+\DoxyCodeLine{const\ dotenvExpand\ =\ require('dotenv-\/expand')}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ myEnv\ =\ dotenv.config(\{\ processEnv:\ \{\}\ \})\ //\ prevent\ writing\ to\ \`{}process.env`}
+\DoxyCodeLine{}
+\DoxyCodeLine{dotenvExpand.expand(myEnv)}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3940}{}\doxysubsection{\texorpdfstring{Contributing Guide}{Contributing Guide}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3940}
+See CONTRIBUTING.md\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3941}{}\doxysubsection{\texorpdfstring{CHANGELOG}{CHANGELOG}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3941}
+See \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25eb305525d7a15c750c0cd4f80f46f89}{CHANGELOG.md}{0}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3942}{}\doxysubsection{\texorpdfstring{Who\textquotesingle{}s using dotenv-\/expand?}{Who\textquotesingle{}s using dotenv-\/expand?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_276b74e316f15e64b8959e26e98c81d22_autotoc_md3942}
+\href{https://www.npmjs.com/browse/depended/dotenv-expand}{\texttt{ These npm modules depend on it.}} 

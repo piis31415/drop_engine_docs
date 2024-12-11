@@ -1,0 +1,45 @@
+\chapter{Conversion Tool}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f}\index{Conversion Tool@{Conversion Tool}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f_autotoc_md7752}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f_autotoc_md7752}%
+
+
+To make the migration to {\bfseries{node-\/addon-\/api}} easier, we have provided a script to help complete some tasks.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f_autotoc_md7753}{}\doxysection{\texorpdfstring{To use the conversion script\+:}{To use the conversion script\+:}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f_autotoc_md7753}
+
+\begin{DoxyEnumerate}
+\item Go to your module directory
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ [module\_path]}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Install node-\/addon-\/api module
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ node-\/addon-\/api}
+
+\end{DoxyCode}
+
+\begin{DoxyEnumerate}
+\item Run node-\/addon-\/api conversion script
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node\ ./node\_modules/node-\/addon-\/api/tools/conversion.js\ ./}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item While this script makes conversion easier, it still cannot fully convert the module. The next step is to try to build the module and complete the remaining conversions necessary to allow it to compile and pass all of the module\textquotesingle{}s tests. 
+\end{DoxyEnumerate}

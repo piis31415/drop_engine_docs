@@ -1,0 +1,56 @@
+\chapter{clone-\/response}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502}\index{clone-\/response@{clone-\/response}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3269}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3269}%
+
+
+\begin{quote}
+Clone a Node.\+js HTTP response stream \end{quote}
+\href{https://travis-ci.org/lukechilds/clone-response}{\texttt{ }} \href{https://coveralls.io/github/lukechilds/clone-response?branch=master}{\texttt{ }} \href{https://www.npmjs.com/package/clone-response}{\texttt{ }} \href{https://www.npmjs.com/package/clone-response}{\texttt{ }}
+
+Returns a new stream and copies over all properties and methods from the original response giving you a complete duplicate.
+
+This is useful in situations where you need to consume the response stream but also want to pass an unconsumed stream somewhere else to be consumed later.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3270}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3270}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ clone-\/response}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3271}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3271}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ http\ =\ require('http');}
+\DoxyCodeLine{const\ cloneResponse\ =\ require('clone-\/response');}
+\DoxyCodeLine{}
+\DoxyCodeLine{http.get('http://example.com',\ response\ =>\ \{}
+\DoxyCodeLine{\ \ const\ clonedResponse\ =\ cloneResponse(response);}
+\DoxyCodeLine{\ \ response.pipe(process.stdout);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ setImmediate(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ The\ response\ stream\ has\ already\ been\ consumed\ by\ the\ time\ this\ executes,}
+\DoxyCodeLine{\ \ \ \ //\ however\ the\ cloned\ response\ stream\ is\ still\ available.}
+\DoxyCodeLine{\ \ \ \ doSomethingWithResponse(clonedResponse);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Please bear in mind that the process of cloning a stream consumes it. However, you can consume a stream multiple times in the same tick, therefore allowing you to create multiple clones. e.\+g\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ clone1\ =\ cloneResponse(response);}
+\DoxyCodeLine{const\ clone2\ =\ cloneResponse(response);}
+\DoxyCodeLine{//\ response\ can\ still\ be\ consumed\ in\ this\ tick\ but\ cannot\ be\ consumed\ if\ passed}
+\DoxyCodeLine{//\ into\ any\ async\ callbacks.\ clone1\ and\ clone2\ can\ be\ passed\ around\ and\ be}
+\DoxyCodeLine{//\ consumed\ in\ the\ future.}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3272}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3272}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3273}{}\doxysubsection{\texorpdfstring{clone\+Response(response)}{clone\+Response(response)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3273}
+Returns a clone of the passed in response.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3274}{}\doxysubsubsection{\texorpdfstring{response}{response}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3274}
+Type\+: {\ttfamily stream}
+
+A \href{https://nodejs.org/api/http.html\#http_class_http_incomingmessage}{\texttt{ Node.\+js HTTP response stream}} to clone.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3275}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2360e332363aa103683c53759801e7502_autotoc_md3275}
+MIT © Luke Childs 

@@ -1,0 +1,95 @@
+\doxysection{Level\+Script Class Reference}
+\hypertarget{class_level_script}{}\label{class_level_script}\index{LevelScript@{LevelScript}}
+Inheritance diagram for Level\+Script\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_level_script}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_script_a69702ce17e6bb601b603ca9756d1b114}\label{class_level_script_a69702ce17e6bb601b603ca9756d1b114} 
+{\bfseries this} (size\+\_\+t owner, int target, string on\+Win, string on\+Lose)
+\item 
+\Hypertarget{class_level_script_a2f26a98efaaa87a88ee9ab61a4f88fed}\label{class_level_script_a2f26a98efaaa87a88ee9ab61a4f88fed} 
+override void {\bfseries Update} ()
+\item 
+\Hypertarget{class_level_script_a264c3c9573712be941296babfb994cc0}\label{class_level_script_a264c3c9573712be941296babfb994cc0} 
+void {\bfseries Add\+Point} ()
+\item 
+\Hypertarget{class_level_script_aa6adf2a2844f9d9c84ade86c86746abc}\label{class_level_script_aa6adf2a2844f9d9c84ade86c86746abc} 
+void {\bfseries Lose} ()
+\item 
+\Hypertarget{class_level_script_a3f251fe7fe6597f2978023e5c02a9a0b}\label{class_level_script_a3f251fe7fe6597f2978023e5c02a9a0b} 
+int {\bfseries Get\+Score} ()
+\item 
+\Hypertarget{class_level_script_aa8921036da1ca14e29b7bdff688cf95e}\label{class_level_script_aa8921036da1ca14e29b7bdff688cf95e} 
+{\bfseries this} (size\+\_\+t owner)
+\item 
+\Hypertarget{class_level_script_a2f26a98efaaa87a88ee9ab61a4f88fed}\label{class_level_script_a2f26a98efaaa87a88ee9ab61a4f88fed} 
+override void {\bfseries Update} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Input} ()
+\item 
+void {\bfseries Update} ()
+\item 
+void {\bfseries Render} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_script_ae1129c3e66c2319c4ec2a7d11c3520ca}\label{class_level_script_ae1129c3e66c2319c4ec2a7d11c3520ca} 
+static \mbox{\hyperlink{class_level_script}{Level\+Script}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\item 
+\Hypertarget{class_level_script_ae1129c3e66c2319c4ec2a7d11c3520ca}\label{class_level_script_ae1129c3e66c2319c4ec2a7d11c3520ca} 
+static \mbox{\hyperlink{class_level_script}{Level\+Script}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_script_a5d10d986a82784dea3010256c8e0cce7}\label{class_level_script_a5d10d986a82784dea3010256c8e0cce7} 
+size\+\_\+t {\bfseries m\+Owner}
+\item 
+\Hypertarget{class_level_script_a64c2de1857916df076db22d2ecc55ad1}\label{class_level_script_a64c2de1857916df076db22d2ecc55ad1} 
+int {\bfseries m\+Score} = 0
+\item 
+\Hypertarget{class_level_script_a3d72b505d8e99d0195888d231e3017c5}\label{class_level_script_a3d72b505d8e99d0195888d231e3017c5} 
+int {\bfseries m\+Target} = 0
+\item 
+\Hypertarget{class_level_script_aecdfde3d3246165f809d7661ca6326b6}\label{class_level_script_aecdfde3d3246165f809d7661ca6326b6} 
+string {\bfseries m\+On\+Win\+Scene}
+\item 
+\Hypertarget{class_level_script_afd21d69b35a45bdf3c5fc82b0153e5ad}\label{class_level_script_afd21d69b35a45bdf3c5fc82b0153e5ad} 
+string {\bfseries m\+On\+Lose\+Scene}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries m\+Id}
+\item 
+string {\bfseries name}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_script_a64c2de1857916df076db22d2ecc55ad1}\label{class_level_script_a64c2de1857916df076db22d2ecc55ad1} 
+static int {\bfseries m\+Score} = 0
+\item 
+\Hypertarget{class_level_script_ac14b5b49238d58f7510e27a57cb212da}\label{class_level_script_ac14b5b49238d58f7510e27a57cb212da} 
+static int {\bfseries m\+Miss} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static int {\bfseries s\+Id}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/games/examplegame/scripts.\+d\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/games/guitarhero/scripts.\+d\end{DoxyCompactItemize}

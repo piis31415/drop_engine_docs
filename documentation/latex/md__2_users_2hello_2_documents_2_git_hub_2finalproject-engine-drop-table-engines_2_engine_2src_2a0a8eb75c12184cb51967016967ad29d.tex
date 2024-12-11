@@ -1,0 +1,44 @@
+\chapter{mimic-\/response \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/response"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/response.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d}\index{mimic-\/response $<$a href="{}https://travis-\/ci.org/sindresorhus/mimic-\/response"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/mimic-\/response.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{mimic-\/response $<$a href=""https://travis-\/ci.org/sindresorhus/mimic-\/response"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/mimic-\/response.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7238}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7238}%
+
+
+\begin{quote}
+Mimic a \href{https://nodejs.org/api/http.html\#http_class_http_incomingmessage}{\texttt{ Node.\+js HTTP response stream}} \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7239}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7239}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ mimic-\/response}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7240}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7240}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stream\ =\ require('stream');}
+\DoxyCodeLine{const\ mimicResponse\ =\ require('mimic-\/response');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ responseStream\ =\ getHttpResponseStream();}
+\DoxyCodeLine{const\ myStream\ =\ new\ stream.PassThrough();}
+\DoxyCodeLine{}
+\DoxyCodeLine{mimicResponse(responseStream,\ myStream);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(myStream.statusCode);}
+\DoxyCodeLine{//=>\ 200}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7241}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7241}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7242}{}\doxysubsection{\texorpdfstring{mimic\+Response(from, to)}{mimic\+Response(from, to)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7242}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7243}{}\doxysubsubsection{\texorpdfstring{from}{from}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7243}
+Type\+: {\ttfamily Stream}
+
+\href{https://nodejs.org/api/http.html\#http_class_http_incomingmessage}{\texttt{ Node.\+js HTTP response stream.}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7244}{}\doxysubsubsection{\texorpdfstring{to}{to}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7244}
+Type\+: {\ttfamily Stream}
+
+Any stream.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7245}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7245}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/mimic-fn}{\texttt{ mimic-\/fn}} -\/ Make a function mimic another one
+\item \href{https://github.com/lukechilds/clone-response}{\texttt{ clone-\/response}} -\/ Clone a Node.\+js response stream
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7246}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a0a8eb75c12184cb51967016967ad29d_autotoc_md7246}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

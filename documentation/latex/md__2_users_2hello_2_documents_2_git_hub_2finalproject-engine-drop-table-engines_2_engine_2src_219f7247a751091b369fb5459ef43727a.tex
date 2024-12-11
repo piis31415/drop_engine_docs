@@ -1,0 +1,36 @@
+\chapter{is-\/interactive \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/sindresorhus/is-\/interactive"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/is-\/interactive.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a}\index{is-\/interactive $<$a href="{}https://travis-\/ci.com/sindresorhus/is-\/interactive"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/is-\/interactive.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{is-\/interactive $<$a href=""https://travis-\/ci.com/sindresorhus/is-\/interactive"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/is-\/interactive.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6050}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6050}%
+
+
+\begin{quote}
+Check if stdout or stderr is \href{https://unix.stackexchange.com/a/43389/7678}{\texttt{ interactive}} \end{quote}
+It checks that the stream is \href{https://jameshfisher.com/2017/12/09/what-is-a-tty/}{\texttt{ TTY}}, not a dumb terminal, and not running in a CI.
+
+This can be useful to decide whether to present interactive UI or animations in the terminal.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6051}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6051}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ is-\/interactive}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6052}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6052}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ isInteractive\ =\ require('is-\/interactive');}
+\DoxyCodeLine{}
+\DoxyCodeLine{isInteractive();}
+\DoxyCodeLine{//=>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6053}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6053}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6054}{}\doxysubsection{\texorpdfstring{is\+Interactive(options?)}{is\+Interactive(options?)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6054}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6055}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6055}
+Type\+: {\ttfamily object}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6056}{}\doxysubsubsubsection{\texorpdfstring{stream}{stream}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6056}
+Type\+: \href{https://nodejs.org/api/stream.html\#stream_class_stream_writable}{\texttt{ {\ttfamily stream.\+Writable}}}~\newline
+ Default\+: \href{https://nodejs.org/api/process.html\#process_process_stdout}{\texttt{ {\ttfamily process.\+stdout}}}
+
+The stream to check.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6057}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6057}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6058}{}\doxysubsubsection{\texorpdfstring{Why are you not using \href{https://github.com/watson/ci-info}{\texttt{ {\ttfamily ci-\/info}}} for the CI check?}{Why are you not using \href{https://github.com/watson/ci-info}{\texttt{ {\ttfamily ci-\/info}}} for the CI check?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6058}
+It\textquotesingle{}s silly to have to detect individual CIs. They should identify themselves with the {\ttfamily CI} environment variable, and most do just that. A manually maintained list of detections will easily get out of date. And if a package using {\ttfamily ci-\/info} doesn\textquotesingle{}t update to the latest version all the time, they will not support certain CIs. It also creates unpredictability as you might assume a CI is not supported and then suddenly it gets supported and you didn\textquotesingle{}t account for that. In addition, some of the manual detections are loose and might cause false-\/positives which could create hard-\/to-\/debug bugs.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6059}{}\doxysubsubsection{\texorpdfstring{Why does this even exist? It\textquotesingle{}s just a few lines.}{Why does this even exist? It\textquotesingle{}s just a few lines.}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219f7247a751091b369fb5459ef43727a_autotoc_md6059}
+It\textquotesingle{}s not about the number of lines, but rather discoverability and documentation. A lot of people wouldn\textquotesingle{}t even know they need this. Feel free to copy-\/paste the code if you don\textquotesingle{}t want the dependency. You might also want to read \href{https://blog.sindresorhus.com/small-focused-modules-9238d977a92a}{\texttt{ this blog post}}. 

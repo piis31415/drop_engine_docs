@@ -1,0 +1,148 @@
+\chapter{Object Reference}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e}\index{Object Reference@{Object Reference}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7917}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7917}%
+
+
+{\ttfamily \doxylink{class_napi_1_1_object_reference}{Napi\+::\+Object\+Reference}} is a subclass of \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05}{{\ttfamily Napi\+::Reference}}{0}, and is equivalent to an instance of {\ttfamily \doxylink{class_napi_1_1_reference}{Napi\+::\+Reference}\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>}}. This means that a {\ttfamily \doxylink{class_napi_1_1_object_reference}{Napi\+::\+Object\+Reference}} holds a \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2664783051e3556aa75aa8a5d3640a968}{{\ttfamily Napi\+::Object}}{0}, and a count of the number of references to that Object. When the count is greater than 0, an Object\+Reference is not eligible for garbage collection. This ensures that the Object being held as a value of the Object\+Reference will remain accessible, even if the original Object no longer is. However, Object\+Reference is unique from a Reference since properties can be set and get to the Object itself that can be accessed through the Object\+Reference.
+
+For more general information on references, please consult \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05}{{\ttfamily Napi\+::Reference}}{0}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7918}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7918}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <napi.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ }namescape\ \mbox{\hyperlink{namespace_napi}{Napi}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Init(Env\ env)\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Create\ an\ empty\ ObjectReference\ that\ has\ an\ initial\ reference\ count\ of\ 2.}}
+\DoxyCodeLine{\ \ \ \ ObjectReference\ obj\_ref\ =\ Reference<Object>::New(Object::New(env),\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Set\ a\ couple\ of\ different\ properties\ on\ the\ reference.}}
+\DoxyCodeLine{\ \ \ \ obj\_ref.Set(\textcolor{stringliteral}{"{}hello"{}},\ String::New(env,\ \textcolor{stringliteral}{"{}world"{}}));}
+\DoxyCodeLine{\ \ \ \ obj\_ref.Set(42,\ \textcolor{stringliteral}{"{}The\ Answer\ to\ Life,\ the\ Universe,\ and\ Everything"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Get\ the\ properties\ using\ the\ keys.}}
+\DoxyCodeLine{\ \ \ \ Value\ val1\ =\ obj\_ref.Get(\textcolor{stringliteral}{"{}hello"{}});}
+\DoxyCodeLine{\ \ \ \ Value\ val2\ =\ obj\_ref.Get(42);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7919}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7919}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7920}{}\doxysubsection{\texorpdfstring{Initialization}{Initialization}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7920}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_object_reference}{Napi::ObjectReference}}\ Napi::ObjectReference::New(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\&\ value,\ uint32\_t\ initialRefcount\ =\ 0);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The {\ttfamily \doxylink{class_napi_1_1_object}{Napi\+::\+Object}} which is to be referenced.
+\item {\ttfamily \mbox{[}in\mbox{]} initial\+Refcount}\+: The initial reference count.
+\end{DoxyItemize}
+
+Returns the newly created reference.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_object_reference}{Napi::ObjectReference}}\ Napi::Weak(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\&\ value);}
+
+\end{DoxyCode}
+
+
+Creates a "{}weak"{} reference to the value, in that the initial count of number of references is set to 0.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value which is to be referenced.
+\end{DoxyItemize}
+
+Returns the newly created reference.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_object_reference}{Napi::ObjectReference}}\ Napi::Persistent(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\&\ value);}
+
+\end{DoxyCode}
+
+
+Creates a "{}persistent"{} reference to the value, in that the initial count of number of references is set to 1.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value which is to be referenced.
+\end{DoxyItemize}
+
+Returns the newly created reference.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7921}{}\doxysubsection{\texorpdfstring{Empty Constructor}{Empty Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7921}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::ObjectReference::ObjectReference();}
+
+\end{DoxyCode}
+
+
+Returns a new {\itshape empty} {\ttfamily \doxylink{class_napi_1_1_object_reference}{Napi\+::\+Object\+Reference}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7922}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7922}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::ObjectReference::ObjectReference(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_object_reference}{Napi\+::\+Object\+Reference}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The N-\/\+API primitive value to be held by the {\ttfamily \doxylink{class_napi_1_1_object_reference}{Napi\+::\+Object\+Reference}}.
+\end{DoxyItemize}
+
+Returns the newly created reference.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7923}{}\doxysubsection{\texorpdfstring{Set}{Set}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7923}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::ObjectReference::Set(\_\_\_\ key,\ \_\_\_\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} key}\+: The name for the property being assigned.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The value being assigned to the property.
+\end{DoxyItemize}
+
+The {\ttfamily key} can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string}
+\item {\ttfamily uint32\+\_\+t}
+\end{DoxyItemize}
+
+The {\ttfamily value} can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily napi\+\_\+value}
+\item {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily bool}
+\item {\ttfamily double}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7924}{}\doxysubsection{\texorpdfstring{Get}{Get}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e_autotoc_md7924}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ Napi::ObjectReference::Get(\_\_\_\ key);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} key}\+: The name of the property to return the value for.
+\end{DoxyItemize}
+
+Returns the \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b6af9b196bdac7e5584911d15516149a}{{\ttfamily Napi\+::Value}}{0} associated with the key property. Returns NULL if no such key exists.
+
+The {\ttfamily key} can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string}
+\item {\ttfamily uint32\+\_\+t} 
+\end{DoxyItemize}

@@ -1,0 +1,73 @@
+\chapter{universalify}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4}\index{universalify@{universalify}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md419}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md419}%
+
+
+   
+
+Make a callback-\/ or promise-\/based function support both promises and callbacks.
+
+Uses the native promise implementation.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md420}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md420}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ universalify}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md421}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md421}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md422}{}\doxysubsection{\texorpdfstring{{\ttfamily universalify.\+from\+Callback(fn)}}{{\ttfamily universalify.\+from\+Callback(fn)}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md422}
+Takes a callback-\/based function to universalify, and returns the universalified function.
+
+Function must take a callback as the last parameter that will be called with the signature {\ttfamily (error, result)}. {\ttfamily universalify} does not support calling the callback with three or more arguments, and does not ensure that the callback is only called once.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ callbackFn\ (n,\ cb)\ \{}
+\DoxyCodeLine{\ \ setTimeout(()\ =>\ cb(null,\ n),\ 15)}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ fn\ =\ universalify.fromCallback(callbackFn)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Works\ with\ Promises:}
+\DoxyCodeLine{fn('Hello\ World!')}
+\DoxyCodeLine{.then(result\ =>\ console.log(result))\ //\ -\/>\ Hello\ World!}
+\DoxyCodeLine{.catch(error\ =>\ console.error(error))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Works\ with\ Callbacks:}
+\DoxyCodeLine{fn('Hi!',\ (error,\ result)\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (error)\ return\ console.error(error)}
+\DoxyCodeLine{\ \ console.log(result)}
+\DoxyCodeLine{\ \ //\ -\/>\ Hi!}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md423}{}\doxysubsection{\texorpdfstring{{\ttfamily universalify.\+from\+Promise(fn)}}{{\ttfamily universalify.\+from\+Promise(fn)}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md423}
+Takes a promise-\/based function to universalify, and returns the universalified function.
+
+Function must return a valid JS promise. {\ttfamily universalify} does not ensure that a valid promise is returned.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ promiseFn\ (n)\ \{}
+\DoxyCodeLine{\ \ return\ new\ Promise(resolve\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ setTimeout(()\ =>\ resolve(n),\ 15)}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ fn\ =\ universalify.fromPromise(promiseFn)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Works\ with\ Promises:}
+\DoxyCodeLine{fn('Hello\ World!')}
+\DoxyCodeLine{.then(result\ =>\ console.log(result))\ //\ -\/>\ Hello\ World!}
+\DoxyCodeLine{.catch(error\ =>\ console.error(error))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Works\ with\ Callbacks:}
+\DoxyCodeLine{fn('Hi!',\ (error,\ result)\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (error)\ return\ console.error(error)}
+\DoxyCodeLine{\ \ console.log(result)}
+\DoxyCodeLine{\ \ //\ -\/>\ Hi!}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md424}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260cfdeeaf9f002545030a2b29bc250c4_autotoc_md424}
+MIT 

@@ -1,0 +1,308 @@
+\chapter{tmp-\/promise}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23}\index{tmp-\/promise@{tmp-\/promise}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10203}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10203}%
+
+
+\href{https://circleci.com/gh/benjamingr/tmp-promise}{\texttt{ }} \href{https://badge.fury.io/js/tmp-promise}{\texttt{ }}
+
+A simple utility for creating temporary files or directories.
+
+The \href{https://github.com/raszi/node-tmp}{\texttt{ tmp}} package with promises support. If you want to use {\ttfamily tmp} with {\ttfamily async/await} then this helper might be for you.
+
+This documentation is mostly copied from that package\textquotesingle{}s -\/ but with promise usage instead of callback usage adapted.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10204}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10204}
+\begin{DoxyVerb}npm i tmp-promise
+\end{DoxyVerb}
+
+
+{\bfseries{Note\+:}} Node.\+js 8+ is supported -\/ older versions of Node.\+js are not supported by the Node.\+js foundation. If you need to use an older version of Node.\+js install \href{mailto:tmp-promise@1.10}{\texttt{ tmp-\/promise@1.\+10}} \begin{DoxyVerb}npm i tmp-promise@1.1.0
+\end{DoxyVerb}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10205}{}\doxysection{\texorpdfstring{About}{About}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10205}
+This adds promises support to a \href{https://www.npmjs.com/browse/depended/tmp}{\texttt{ widely used library}}. This package is used to create temporary files and directories in a \href{http://nodejs.org/}{\texttt{ Node.\+js}} environment.
+
+tmp-\/promise offers both an asynchronous and a synchronous API. For all API calls, all the parameters are optional.
+
+Internally, tmp uses crypto for determining random file names, or, when using templates, a six letter random identifier. And just in case that you do not have that much entropy left on your system, tmp will fall back to pseudo random numbers.
+
+You can set whether you want to remove the temporary file on process exit or not, and the destination directory can also be set.
+
+tmp-\/promise also uses promise \href{http://stackoverflow.com/questions/28915677/what-is-the-promise-disposer-pattern}{\texttt{ disposers}} to provide a nice way to perform cleanup when you\textquotesingle{}re done working with the files.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10206}{}\doxysection{\texorpdfstring{Usage (API Reference)}{Usage (API Reference)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10206}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10207}{}\doxysubsection{\texorpdfstring{Asynchronous file creation}{Asynchronous file creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10207}
+Simple temporary file creation, the file will be closed and unlinked on process exit.
+
+With Node.\+js 10 and es -\/ modules\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ file\ \}\ from\ 'tmp-\/promise'}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ \{fd,\ path,\ cleanup\}\ =\ await\ file();}
+\DoxyCodeLine{\ \ //\ work\ with\ file\ here\ in\ fd}
+\DoxyCodeLine{\ \ cleanup();}
+\DoxyCodeLine{\})();\ }
+
+\end{DoxyCode}
+
+
+Or the older way\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.file().then(o\ =>\ \{\ \ }
+\DoxyCodeLine{\ \ console.log("{}File:\ "{},\ o.path);}
+\DoxyCodeLine{\ \ console.log("{}Filedescriptor:\ "{},\ o.fd);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //\ If\ we\ don't\ need\ the\ file\ anymore\ we\ could\ manually\ call\ cleanup}
+\DoxyCodeLine{\ \ //\ But\ that\ is\ not\ necessary\ if\ we\ didn't\ pass\ the\ keep\ option\ because\ the\ library}
+\DoxyCodeLine{\ \ //\ will\ clean\ after\ itself.}
+\DoxyCodeLine{\ \ o.cleanup();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Simple temporary file creation with a \href{http://stackoverflow.com/questions/28915677/what-is-the-promise-disposer-pattern}{\texttt{ disposer}}\+:
+
+With Node.\+js 10 and es -\/ modules\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ withFile\ \}\ from\ 'tmp-\/promise'}
+\DoxyCodeLine{}
+\DoxyCodeLine{withFile(async\ (\{path,\ fd\})\ =>\ \{}
+\DoxyCodeLine{\ \ //\ when\ this\ function\ returns\ or\ throws\ -\/\ release\ the\ file\ }
+\DoxyCodeLine{\ \ await\ doSomethingWithFile(db);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Or the older way\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tmp.withFile(o\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}File:\ "{},\ o.path);}
+\DoxyCodeLine{\ \ console.log("{}Filedescriptor:\ "{},\ o.fd);}
+\DoxyCodeLine{\ \ //\ the\ file\ remains\ opens\ until\ the\ below\ promise\ resolves}
+\DoxyCodeLine{\ \ return\ somePromiseReturningFn();}
+\DoxyCodeLine{\}).then(v\ =>\ \{}
+\DoxyCodeLine{\ \ //\ file\ is\ closed\ here\ automatically,\ v\ is\ the\ value\ of\ somePromiseReturningFn}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10208}{}\doxysubsection{\texorpdfstring{Synchronous file creation}{Synchronous file creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10208}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.fileSync();}
+\DoxyCodeLine{console.log("{}File:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{console.log("{}Filedescriptor:\ "{},\ tmpobj.fd);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{//\ If\ we\ don't\ need\ the\ file\ anymore\ we\ could\ manually\ call\ the\ removeCallback}
+\DoxyCodeLine{//\ But\ that\ is\ not\ necessary\ if\ we\ didn't\ pass\ the\ keep\ option\ because\ the\ library}
+\DoxyCodeLine{//\ will\ clean\ after\ itself.}
+\DoxyCodeLine{tmpobj.removeCallback();}
+
+\end{DoxyCode}
+
+
+Note that this might throw an exception if either the maximum limit of retries for creating a temporary name fails, or, in case that you do not have the permission to write to the directory where the temporary file should be created in.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10209}{}\doxysubsection{\texorpdfstring{Asynchronous directory creation}{Asynchronous directory creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10209}
+Simple temporary directory creation, it will be removed on process exit.
+
+If the directory still contains items on process exit, then it won\textquotesingle{}t be removed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.dir().then(o\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ o.path);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //\ Manual\ cleanup}
+\DoxyCodeLine{\ \ o.cleanup();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If you want to cleanup the directory even when there are entries in it, then you can pass the {\ttfamily unsafe\+Cleanup} option when creating it.
+
+You can also use a \href{http://stackoverflow.com/questions/28915677/what-is-the-promise-disposer-pattern}{\texttt{ disposer}} here which takes care of cleanup automatically\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.withDir(o\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ o.path);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //\ automatic\ cleanup\ when\ the\ below\ promise\ resolves}
+\DoxyCodeLine{\ \ return\ somePromiseReturningFn();\ }
+\DoxyCodeLine{\}).then(v\ =>\ \{}
+\DoxyCodeLine{\ \ //\ the\ directory\ has\ been\ cleaned\ here}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10210}{}\doxysubsection{\texorpdfstring{Synchronous directory creation}{Synchronous directory creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10210}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync();}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{//\ Manual\ cleanup}
+\DoxyCodeLine{tmpobj.removeCallback();}
+
+\end{DoxyCode}
+
+
+Note that this might throw an exception if either the maximum limit of retries for creating a temporary name fails, or, in case that you do not have the permission to write to the directory where the temporary directory should be created in.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10211}{}\doxysubsection{\texorpdfstring{Asynchronous filename generation}{Asynchronous filename generation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10211}
+It is possible with this library to generate a unique filename in the specified directory.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.tmpName().then(path\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Created\ temporary\ filename:\ "{},\ path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10212}{}\doxysubsection{\texorpdfstring{Synchronous filename generation}{Synchronous filename generation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10212}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ name\ =\ tmp.tmpNameSync();}
+\DoxyCodeLine{console.log("{}Created\ temporary\ filename:\ "{},\ name);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10213}{}\doxysection{\texorpdfstring{Advanced usage}{Advanced usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10213}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10214}{}\doxysubsection{\texorpdfstring{Asynchronous file creation}{Asynchronous file creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10214}
+Creates a file with mode {\ttfamily 0644}, prefix will be {\ttfamily prefix-\/} and postfix will be {\ttfamily .txt}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.file(\{\ mode:\ 0644,\ prefix:\ 'prefix-\/',\ postfix:\ '.txt'\ \}).then(o\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}File:\ "{},\ o.path);}
+\DoxyCodeLine{\ \ console.log("{}Filedescriptor:\ "{},\ o.fd);\ }
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10215}{}\doxysubsection{\texorpdfstring{Synchronous file creation}{Synchronous file creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10215}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.fileSync(\{\ mode:\ 0644,\ prefix:\ 'prefix-\/',\ postfix:\ '.txt'\ \});}
+\DoxyCodeLine{console.log("{}File:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{console.log("{}Filedescriptor:\ "{},\ tmpobj.fd);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10216}{}\doxysubsection{\texorpdfstring{Asynchronous directory creation}{Asynchronous directory creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10216}
+Creates a directory with mode {\ttfamily 0755}, prefix will be {\ttfamily my\+Tmp\+Dir\+\_\+}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.dir(\{\ mode:\ 0750,\ prefix:\ 'myTmpDir\_'\ \}).then(o\ =>\ \{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ o.path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10217}{}\doxysubsection{\texorpdfstring{Synchronous directory creation}{Synchronous directory creation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10217}
+Again, a synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync(\{\ mode:\ 0750,\ prefix:\ 'myTmpDir\_'\ \});}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10218}{}\doxysubsection{\texorpdfstring{mkstemp like, asynchronously}{mkstemp like, asynchronously}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10218}
+Creates a new temporary directory with mode {\ttfamily 0700} and filename like {\ttfamily /tmp/tmp-\/nk2\+J1u}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{tmp.dir(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \}).then(console.log);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10219}{}\doxysubsection{\texorpdfstring{mkstemp like, synchronously}{mkstemp like, synchronously}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10219}
+This will behave similarly to the asynchronous version.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \});}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10220}{}\doxysubsection{\texorpdfstring{Asynchronous filename generation}{Asynchronous filename generation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10220}
+The {\ttfamily tmp\+Name()} function accepts the {\ttfamily prefix}, {\ttfamily postfix}, {\ttfamily dir}, etc. parameters also\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.tmpName(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \}).then(path\ =>}
+\DoxyCodeLine{\ \ \ \ console.log("{}Created\ temporary\ filename:\ "{},\ path);}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10221}{}\doxysubsection{\texorpdfstring{Synchronous filename generation}{Synchronous filename generation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10221}
+The {\ttfamily tmp\+Name\+Sync()} function works similarly to {\ttfamily tmp\+Name()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp-\/promise');}
+\DoxyCodeLine{var\ tmpname\ =\ tmp.tmpNameSync(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \});}
+\DoxyCodeLine{console.log("{}Created\ temporary\ filename:\ "{},\ tmpname);}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10222}{}\doxysection{\texorpdfstring{Graceful cleanup}{Graceful cleanup}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10222}
+One may want to cleanup the temporary files even when an uncaught exception occurs. To enforce this, you can call the {\ttfamily set\+Graceful\+Cleanup()} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.setGracefulCleanup();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10223}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_242d9884f5cac0dd23e7120b78c149f23_autotoc_md10223}
+All options are optional \+:)
+
+
+\begin{DoxyItemize}
+\item {\ttfamily mode}\+: the file mode to create with, it fallbacks to {\ttfamily 0600} on file creation and {\ttfamily 0700} on directory creation
+\item {\ttfamily prefix}\+: the optional prefix, fallbacks to {\ttfamily tmp-\/} if not provided
+\item {\ttfamily postfix}\+: the optional postfix, fallbacks to {\ttfamily .tmp} on file creation
+\item {\ttfamily template}\+: \href{http://www.kernel.org/doc/man-pages/online/pages/man3/mkstemp.3.html}{\texttt{ {\ttfamily mkstemp}}} like filename template, no default
+\item {\ttfamily dir}\+: the optional temporary directory, fallbacks to system default (guesses from environment)
+\item {\ttfamily tries}\+: how many times should the function try to get a unique filename before giving up, default {\ttfamily 3}
+\item {\ttfamily keep}\+: signals that the temporary file or directory should not be deleted on exit, default is {\ttfamily false}, means delete
+\begin{DoxyItemize}
+\item Please keep in mind that it is recommended in this case to call the provided {\ttfamily cleanup\+Callback} function manually.
+\end{DoxyItemize}
+\item {\ttfamily unsafe\+Cleanup}\+: recursively removes the created temporary directory, even when it\textquotesingle{}s not empty. default is {\ttfamily false} 
+\end{DoxyItemize}

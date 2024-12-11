@@ -1,0 +1,220 @@
+\chapter{\texorpdfstring{$<$}{<}strong\texorpdfstring{$>$}{>}node-\/addon-\/api module\texorpdfstring{$<$}{<}/strong\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80}\index{$<$strong$>$node-\/addon-\/api module$<$/strong$>$@{$<$strong$>$node-\/addon-\/api module$<$/strong$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8084}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8084}%
+
+
+This module contains {\bfseries{header-\/only C++ wrapper classes}} which simplify the use of the C based \href{https://nodejs.org/dist/latest/docs/api/n-api.html}{\texttt{ N-\/\+API}} provided by Node.\+js when using C++. It provides a C++ object model and exception handling semantics with low overhead.
+
+N-\/\+API is an ABI stable C interface provided by Node.\+js for building native addons. It is independent from the underlying Java\+Script runtime (e.\+g. V8 or Chakra\+Core) and is maintained as part of Node.\+js itself. It is intended to insulate native addons from changes in the underlying Java\+Script engine and allow modules compiled for one version to run on later versions of Node.\+js without recompilation.
+
+The {\ttfamily node-\/addon-\/api} module, which is not part of Node.\+js, preserves the benefits of the N-\/\+API as it consists only of inline code that depends only on the stable API provided by N-\/\+API. As such, modules built against one version of Node.\+js using node-\/addon-\/api should run without having to be rebuilt with newer versions of Node.\+js.
+
+It is important to remember that {\itshape other} Node.\+js interfaces such as {\ttfamily libuv} (included in a project via {\ttfamily \#include \texorpdfstring{$<$}{<}uv.\+h\texorpdfstring{$>$}{>}}) are not ABI-\/stable across Node.\+js major versions. Thus, an addon must use N-\/\+API and/or {\ttfamily node-\/addon-\/api} exclusively and build against a version of Node.\+js that includes an implementation of N-\/\+API (meaning a version of Node.\+js newer than 6.\+14.\+2) in order to benefit from ABI stability across Node.\+js major versions. Node.\+js provides an \href{https://nodejs.org/en/docs/guides/abi-stability/}{\texttt{ ABI stability guide}} containing a detailed explanation of ABI stability in general, and the N-\/\+API ABI stability guarantee in particular.
+
+As new APIs are added to N-\/\+API, node-\/addon-\/api must be updated to provide wrappers for those new APIs. For this reason node-\/addon-\/api provides methods that allow callers to obtain the underlying N-\/\+API handles so direct calls to N-\/\+API and the use of the objects/methods provided by node-\/addon-\/api can be used together. For example, in order to be able to use an API for which the node-\/addon-\/api does not yet provide a wrapper.
+
+APIs exposed by node-\/addon-\/api are generally used to create and manipulate Java\+Script values. Concepts and operations generally map to ideas specified in the {\bfseries{ECMA262 Language Specification}}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Setup}}
+\item {\bfseries{API Documentation}}
+\item {\bfseries{Examples}}
+\item {\bfseries{Tests}}
+\item {\bfseries{More resource and info about native Addons}}
+\item {\bfseries{\doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_226e99ded5408111dbd4f8db2902ee974}{Code of Conduct}{0}}}
+\item {\bfseries{Contributors}}
+\item {\bfseries{License}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8085}{}\doxysection{\texorpdfstring{{\bfseries{Current version\+: 1.\+7.\+2}}}{{\bfseries{Current version\+: 1.\+7.\+2}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8085}
+(See \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2406cf3f1ad8d495e85201acff1405273}{CHANGELOG.md}{0} for complete Changelog)
+
+\href{https://nodei.co/npm/node-addon-api/}{\texttt{ }} \href{https://nodei.co/npm/node-addon-api/}{\texttt{ }}
+
+\label{_setup}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8086}{}\doxysection{\texorpdfstring{Setup}{Setup}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8086}
+
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_266528d00135031cc477eae3ce7dfec6e}{Installation and usage}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2}{node-\/gyp}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_260b38217140c3f8dc450455d07608e4a}{cmake-\/js}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21423d3ee1b10aa1a6b7aeda4ef778b7f}{Conversion tool}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a8d746533630015e8966d6d90b186401}{Checker tool}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b4c075aa3d1469324f2783042288a114}{Generator}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2d4979075253bed086e26b3f0e466d73f}{Prebuild tools}{0}
+\end{DoxyItemize}
+
+\label{_api}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8087}{}\doxysubsection{\texorpdfstring{{\bfseries{API Documentation}}}{{\bfseries{API Documentation}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8087}
+The following is the documentation for node-\/addon-\/api.
+
+
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_22ac38292a3407b2223e990727c4e7232}{Basic Types}{0}
+\begin{DoxyItemize}
+\item \href{doc/basic_types.md\#array}{\texttt{ Array}}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20df5bdddee244fa321dff91c2892309e}{Symbol}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64}{String}{0}
+\item \href{doc/basic_types.md\#name}{\texttt{ Name}}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f039d93f6881a0ca9d86caab1ce9c664}{Number}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2293788d11f38e46754a86fd77dc60aad}{Big\+Int}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280363600ab7543ff4ee99e7e64856152}{Boolean}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1}{Env}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b6af9b196bdac7e5584911d15516149a}{Value}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f}{Callback\+Info}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2fe3873f06559c5a0ab6a1717ffe1ef05}{Reference}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a}{External}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2664783051e3556aa75aa8a5d3640a968}{Object}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25babb8f4ee8ee92c1b4986368972009e}{Object\+Reference}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8}{Property\+Descriptor}{0}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2203d072898c38e99e77857f01173178a}{Error Handling}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e664605b8d5c145ca1e142c966805060}{Error}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2}{Type\+Error}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2d932a1e666c0a234ea3dc14bcfed35d5}{Range\+Error}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25b21788b17525e496ee9502470401272}{Object Lifetime Management}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730}{Handle\+Scope}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_22e0b817ddc7507350cdc1392f43b89e7}{Escapable\+Handle\+Scope}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e3849c4e62daced40f86fcb24f0ba58}{Working with Java\+Script Values}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_26fc3837f8c0f1284160c3afbc00a86e7}{Function}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2569dc4492d2005a5d241ff441d786744}{Function\+Reference}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e432084de2b65fa3a24ecaa86283e7f}{Object\+Wrap}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_229e0a519ea1c7b653b171322156b3a64}{Class\+Property\+Descriptor}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_21479cd61b290ca5e51a5f0c17a61bfe0}{Buffer}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0}{Array\+Buffer}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2310d1d32254e8e5aa31c1f35a2eefa27}{Typed\+Array}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_23e24b3390ea30230299996574b0e9425}{Typed\+Array\+Of}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24d53e6129c4796c2798c6dfaf63ae13a}{Data\+View}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2244303a36dea28a1c01ce04ef11b2c02}{Memory Management}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e0fc6d9e899f865bc8516295092586e}{Async Operations}{0}
+\begin{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e975c9e39ecf1ae2860f6ca1ec11e877}{Async\+Worker}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f2a9fbce65b54f7b84a66ad8dc91ff23}{Async\+Context}{0}
+\end{DoxyItemize}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29ab0178acce38e2bf2e32d2e210d53df}{Thread-\/safe Functions}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_272969c8366f38acba8f9ca52fab08790}{Promises}{0}
+\item \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2149aa29e3f4edf87405f41cfa95cea36}{Version management}{0}
+\end{DoxyItemize}
+
+\label{_examples}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8088}{}\doxysubsection{\texorpdfstring{{\bfseries{Examples}}}{{\bfseries{Examples}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8088}
+Are you new to {\bfseries{node-\/addon-\/api}}? Take a look at our {\bfseries{\href{https://github.com/nodejs/node-addon-examples}{\texttt{ examples}}}}
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/1_hello_world/node-addon-api}{\texttt{ Hello World}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/2_function_arguments/node-addon-api}{\texttt{ Pass arguments to a function}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/3_callbacks/node-addon-api}{\texttt{ Callbacks}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/4_object_factory/node-addon-api}{\texttt{ Object factory}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/5_function_factory/node-addon-api}{\texttt{ Function factory}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/6_object_wrap/node-addon-api}{\texttt{ Wrapping C++ Object}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/7_factory_wrap/node-addon-api}{\texttt{ Factory of wrapped object}}}}
+\item {\bfseries{\href{https://github.com/nodejs/node-addon-examples/tree/master/8_passing_wrapped/node-addon-api}{\texttt{ Passing wrapped object around}}}}
+\end{DoxyItemize}
+
+\label{_tests}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8089}{}\doxysubsection{\texorpdfstring{{\bfseries{Tests}}}{{\bfseries{Tests}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8089}
+To run the {\bfseries{node-\/addon-\/api}} tests do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+
+
+To avoid testing the deprecated portions of the API run 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{npm\ test\ -\/-\/disable-\/deprecated}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8090}{}\doxysubsection{\texorpdfstring{{\bfseries{Debug}}}{{\bfseries{Debug}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8090}
+To run the {\bfseries{node-\/addon-\/api}} tests with {\ttfamily -\/-\/debug} option\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ run-\/script\ dev}
+
+\end{DoxyCode}
+
+
+If you want faster build, you might use the following option\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ run-\/script\ dev:incremental}
+
+\end{DoxyCode}
+
+
+Take a look and get inspired by our {\bfseries{\href{https://github.com/nodejs/node-addon-api/tree/master/test}{\texttt{ test suite}}}}
+
+\label{_resources}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8091}{}\doxysection{\texorpdfstring{{\bfseries{Contributing}}}{{\bfseries{Contributing}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8091}
+We love contributions from the community to {\bfseries{node-\/addon-\/api}}. See \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_227a8b0eb3ee755d397f31b953ef7e080}{CONTRIBUTING.md}{0} for more details on our philosophy around extending this module.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8092}{}\doxysubsection{\texorpdfstring{{\bfseries{More resource and info about native Addons}}}{{\bfseries{More resource and info about native Addons}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8092}
+
+\begin{DoxyItemize}
+\item {\bfseries{\href{https://nodejs.org/dist/latest/docs/api/addons.html}{\texttt{ C++ Addons}}}}
+\item {\bfseries{\href{https://nodejs.org/dist/latest/docs/api/n-api.html}{\texttt{ N-\/\+API}}}}
+\item {\bfseries{\href{https://youtu.be/-Oniup60Afs}{\texttt{ N-\/\+API -\/ Next Generation Node API for Native Modules}}}}
+\end{DoxyItemize}
+
+\label{_contributors}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8093}{}\doxysection{\texorpdfstring{WG Members / Collaborators}{WG Members / Collaborators}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8093}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8094}{}\doxysubsection{\texorpdfstring{Active}{Active}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8094}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Git\+Hub Link    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Git\+Hub Link    }\\\cline{1-2}
+\endhead
+Anna Henningsen   &\href{https://github.com/addaleax}{\texttt{ addaleax}}    \\\cline{1-2}
+Arunesh Chandra   &\href{https://github.com/aruneshchandra}{\texttt{ aruneshchandra}}    \\\cline{1-2}
+Gabriel Schulhof   &\href{https://github.com/gabrielschulhof}{\texttt{ gabrielschulhof}}    \\\cline{1-2}
+Hitesh Kanwathirtha   &\href{https://github.com/digitalinfinity}{\texttt{ digitalinfinity}}    \\\cline{1-2}
+Jim Schlight   &\href{https://github.com/jschlight}{\texttt{ jschlight}}    \\\cline{1-2}
+Michael Dawson   &\href{https://github.com/mhdawson}{\texttt{ mhdawson}}    \\\cline{1-2}
+Nicola Del Gobbo   &\href{https://github.com/NickNaso}{\texttt{ Nick\+Naso}}    \\\cline{1-2}
+Taylor Woll   &\href{https://github.com/boingoing}{\texttt{ boingoing}}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8095}{}\doxysubsection{\texorpdfstring{Emeritus}{Emeritus}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24b69c12455bec508a9415dade540cd80_autotoc_md8095}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Git\+Hub Link    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Git\+Hub Link    }\\\cline{1-2}
+\endhead
+Benjamin Byholm   &\href{https://github.com/kkoopa}{\texttt{ kkoopa}}    \\\cline{1-2}
+Jason Ginchereau   &\href{https://github.com/jasongin}{\texttt{ jasongin}}    \\\cline{1-2}
+Sampson Gao   &\href{https://github.com/sampsongao}{\texttt{ sampsongao}}   \\\cline{1-2}
+\end{longtabu}
+
+
+\label{_license}%
+
+
+Licensed under \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25b37fa36f54efb4002aa3c313bc263a3}{MIT}{0} 

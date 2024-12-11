@@ -1,0 +1,35 @@
+\chapter{astral-\/regex \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/kevva/astral-\/regex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/kevva/astral-\/regex.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362}\index{astral-\/regex $<$a href="{}https://travis-\/ci.org/kevva/astral-\/regex"{} $>$$<$img src="{}https://travis-\/ci.org/kevva/astral-\/regex.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{astral-\/regex $<$a href=""https://travis-\/ci.org/kevva/astral-\/regex"" $>$$<$img src=""https://travis-\/ci.org/kevva/astral-\/regex.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2475}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2475}%
+
+
+\begin{quote}
+Regular expression for matching \href{https://everything2.com/title/astral+plane}{\texttt{ astral symbols}} \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2476}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2476}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ astral-\/regex}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2477}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2477}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ astralRegex\ =\ require('astral-\/regex');}
+\DoxyCodeLine{}
+\DoxyCodeLine{astralRegex(\{exact:\ true\}).test('🦄');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{'foo\ 🦄\ 💩\ bar'.match(astralRegex());}
+\DoxyCodeLine{//=>\ ['🦄',\ '💩']}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2478}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2478}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2479}{}\doxysubsection{\texorpdfstring{astral\+Regex(\mbox{[}options\mbox{]})}{astral\+Regex(\mbox{[}options\mbox{]})}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2479}
+Returns a {\ttfamily Reg\+Exp} for matching astral symbols.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2480}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2480}
+Type\+: {\ttfamily Object}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2481}{}\doxysubsubsubsection{\texorpdfstring{exact}{exact}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2481}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily false} {\itshape (Matches any astral symbols in a string)}
+
+Only match an exact string. Useful with {\ttfamily Reg\+Exp\#test()} to check if a string is a astral symbol.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2482}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_27373dec27c9514f61849a4e2b7eaa362_autotoc_md2482}
+MIT © \href{https://github.com/kevva}{\texttt{ Kevin Mårtensson}} 

@@ -1,0 +1,227 @@
+\doxysection{ds\+\_\+store.\+store.\+DSStore Class Reference}
+\hypertarget{classds__store_1_1store_1_1_d_s_store}{}\label{classds__store_1_1store_1_1_d_s_store}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+Inheritance diagram for ds\+\_\+store.\+store.\+DSStore\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classds__store_1_1store_1_1_d_s_store}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_1_1_partial}{Partial}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a39915c42782b1a6ff585511b2b494b4f}\label{classds__store_1_1store_1_1_d_s_store_a39915c42782b1a6ff585511b2b494b4f} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, store)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_aaf4b3bce11028e3ced0acf126d2abe6d}{open}} (cls, file\+\_\+or\+\_\+name, mode=\textquotesingle{}r+\textquotesingle{}, initial\+\_\+entries=None)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_a80661a808437dc90172ca9a4fb87ac3c}{flush}} (self)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_a3965b2f10bf54878541f0ad6a5e31625}{close}} (self)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_af198825aff3e24af2dbb4ee797e1d1ce}\label{classds__store_1_1store_1_1_d_s_store_af198825aff3e24af2dbb4ee797e1d1ce} 
+{\bfseries \+\_\+\+\_\+enter\+\_\+\+\_\+} (self)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a45a4ff4156c0a334e5b0b7da76c6d937}\label{classds__store_1_1store_1_1_d_s_store_a45a4ff4156c0a334e5b0b7da76c6d937} 
+{\bfseries \+\_\+\+\_\+exit\+\_\+\+\_\+} (self, exc\+\_\+type, exc\+\_\+value, traceback)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_acc832c47ffdf4376f34bf5cd34058396}{insert}} (self, entry)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_a7a1c880f860341007e83cc9728353ce6}{delete}} (self, filename, code)
+\item 
+\mbox{\hyperlink{classds__store_1_1store_1_1_d_s_store_aaf95e78b6aa408d1bfb2f53e043a510d}{find}} (self, filename, code=None)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_ae46581e776ef94c621b17e033946a7e7}\label{classds__store_1_1store_1_1_d_s_store_ae46581e776ef94c621b17e033946a7e7} 
+{\bfseries \+\_\+\+\_\+len\+\_\+\+\_\+} (self)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a7a78f3be1b69db62795ab156946a5c85}\label{classds__store_1_1store_1_1_d_s_store_a7a78f3be1b69db62795ab156946a5c85} 
+{\bfseries \+\_\+\+\_\+iter\+\_\+\+\_\+} (self)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a0f167b430a740ddfbe1fbe1d0aedfbe9}\label{classds__store_1_1store_1_1_d_s_store_a0f167b430a740ddfbe1fbe1d0aedfbe9} 
+{\bfseries \+\_\+\+\_\+getitem\+\_\+\+\_\+} (self, filename)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a9423c2d98f99b1df094958b67a7fb02c}\label{classds__store_1_1store_1_1_d_s_store_a9423c2d98f99b1df094958b67a7fb02c} 
+int {\bfseries \+\_\+rootnode} = 1
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a3844c3c886ccac102f6f340d3128222d}\label{classds__store_1_1store_1_1_d_s_store_a3844c3c886ccac102f6f340d3128222d} 
+int {\bfseries \+\_\+page\+\_\+size} = 8 + before\mbox{[}m\mbox{]} -\/ before\mbox{[}n + 1\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a7349a443337af629cdd30e8a00786a60}\label{classds__store_1_1store_1_1_d_s_store_a7349a443337af629cdd30e8a00786a60} 
+{\bfseries \+\_\+get\+\_\+block} (self, number)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_aa1ceb688218fb6eb8f1bb79346c8e1a8}\label{classds__store_1_1store_1_1_d_s_store_aa1ceb688218fb6eb8f1bb79346c8e1a8} 
+{\bfseries \+\_\+traverse} (self, node)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a7479f9f7e071803214aa87d74e5eb739}\label{classds__store_1_1store_1_1_d_s_store_a7479f9f7e071803214aa87d74e5eb739} 
+{\bfseries \+\_\+dump\+\_\+node} (self, node)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a2b64b6db0697f6594257650f9b346704}\label{classds__store_1_1store_1_1_d_s_store_a2b64b6db0697f6594257650f9b346704} 
+{\bfseries \+\_\+dump\+\_\+super} (self)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_ac39166df122e489a838db35cf19aa785}\label{classds__store_1_1store_1_1_d_s_store_ac39166df122e489a838db35cf19aa785} 
+{\bfseries \+\_\+split2} (self, blocks, entries, pointers, before, internal)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a0134f956d1901cbe4fac465706b0d0e5}\label{classds__store_1_1store_1_1_d_s_store_a0134f956d1901cbe4fac465706b0d0e5} 
+{\bfseries \+\_\+split} (self, node, entry, right\+\_\+ptr=0)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a885cb04d6468ca8e776086b7daf7857d}\label{classds__store_1_1store_1_1_d_s_store_a885cb04d6468ca8e776086b7daf7857d} 
+{\bfseries \+\_\+new\+\_\+root} (self, left, pivot, right)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a643bdccbf05349c9128011041515a785}\label{classds__store_1_1store_1_1_d_s_store_a643bdccbf05349c9128011041515a785} 
+{\bfseries \+\_\+insert\+\_\+inner} (self, path, node, entry, right\+\_\+ptr)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a6b380edbc506b6a664c1dd9d4afcabab}\label{classds__store_1_1store_1_1_d_s_store_a6b380edbc506b6a664c1dd9d4afcabab} 
+{\bfseries \+\_\+insert\+\_\+leaf} (self, path, node, entry)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a599a00ac639a3956d3c787e31072e3ea}\label{classds__store_1_1store_1_1_d_s_store_a599a00ac639a3956d3c787e31072e3ea} 
+{\bfseries \+\_\+block\+\_\+usage} (self, node)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a72f86a0ddbe58ceacd1a2526c690286f}\label{classds__store_1_1store_1_1_d_s_store_a72f86a0ddbe58ceacd1a2526c690286f} 
+{\bfseries \+\_\+split3} (self, blocks, entries, pointers, before, internal)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_afd8a1d6ac3d8c5b36e77bb5d048e6adc}\label{classds__store_1_1store_1_1_d_s_store_afd8a1d6ac3d8c5b36e77bb5d048e6adc} 
+{\bfseries \+\_\+extract} (self, blocks, pivots)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a5043939088bd4772bac63e19ee9a0a8c}\label{classds__store_1_1store_1_1_d_s_store_a5043939088bd4772bac63e19ee9a0a8c} 
+{\bfseries \+\_\+rebalance} (self, path, node)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a830d022c6a84259ac4b3e270d23d2484}\label{classds__store_1_1store_1_1_d_s_store_a830d022c6a84259ac4b3e270d23d2484} 
+{\bfseries \+\_\+delete\+\_\+leaf} (self, node, filename\+\_\+lc, code)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a5bed312c9df2719d2ae4161cc8314a43}\label{classds__store_1_1store_1_1_d_s_store_a5bed312c9df2719d2ae4161cc8314a43} 
+{\bfseries \+\_\+take\+\_\+largest} (self, path, node)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_abd2bee888ad659be1c1c5e5f3c57e003}\label{classds__store_1_1store_1_1_d_s_store_abd2bee888ad659be1c1c5e5f3c57e003} 
+{\bfseries \+\_\+delete\+\_\+inner} (self, path, node, filename\+\_\+lc, code)
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_ab7309fb5e16b5a387aa61ea8fe1c11d9}\label{classds__store_1_1store_1_1_d_s_store_ab7309fb5e16b5a387aa61ea8fe1c11d9} 
+{\bfseries \+\_\+find} (self, node, filename\+\_\+lc, code=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_aa147c82c15f51fa9372a775e8df8c62f}\label{classds__store_1_1store_1_1_d_s_store_aa147c82c15f51fa9372a775e8df8c62f} 
+{\bfseries \+\_\+store} = store
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a6802c95e75dd707dfa05060cc97a1f03}\label{classds__store_1_1store_1_1_d_s_store_a6802c95e75dd707dfa05060cc97a1f03} 
+{\bfseries \+\_\+superblk} = self.\+\_\+store\mbox{[}\textquotesingle{}DSDB\textquotesingle{}\mbox{]}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a3727136af77a73df65be6279bc8a7cd2}\label{classds__store_1_1store_1_1_d_s_store_a3727136af77a73df65be6279bc8a7cd2} 
+{\bfseries \+\_\+rootnode} = self.\+\_\+block\+\_\+usage(path\mbox{[}-\/1\mbox{]})
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_aa04756223a51e602d0743b744fdca13b}\label{classds__store_1_1store_1_1_d_s_store_aa04756223a51e602d0743b744fdca13b} 
+{\bfseries \+\_\+levels}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_ad03ee861a08fa0a749b6b6f0e340104f}\label{classds__store_1_1store_1_1_d_s_store_ad03ee861a08fa0a749b6b6f0e340104f} 
+{\bfseries \+\_\+records}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a55eda0bbc2da917cad360068c87114a1}\label{classds__store_1_1store_1_1_d_s_store_a55eda0bbc2da917cad360068c87114a1} 
+{\bfseries \+\_\+nodes}
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a2b4819f644c461b3c97ab65a759e833f}\label{classds__store_1_1store_1_1_d_s_store_a2b4819f644c461b3c97ab65a759e833f} 
+{\bfseries \+\_\+page\+\_\+size} = s.\+read(b\textquotesingle{}$>$IIIII\textquotesingle{})
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_af9b28cdf8396dad3122858e0cbea6fb9}\label{classds__store_1_1store_1_1_d_s_store_af9b28cdf8396dad3122858e0cbea6fb9} 
+int {\bfseries \+\_\+min\+\_\+usage} = 2 \texorpdfstring{$\ast$}{*} self.\+\_\+page\+\_\+size // 3
+\item 
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a1744bbf9fd173106ede61203406833f5}\label{classds__store_1_1store_1_1_d_s_store_a1744bbf9fd173106ede61203406833f5} 
+bool {\bfseries \+\_\+dirty} = False
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Python interface to a ``.DS_Store`` file.  Works by manipulating the file
+on the disk---so this code will work with ``.DS_Store`` files for *very*
+large directories.
+
+A :class:`DSStore` object can be used as if it was a mapping, e.g.::
+
+  d['foobar.dat']['Iloc']
+
+will fetch the "Iloc" record for "foobar.dat", or raise :class:`KeyError` if
+there is no such record.  If used in this manner, the :class:`DSStore` object
+will return (type, value) tuples, unless the type is "blob" and the module
+knows how to decode it.
+
+Currently, we know how to decode "Iloc", "bwsp", "lsvp", "lsvP" and "icvp"
+blobs.  "Iloc" decodes to an (x, y) tuple, while the others are all decoded
+using ``biplist``.
+
+Assignment also works, e.g.::
+
+  d['foobar.dat']['note'] = ('ustr', u'Hello World!')
+
+as does deletion with ``del``::
+
+  del d['foobar.dat']['note']
+
+This is usually going to be the most convenient interface, though
+occasionally (for instance when creating a new ``.DS_Store`` file) you
+may wish to drop down to using :class:`DSStoreEntry` objects directly.\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classds__store_1_1store_1_1_d_s_store_a3965b2f10bf54878541f0ad6a5e31625}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!close@{close}}
+\index{close@{close}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_a3965b2f10bf54878541f0ad6a5e31625} 
+ds\+\_\+store.\+store.\+DSStore.\+close (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Flush dirty data and close the underlying file.\end{DoxyVerb}
+ \Hypertarget{classds__store_1_1store_1_1_d_s_store_a7a1c880f860341007e83cc9728353ce6}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!delete@{delete}}
+\index{delete@{delete}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_a7a1c880f860341007e83cc9728353ce6} 
+ds\+\_\+store.\+store.\+DSStore.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{filename}{, }\item[{}]{code}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Delete an item, identified by ``filename`` and ``code``
+from the B-Tree.\end{DoxyVerb}
+ \Hypertarget{classds__store_1_1store_1_1_d_s_store_aaf95e78b6aa408d1bfb2f53e043a510d}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!find@{find}}
+\index{find@{find}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_aaf95e78b6aa408d1bfb2f53e043a510d} 
+ds\+\_\+store.\+store.\+DSStore.\+find (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{filename}{, }\item[{}]{code}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a generator that will iterate over matching entries in
+the B-Tree.\end{DoxyVerb}
+ \Hypertarget{classds__store_1_1store_1_1_d_s_store_a80661a808437dc90172ca9a4fb87ac3c}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!flush@{flush}}
+\index{flush@{flush}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_a80661a808437dc90172ca9a4fb87ac3c} 
+ds\+\_\+store.\+store.\+DSStore.\+flush (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Flush any dirty data back to the file.\end{DoxyVerb}
+ \Hypertarget{classds__store_1_1store_1_1_d_s_store_acc832c47ffdf4376f34bf5cd34058396}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!insert@{insert}}
+\index{insert@{insert}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_acc832c47ffdf4376f34bf5cd34058396} 
+ds\+\_\+store.\+store.\+DSStore.\+insert (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{entry}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Insert ``entry`` (which should be a :class:`DSStoreEntry`)
+into the B-Tree.\end{DoxyVerb}
+ \Hypertarget{classds__store_1_1store_1_1_d_s_store_aaf4b3bce11028e3ced0acf126d2abe6d}\index{ds\_store.store.DSStore@{ds\_store.store.DSStore}!open@{open}}
+\index{open@{open}!ds\_store.store.DSStore@{ds\_store.store.DSStore}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily \label{classds__store_1_1store_1_1_d_s_store_aaf4b3bce11028e3ced0acf126d2abe6d} 
+ds\+\_\+store.\+store.\+DSStore.\+open (\begin{DoxyParamCaption}\item[{}]{cls}{, }\item[{}]{file\+\_\+or\+\_\+name}{, }\item[{}]{mode}{ = {\ttfamily \textquotesingle{}r+\textquotesingle{}}, }\item[{}]{initial\+\_\+entries}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Open a ``.DS_Store`` file; pass either a Python file object, or a
+filename in the ``file_or_name`` argument and a file access mode in
+the ``mode`` argument.  If you are creating a new file using the "w"
+or "w+" modes, you may also specify a list of entries with which
+to initialise the file.\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/editor/node\+\_\+modules/dmg-\/builder/vendor/ds\+\_\+store/store.\+py\end{DoxyCompactItemize}
