@@ -1,0 +1,69 @@
+\chapter{is\+Binary\+File}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d}\index{isBinaryFile@{isBinaryFile}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6090}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6090}%
+
+
+Detects if a file is binary in Node.\+js using ✨promises✨. Similar to \href{http://stackoverflow.com/questions/899206/how-does-perl-know-a-file-is-binary}{\texttt{ Perl\textquotesingle{}s {\ttfamily -\/B} switch}}, in that\+:
+\begin{DoxyItemize}
+\item it reads the first few thousand bytes of a file
+\item checks for a {\ttfamily null} byte; if it\textquotesingle{}s found, it\textquotesingle{}s binary
+\item flags non-\/\+ASCII characters. After a certain number of "{}weird"{} characters, the file is flagged as binary
+\end{DoxyItemize}
+
+Much of the logic is pretty much ported from \href{https://github.com/ggreer/the_silver_searcher}{\texttt{ ag}}.
+
+Note\+: if the file doesn\textquotesingle{}t exist or is a directory, an error is thrown.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6091}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6091}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ isbinaryfile}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6092}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6092}
+Returns {\ttfamily Promise\texorpdfstring{$<$}{<}boolean\texorpdfstring{$>$}{>}} (or just {\ttfamily boolean} for {\ttfamily \texorpdfstring{$\ast$}{*}\+Sync}). {\ttfamily true} if the file is binary, {\ttfamily false} otherwise.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6093}{}\doxysubsection{\texorpdfstring{is\+Binary\+File(filepath)}{is\+Binary\+File(filepath)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6093}
+
+\begin{DoxyItemize}
+\item {\ttfamily filepath} -\/ a {\ttfamily string} indicating the path to the file.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6094}{}\doxysubsection{\texorpdfstring{is\+Binary\+File(bytes\mbox{[}, size\mbox{]})}{is\+Binary\+File(bytes\mbox{[}, size\mbox{]})}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6094}
+
+\begin{DoxyItemize}
+\item {\ttfamily bytes} -\/ a {\ttfamily Buffer} of the file\textquotesingle{}s contents.
+\item {\ttfamily size} -\/ an optional {\ttfamily number} indicating the file size.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6095}{}\doxysubsection{\texorpdfstring{is\+Binary\+File\+Sync(filepath)}{is\+Binary\+File\+Sync(filepath)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6095}
+
+\begin{DoxyItemize}
+\item {\ttfamily filepath} -\/ a {\ttfamily string} indicating the path to the file.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6096}{}\doxysubsection{\texorpdfstring{is\+Binary\+File\+Sync(bytes\mbox{[}, size\mbox{]})}{is\+Binary\+File\+Sync(bytes\mbox{[}, size\mbox{]})}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6096}
+
+\begin{DoxyItemize}
+\item {\ttfamily bytes} -\/ a {\ttfamily Buffer} of the file\textquotesingle{}s contents.
+\item {\ttfamily size} -\/ an optional {\ttfamily number} indicating the file size.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6097}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6097}
+Here\textquotesingle{}s an arbitrary usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ isBinaryFile\ =\ require("{}isbinaryfile"{}).isBinaryFile;}
+\DoxyCodeLine{const\ fs\ =\ require("{}fs"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ filename\ =\ "{}fixtures/pdf.pdf"{};}
+\DoxyCodeLine{const\ data\ =\ fs.readFileSync(filename);}
+\DoxyCodeLine{const\ stat\ =\ fs.lstatSync(filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{isBinaryFile(data,\ stat.size).then((result)\ =>\ \{}
+\DoxyCodeLine{\ \ if\ (result)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}It\ is\ binary!"{})}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ else\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}No\ it\ is\ not."{})}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ isBinaryFileSync\ =\ require("{}isbinaryfile"{}).isBinaryFileSync;}
+\DoxyCodeLine{const\ bytes\ =\ fs.readFileSync(filename);}
+\DoxyCodeLine{const\ size\ =\ fs.lstatSync(filename).size;}
+\DoxyCodeLine{console.log(isBinaryFileSync(bytes,\ size));\ //\ true\ or\ false}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6098}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_221412d92d8f80d0ecc51c36682fc894d_autotoc_md6098}
+Run {\ttfamily npm install}, then run {\ttfamily npm test}. 

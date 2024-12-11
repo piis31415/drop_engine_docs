@@ -1,0 +1,204 @@
+\chapter{crc32}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152}\index{crc32@{crc32}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3578}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3578}%
+
+
+Standard CRC-\/32 algorithm implementation in JS (for the browser and nodejs). Emphasis on correctness, performance, and IE6+ support.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3579}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3579}
+With \href{https://www.npmjs.org/package/crc-32}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ crc-\/32}
+
+\end{DoxyCode}
+
+
+When installed globally, npm installs a script {\ttfamily crc32} that computes the checksum for a specified file or standard input.
+
+
+
+{\bfseries{{\bfseries{CDN Availability}} (click to show)}}\begin{adjustwidth}{1em}{0em}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ CDN   }&\cellcolor{\tableheadbgcolor}\textbf{ URL    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ CDN   }&\cellcolor{\tableheadbgcolor}\textbf{ URL    }\\\cline{1-2}
+\endhead
+\PBS\raggedleft {\ttfamily unpkg}   &\href{https://unpkg.com/crc-32/}{\texttt{ https\+://unpkg.\+com/crc-\/32/}}    \\\cline{1-2}
+\PBS\raggedleft {\ttfamily js\+Delivr}   &\href{https://jsdelivr.com/package/npm/crc-32}{\texttt{ https\+://jsdelivr.\+com/package/npm/crc-\/32}}    \\\cline{1-2}
+\PBS\raggedleft {\ttfamily CDNjs}   &\href{https://cdnjs.com/libraries/crc-32}{\texttt{ https\+://cdnjs.\+com/libraries/crc-\/32}}   \\\cline{1-2}
+\end{longtabu}
+
+
+\end{adjustwidth}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3580}{}\doxysection{\texorpdfstring{Integration}{Integration}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3580}
+Using Node\+JS or a bundler\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ CRC32\ =\ require("{}crc-\/32"{});}
+
+\end{DoxyCode}
+
+
+In the browser, the {\ttfamily crc32.\+js} script can be loaded directly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}crc32.js"{}></script>}
+
+\end{DoxyCode}
+
+
+The browser script exposes a variable {\ttfamily CRC32}.
+
+The script will manipulate {\ttfamily module.\+exports} if available . This is not always desirable. To prevent the behavior, define {\ttfamily DO\+\_\+\+NOT\+\_\+\+EXPORT\+\_\+\+CRC}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3581}{}\doxysubsection{\texorpdfstring{CRC32C (Castagnoli)}{CRC32C (Castagnoli)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3581}
+The module and CDNs also include a parallel script for CRC32C calculations.
+
+Using Node\+JS or a bundler\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ CRC32C\ =\ require("{}crc-\/32/crc32c"{});}
+
+\end{DoxyCode}
+
+
+In the browser, the {\ttfamily crc32c.\+js} script can be loaded directly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}crc32c.js"{}></script>}
+
+\end{DoxyCode}
+
+
+The browser exposes a variable {\ttfamily CRC32C}.
+
+The script will manipulate {\ttfamily module.\+exports} if available . This is not always desirable. To prevent the behavior, define {\ttfamily DO\+\_\+\+NOT\+\_\+\+EXPORT\+\_\+\+CRC}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3582}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3582}
+In all cases, the relevant function takes an argument representing data and an optional second argument representing the starting "{}seed"{} (for rolling CRC).
+
+The return value is a signed 32-\/bit integer.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily CRC32.\+buf(byte array or buffer\mbox{[}, seed\mbox{]})} assumes the argument is a sequence of 8-\/bit unsigned integers (nodejs {\ttfamily Buffer}, {\ttfamily Uint8\+Array} or array of bytes).
+\item {\ttfamily CRC32.\+bstr(binary string\mbox{[}, seed\mbox{]})} assumes the argument is a binary string where byte {\ttfamily i} is the low byte of the UCS-\/2 char\+: {\ttfamily str.\+char\+Code\+At(i) \& 0x\+FF}
+\item {\ttfamily CRC32.\+str(string\mbox{[}, seed\mbox{]})} assumes the argument is a standard JS string and calculates the hash of the UTF-\/8 encoding.
+\end{DoxyItemize}
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ var\ CRC32\ =\ require('crc-\/32');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ uncomment\ this\ line\ if\ in\ node}
+\DoxyCodeLine{CRC32.str("{}SheetJS"{})\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/1647298270}
+\DoxyCodeLine{CRC32.bstr("{}SheetJS"{})\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/1647298270}
+\DoxyCodeLine{CRC32.buf([\ 83,\ 104,\ 101,\ 101,\ 116,\ 74,\ 83\ ])\ \ \ //\ -\/1647298270}
+\DoxyCodeLine{}
+\DoxyCodeLine{crc32\ =\ CRC32.buf([83,\ 104])\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/1826163454\ \ "{}Sh"{}}
+\DoxyCodeLine{crc32\ =\ CRC32.str("{}eet"{},\ crc32)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ \ 1191034598\ \ "{}Sheet"{}}
+\DoxyCodeLine{CRC32.bstr("{}JS"{},\ crc32)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/1647298270\ \ "{}SheetJS"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{[CRC32.str("{}\(\backslash\)u2603"{}),\ \ CRC32.str("{}\(\backslash\)u0003"{})]\ \ \ \ \ //\ [\ -\/1743909036,\ \ 1259060791\ ]}
+\DoxyCodeLine{[CRC32.bstr("{}\(\backslash\)u2603"{}),\ CRC32.bstr("{}\(\backslash\)u0003"{})]\ \ \ \ //\ [\ \ 1259060791,\ \ 1259060791\ ]}
+\DoxyCodeLine{[CRC32.buf([0x2603]),\ \ CRC32.buf([0x0003])]\ \ \ \ \ //\ [\ \ 1259060791,\ \ 1259060791\ ]}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ var\ CRC32C\ =\ require('crc-\/32/crc32c');\ \ \ \ \ \ \ //\ uncomment\ this\ line\ if\ in\ node}
+\DoxyCodeLine{CRC32C.str("{}SheetJS"{})\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/284764294}
+\DoxyCodeLine{CRC32C.bstr("{}SheetJS"{})\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/284764294}
+\DoxyCodeLine{CRC32C.buf([\ 83,\ 104,\ 101,\ 101,\ 116,\ 74,\ 83\ ])\ \ //\ -\/284764294}
+\DoxyCodeLine{}
+\DoxyCodeLine{crc32c\ =\ CRC32C.buf([83,\ 104])\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/297065629\ \ \ "{}Sh"{}}
+\DoxyCodeLine{crc32c\ =\ CRC32C.str("{}eet"{},\ crc32c)\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ \ 1241364256\ \ "{}Sheet"{}}
+\DoxyCodeLine{CRC32C.bstr("{}JS"{},\ crc32c)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ -\/284764294\ \ \ "{}SheetJS"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{[CRC32C.str("{}\(\backslash\)u2603"{}),\ \ CRC32C.str("{}\(\backslash\)u0003"{})]\ \ \ //\ [\ \ 1253703093,\ \ 1093509285\ ]}
+\DoxyCodeLine{[CRC32C.bstr("{}\(\backslash\)u2603"{}),\ CRC32C.bstr("{}\(\backslash\)u0003"{})]\ \ //\ [\ \ 1093509285,\ \ 1093509285\ ]}
+\DoxyCodeLine{[CRC32C.buf([0x2603]),\ \ CRC32C.buf([0x0003])]\ \ \ //\ [\ \ 1093509285,\ \ 1093509285\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3583}{}\doxysubsection{\texorpdfstring{Best Practices}{Best Practices}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3583}
+Even though the initial seed is optional, for performance reasons it is highly recommended to explicitly pass the default seed 0.
+
+In Node\+JS with the native Buffer implementation, it is oftentimes faster to convert binary strings with {\ttfamily Buffer.\+from(bstr, "{}binary"{})} first\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Frequently\ slower\ in\ NodeJS\ */}
+\DoxyCodeLine{crc32\ =\ CRC32.bstr(bstr,\ 0);}
+\DoxyCodeLine{/*\ Frequently\ faster\ in\ NodeJS\ */}
+\DoxyCodeLine{crc32\ =\ CRC32.buf(Buffer.from(bstr,\ "{}binary"{}),\ 0);}
+
+\end{DoxyCode}
+
+
+This does not apply to browser {\ttfamily Buffer} shims, and thus is not implemented in the library directly.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3584}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3584}
+{\ttfamily make test} will run the nodejs-\/based test.
+
+To run the in-\/browser tests, run a local server and go to the {\ttfamily ctest} directory. {\ttfamily make ctestserv} will start a python {\ttfamily Simple\+HTTPServer} server on port 8000.
+
+To update the browser artifacts, run {\ttfamily make ctest}.
+
+To generate the bits file, use the {\ttfamily crc32} function from python {\ttfamily zlib}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>>>\ \textcolor{keyword}{from}\ zlib\ \textcolor{keyword}{import}\ crc32}
+\DoxyCodeLine{>>>\ x=\textcolor{stringliteral}{"{}foo\ bar\ baz٪☃🍣"{}}}
+\DoxyCodeLine{>>>\ crc32(x)}
+\DoxyCodeLine{1531648243}
+\DoxyCodeLine{>>>\ crc32(x+x)}
+\DoxyCodeLine{-\/218791105}
+\DoxyCodeLine{>>>\ crc32(x+x+x)}
+\DoxyCodeLine{1834240887}
+
+\end{DoxyCode}
+
+
+The included {\ttfamily crc32.\+njs} script can process files or standard input\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ echo\ "{}this\ is\ a\ test"{}\ >\ t.txt}
+\DoxyCodeLine{\$\ bin/crc32.njs\ t.txt}
+\DoxyCodeLine{1912935186}
+
+\end{DoxyCode}
+
+
+For comparison, the included {\ttfamily crc32.\+py} script uses python {\ttfamily zlib}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ bin/crc32.py\ t.txt}
+\DoxyCodeLine{1912935186}
+
+\end{DoxyCode}
+
+
+On OSX the command {\ttfamily cksum} generates unsigned CRC-\/32 with Algorithm 3\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ cksum\ -\/o\ 3\ <\ IE8.Win7.For.Windows.VMware.zip}
+\DoxyCodeLine{1891069052\ 4161613172}
+\DoxyCodeLine{\$\ crc32\ -\/-\/unsigned\ \string~/Downloads/IE8.Win7.For.Windows.VMware.zip}
+\DoxyCodeLine{1891069052}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3585}{}\doxysection{\texorpdfstring{Performance}{Performance}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3585}
+{\ttfamily make perf} will run algorithmic performance tests (which should justify certain decisions in the code).
+
+The \href{http://git.io/adler32}{\texttt{ {\ttfamily adler-\/32} project}} has more performance notes\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3586}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3586}
+Please consult the attached LICENSE file for details. All rights not explicitly granted by the Apache 2.\+0 license are reserved by the Original Author.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3587}{}\doxysection{\texorpdfstring{Badges}{Badges}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2cd222204eb242a05b85ac17681f06152_autotoc_md3587}
+\href{https://saucelabs.com/u/crc32}{\texttt{ }}
+
+\href{https://travis-ci.org/SheetJS/js-crc32}{\texttt{ }} \href{https://coveralls.io/r/SheetJS/js-crc32?branch=master}{\texttt{ }} \href{https://david-dm.org/sheetjs/js-crc32}{\texttt{ }} \href{https://npmjs.org/package/crc-32}{\texttt{ }} \href{https://ghit.me/repo/sheetjs/js-xlsx}{\texttt{ }} \href{https://github.com/SheetJS/js-crc32}{\texttt{ }} 

@@ -1,0 +1,44 @@
+\chapter{README}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7}\index{README@{README}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1610}{}\doxysubsection{\texorpdfstring{autotoc\+\_\+md1610}{autotoc\+\_\+md1610}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1610}
+title\+: Overview sidebar\+\_\+label\+: Overview pagination\+\_\+next\+: null pagination\+\_\+prev\+: null \hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1611}{}\doxysubsection{\texorpdfstring{slug\+: /}{slug\+: /}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1611}
+{\ttfamily @typescript-\/eslint/eslint-\/plugin} includes over 100 rules that detect best practice violations, bugs, and/or stylistic issues specifically for Type\+Script code. All of our rules are listed below.
+
+\+::\+:tip Instead of enabling rules one by one, we recommend using one of \href{/users/configs}{\texttt{ our pre-\/defined configs}} to enable a large set of recommended rules. \+::\+:\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1612}{}\doxysubsection{\texorpdfstring{Rules}{Rules}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1612}
+The rules are listed in alphabetical order. You can optionally filter them based on these categories\+:
+
+import Rules\+Table from "{}@site/src/components/\+Rules\+Table"{};
+
+$<$\+Rules\+Table $>$\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1613}{}\doxysubsection{\texorpdfstring{Filtering}{Filtering}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1613}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1614}{}\doxysubsubsection{\texorpdfstring{Config Group (⚙️)}{Config Group (⚙️)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1614}
+"{}\+Config Group"{} refers to the \href{/users/configs}{\texttt{ pre-\/defined config}} that includes the rule. Extending from a configuration preset allow for enabling a large set of recommended rules all at once.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1615}{}\doxysubsubsection{\texorpdfstring{Metadata}{Metadata}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1615}
+
+\begin{DoxyItemize}
+\item {\ttfamily 🔧 fixable} refers to whether the rule contains an \href{https://eslint.org/docs/latest/use/command-line-interface\#--fix}{\texttt{ ESLint {\ttfamily -\/-\/fix} auto-\/fixer}}.
+\item {\ttfamily 💡 has suggestions} refers to whether the rule contains an ESLint suggestion fixer.
+\begin{DoxyItemize}
+\item Sometimes, it is not safe to automatically fix the code with an auto-\/fixer. But in these cases, we often have a good guess of what the correct fix should be, and we can provide it as a suggestion to the developer.
+\end{DoxyItemize}
+\item {\ttfamily 💭 requires type information} refers to whether the rule requires \href{/getting-started/typed-linting}{\texttt{ typed linting}}.
+\item {\ttfamily 🧱 extension rule} means that the rule is an extension of an \href{https://eslint.org/docs/latest/rules}{\texttt{ core ESLint rule}} (see Extension Rules).
+\item {\ttfamily 💀 deprecated rule} means that the rule should no longer be used and will be removed from the plugin in a future version.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1616}{}\doxysubsection{\texorpdfstring{Extension Rules}{Extension Rules}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b855c64dbcc9f0f5d8aafeffbb398ca7_autotoc_md1616}
+Some core ESLint rules do not support Type\+Script syntax\+: either they crash, ignore the syntax, or falsely report against it. In these cases, we create what we call an "{}extension rule"{}\+: a rule within our plugin that has the same functionality, but also supports Type\+Script.
+
+Extension rules generally completely replace the base rule from ESLint core. If the base rule is enabled in a config you extend from, you\textquotesingle{}ll need to disable the base rule\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ \{}
+\DoxyCodeLine{\ \ extends:\ ['eslint:recommended'],}
+\DoxyCodeLine{\ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Note:\ you\ must\ disable\ the\ base\ rule\ as\ it\ can\ report\ incorrect\ errors}
+\DoxyCodeLine{\ \ \ \ 'no-\/unused-\/vars':\ 'off',}
+\DoxyCodeLine{\ \ \ \ '@typescript-\/eslint/no-\/unused-\/vars':\ 'error',}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\href{?=extension\#rules}{\texttt{ Search for {\ttfamily 🧱 extension rule}s}} in this page to see all extension rules. 

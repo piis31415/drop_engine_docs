@@ -1,0 +1,383 @@
+\chapter{@xmldom/xmldom}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4}\index{"@xmldom/xmldom@{"@xmldom/xmldom}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1782}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1782}%
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+Since version 0.\+7.\+0 this package is published to npm as \href{https://www.npmjs.com/package/@xmldom/xmldom}{\texttt{ {\ttfamily @xmldom/xmldom}}} and no longer as \href{https://www.npmjs.com/package/xmldom}{\texttt{ {\ttfamily xmldom}}}, because \href{https://github.com/xmldom/xmldom/issues/271}{\texttt{ we are no longer able to publish {\ttfamily xmldom}}}.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} ~\newline
+ {\itshape For better readability in the docs we will continue to talk about this library as "{}xmldom"{}.}
+
+\href{https://github.com/xmldom/xmldom/blob/master/LICENSE}{\texttt{ }} \href{https://www.npmjs.com/package/@xmldom/xmldom}{\texttt{ }} \href{https://snyk.io/advisor/npm-package/@xmldom/xmldom}{\texttt{ }} \href{https://github.com/xmldom/xmldom/issues?q=is\%3Aissue+is\%3Aopen+label\%3Abug}{\texttt{ }} \href{https://github.com/xmldom/xmldom/issues?q=is\%3Aissue+is\%3Aopen+label\%3Ahelp-wanted}{\texttt{ }} \href{https://dashboard.stryker-mutator.io/reports/github.com/xmldom/xmldom/master}{\texttt{ }}
+
+xmldom is a javascript \href{https://ponyfill.com/}{\texttt{ ponyfill}} to provide the following APIs \href{https://caniuse.com/xml-serializer}{\texttt{ that are present in modern browsers}} to other runtimes\+:
+\begin{DoxyItemize}
+\item convert an XML string into a DOM tree 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ DOMParser().parseFromString(xml,\ mimeType)\ =>\ Document}
+
+\end{DoxyCode}
+
+\item create, access and modify a DOM tree 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ DOMImplementation().createDocument(...)\ =>\ Document}
+
+\end{DoxyCode}
+
+\item serialize a DOM tree back into an XML string 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{new\ XMLSerializer().serializeToString(node)\ =>\ string}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+The target runtimes {\ttfamily xmldom} supports are currently Node \texorpdfstring{$>$}{>}= v10 (ES5) and Rhino (\href{https://github.com/xmldom/xmldom/discussions/214}{\texttt{ not tested as part of CI}}).
+
+When deciding how to fix bugs or implement features, {\ttfamily xmldom} tries to stay as close as possible to the various related specifications/standards. ~\newline
+ As indicated by the version starting with {\ttfamily 0.}, this implementation is not feature complete and some implemented features differ from what the specifications describe. ~\newline
+ {\bfseries{Issues and PRs for such differences are always welcome, even when they only provide a failing test case.}}
+
+This project was forked from it\textquotesingle{}s \href{https://github.com/jindw/xmldom}{\texttt{ original source}} in 2019, more details about that transition can be found in the \href{CHANGELOG.md\#maintainer-changes}{\texttt{ CHANGELOG}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1783}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1783}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1784}{}\doxysubsection{\texorpdfstring{Install\+:}{Install\+:}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1784}
+\begin{quote}
+npm install @xmldom/xmldom \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1785}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1785}
+\href{examples/nodejs/src/index.js}{\texttt{ In Node\+JS}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ DOMParser,\ XMLSerializer\ \}\ =\ require('@xmldom/xmldom')}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ source\ =\ \`{}<xml\ xmlns="{}a"{}>}
+\DoxyCodeLine{\ \ \ \ <child>test</child>}
+\DoxyCodeLine{\ \ \ \ <child/>}
+\DoxyCodeLine{</xml>`}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ doc\ =\ new\ DOMParser().parseFromString(source,\ 'text/xml')}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ serialized\ =\ new\ XMLSerializer().serializeToString(doc)}
+
+\end{DoxyCode}
+
+
+Note\+: in Typescript \texorpdfstring{$\sim$}{\string~}and ES6\texorpdfstring{$\sim$}{\string~}(see \#316) you can use the {\ttfamily import} approach, as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ DOMParser\ \}\ from\ '@xmldom/xmldom'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1786}{}\doxysection{\texorpdfstring{API Reference}{API Reference}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1786}
+
+\begin{DoxyItemize}
+\item \href{https://developer.mozilla.org/en-US/docs/Web/API/DOMParser}{\texttt{ DOMParser}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parseFromString(xmlsource,mimeType)}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\bfseries{options extension}} {\itshape by xmldom} (not DOM standard!!)
+\end{DoxyItemize}
+
+\`{}\`{}\`{}javascript //added the options argument new DOMParser(options)
+
+//error\+Handler is supported new DOMParser(\{ /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item locator is always need for error position info \texorpdfstring{$\ast$}{*}/ locator\+:\{\}, /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item you can override the error\+Handler for xml parser
+\item \doxylink{}{\texorpdfstring{$\ast$}{*}/ error\+Handler\+:\{warning\+:function(w)\{console.\+warn(w)\},error\+:callback,fatal\+Error\+:callback\} //only callback model //error\+Handler\+:function(level,msg)\{console.\+log(level,msg)\} \})  \`{}\`{}\`{}}XMLSerializer
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{serializeToString(node)}
+
+\end{DoxyCode}
+ \hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1787}{}\doxysubsection{\texorpdfstring{DOM level2 method and attribute\+:}{DOM level2 method and attribute\+:}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1787}
+
+\begin{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-1950641247}{\texttt{ Node}}
+
+readonly class properties (aka {\ttfamily Node\+Type}), ~\newline
+ these can be accessed from any {\ttfamily Node} instance {\ttfamily node}\+: ~\newline
+ {\ttfamily if (node.\+node\+Type === node.\+ELEMENT\+\_\+\+NODE) \{...}
+\begin{DoxyEnumerate}
+\item {\ttfamily ELEMENT\+\_\+\+NODE} ({\ttfamily 1})
+\item {\ttfamily ATTRIBUTE\+\_\+\+NODE} ({\ttfamily 2})
+\item {\ttfamily TEXT\+\_\+\+NODE} ({\ttfamily 3})
+\item {\ttfamily CDATA\+\_\+\+SECTION\+\_\+\+NODE} ({\ttfamily 4})
+\item {\ttfamily ENTITY\+\_\+\+REFERENCE\+\_\+\+NODE} ({\ttfamily 5})
+\item {\ttfamily ENTITY\+\_\+\+NODE} ({\ttfamily 6})
+\item {\ttfamily PROCESSING\+\_\+\+INSTRUCTION\+\_\+\+NODE} ({\ttfamily 7})
+\item {\ttfamily COMMENT\+\_\+\+NODE} ({\ttfamily 8})
+\item {\ttfamily DOCUMENT\+\_\+\+NODE} ({\ttfamily 9})
+\item {\ttfamily DOCUMENT\+\_\+\+TYPE\+\_\+\+NODE} ({\ttfamily 10})
+\item {\ttfamily DOCUMENT\+\_\+\+FRAGMENT\+\_\+\+NODE} ({\ttfamily 11})
+\item {\ttfamily NOTATION\+\_\+\+NODE} ({\ttfamily 12})
+\end{DoxyEnumerate}
+
+attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily node\+Value} \texorpdfstring{$\vert$}{|} {\ttfamily prefix}
+\end{DoxyItemize}
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily node\+Name} \texorpdfstring{$\vert$}{|} {\ttfamily node\+Type} \texorpdfstring{$\vert$}{|} {\ttfamily parent\+Node} \texorpdfstring{$\vert$}{|} {\ttfamily child\+Nodes} \texorpdfstring{$\vert$}{|} {\ttfamily first\+Child} \texorpdfstring{$\vert$}{|} {\ttfamily last\+Child} \texorpdfstring{$\vert$}{|} {\ttfamily previous\+Sibling} \texorpdfstring{$\vert$}{|} {\ttfamily next\+Sibling} \texorpdfstring{$\vert$}{|} {\ttfamily attributes} \texorpdfstring{$\vert$}{|} {\ttfamily owner\+Document} \texorpdfstring{$\vert$}{|} {\ttfamily namespace\+URI} \texorpdfstring{$\vert$}{|} {\ttfamily local\+Name}
+\end{DoxyItemize}
+
+method\+: ~\newline
+
+\begin{DoxyItemize}
+\item {\ttfamily insert\+Before(new\+Child, ref\+Child)}
+\item {\ttfamily replace\+Child(new\+Child, old\+Child)}
+\item {\ttfamily remove\+Child(old\+Child)}
+\item {\ttfamily append\+Child(new\+Child)}
+\item {\ttfamily has\+Child\+Nodes()}
+\item {\ttfamily clone\+Node(deep)}
+\item {\ttfamily normalize()}
+\item {\ttfamily is\+Supported(feature, version)}
+\item {\ttfamily has\+Attributes()}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/ecma-script-binding.html}{\texttt{ DOMException}}
+
+extends the Error type thrown as part of DOM API.
+
+readonly class properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily INDEX\+\_\+\+SIZE\+\_\+\+ERR} ({\ttfamily 1})
+\item {\ttfamily DOMSTRING\+\_\+\+SIZE\+\_\+\+ERR} ({\ttfamily 2})
+\item {\ttfamily HIERARCHY\+\_\+\+REQUEST\+\_\+\+ERR} ({\ttfamily 3})
+\item {\ttfamily WRONG\+\_\+\+DOCUMENT\+\_\+\+ERR} ({\ttfamily 4})
+\item {\ttfamily INVALID\+\_\+\+CHARACTER\+\_\+\+ERR} ({\ttfamily 5})
+\item {\ttfamily NO\+\_\+\+DATA\+\_\+\+ALLOWED\+\_\+\+ERR} ({\ttfamily 6})
+\item {\ttfamily NO\+\_\+\+MODIFICATION\+\_\+\+ALLOWED\+\_\+\+ERR} ({\ttfamily 7})
+\item {\ttfamily NOT\+\_\+\+FOUND\+\_\+\+ERR} ({\ttfamily 8})
+\item {\ttfamily NOT\+\_\+\+SUPPORTED\+\_\+\+ERR} ({\ttfamily 9})
+\item {\ttfamily INUSE\+\_\+\+ATTRIBUTE\+\_\+\+ERR} ({\ttfamily 10})
+\item {\ttfamily INVALID\+\_\+\+STATE\+\_\+\+ERR} ({\ttfamily 11})
+\item {\ttfamily SYNTAX\+\_\+\+ERR} ({\ttfamily 12})
+\item {\ttfamily INVALID\+\_\+\+MODIFICATION\+\_\+\+ERR} ({\ttfamily 13})
+\item {\ttfamily NAMESPACE\+\_\+\+ERR} ({\ttfamily 14})
+\item {\ttfamily INVALID\+\_\+\+ACCESS\+\_\+\+ERR} ({\ttfamily 15})
+\end{DoxyItemize}
+
+attributes\+:
+\begin{DoxyItemize}
+\item {\ttfamily code} with a value matching one of the above constants.
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-102161490}{\texttt{ DOMImplementation}}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily has\+Feature(feature, version)}
+\item {\ttfamily create\+Document\+Type(qualified\+Name, public\+Id, system\+Id)}
+\item {\ttfamily create\+Document(namespace\+URI, qualified\+Name, doctype)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#i-Document}{\texttt{ Document}} \+: Node
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily doctype} \texorpdfstring{$\vert$}{|} {\ttfamily implementation} \texorpdfstring{$\vert$}{|} {\ttfamily document\+Element}
+\end{DoxyItemize}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily create\+Element(tag\+Name)}
+\item {\ttfamily create\+Document\+Fragment()}
+\item {\ttfamily create\+Text\+Node(data)}
+\item {\ttfamily create\+Comment(data)}
+\item {\ttfamily create\+CDATASection(data)}
+\item {\ttfamily create\+Processing\+Instruction(target, data)}
+\item {\ttfamily create\+Attribute(name)}
+\item {\ttfamily create\+Entity\+Reference(name)}
+\item {\ttfamily get\+Elements\+By\+Tag\+Name(tagname)}
+\item {\ttfamily import\+Node(imported\+Node, deep)}
+\item {\ttfamily create\+Element\+NS(namespace\+URI, qualified\+Name)}
+\item {\ttfamily create\+Attribute\+NS(namespace\+URI, qualified\+Name)}
+\item {\ttfamily get\+Elements\+By\+Tag\+Name\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily get\+Element\+By\+Id(element\+Id)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-B63ED1A3}{\texttt{ Document\+Fragment}} \+: Node
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-745549614}{\texttt{ Element}} \+: Node
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily tag\+Name}
+\end{DoxyItemize}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily get\+Attribute(name)}
+\item {\ttfamily set\+Attribute(name, value)}
+\item {\ttfamily remove\+Attribute(name)}
+\item {\ttfamily get\+Attribute\+Node(name)}
+\item {\ttfamily set\+Attribute\+Node(new\+Attr)}
+\item {\ttfamily remove\+Attribute\+Node(old\+Attr)}
+\item {\ttfamily get\+Elements\+By\+Tag\+Name(name)}
+\item {\ttfamily get\+Attribute\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily set\+Attribute\+NS(namespace\+URI, qualified\+Name, value)}
+\item {\ttfamily remove\+Attribute\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily get\+Attribute\+Node\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily set\+Attribute\+Node\+NS(new\+Attr)}
+\item {\ttfamily get\+Elements\+By\+Tag\+Name\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily has\+Attribute(name)}
+\item {\ttfamily has\+Attribute\+NS(namespace\+URI, local\+Name)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-637646024}{\texttt{ Attr}} \+: Node
+
+attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily value}
+\end{DoxyItemize}
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily name} \texorpdfstring{$\vert$}{|} {\ttfamily specified} \texorpdfstring{$\vert$}{|} {\ttfamily owner\+Element}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-536297177}{\texttt{ Node\+List}}
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily length}
+\end{DoxyItemize}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily item(index)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-1780488922}{\texttt{ Named\+Node\+Map}}
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily length}
+\end{DoxyItemize}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily get\+Named\+Item(name)}
+\item {\ttfamily set\+Named\+Item(arg)}
+\item {\ttfamily remove\+Named\+Item(name)}
+\item {\ttfamily item(index)}
+\item {\ttfamily get\+Named\+Item\+NS(namespace\+URI, local\+Name)}
+\item {\ttfamily set\+Named\+Item\+NS(arg)}
+\item {\ttfamily remove\+Named\+Item\+NS(namespace\+URI, local\+Name)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-FF21A306}{\texttt{ Character\+Data}} \+: Node
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily substring\+Data(offset, count)}
+\item {\ttfamily append\+Data(arg)}
+\item {\ttfamily insert\+Data(offset, arg)}
+\item {\ttfamily delete\+Data(offset, count)}
+\item {\ttfamily replace\+Data(offset, count, arg)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-1312295772}{\texttt{ Text}} \+: Character\+Data
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily split\+Text(offset)}
+\end{DoxyItemize}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-667469212}{\texttt{ CDATASection}}
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-1728279322}{\texttt{ Comment}} \+: Character\+Data
+\item \href{http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html\#ID-412266927}{\texttt{ Document\+Type}}
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily name} \texorpdfstring{$\vert$}{|} {\ttfamily entities} \texorpdfstring{$\vert$}{|} {\ttfamily notations} \texorpdfstring{$\vert$}{|} {\ttfamily public\+Id} \texorpdfstring{$\vert$}{|} {\ttfamily system\+Id} \texorpdfstring{$\vert$}{|} {\ttfamily internal\+Subset}
+\end{DoxyItemize}
+\item Notation \+: Node
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily public\+Id} \texorpdfstring{$\vert$}{|} {\ttfamily system\+Id}
+\end{DoxyItemize}
+\item Entity \+: Node
+
+readonly attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily public\+Id} \texorpdfstring{$\vert$}{|} {\ttfamily system\+Id} \texorpdfstring{$\vert$}{|} {\ttfamily notation\+Name}
+\end{DoxyItemize}
+\item Entity\+Reference \+: Node
+\item Processing\+Instruction \+: Node
+
+attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily data} readonly attribute\+:
+\item {\ttfamily target}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1788}{}\doxysubsection{\texorpdfstring{DOM level 3 support\+:}{DOM level 3 support\+:}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1788}
+
+\begin{DoxyItemize}
+\item \href{http://www.w3.org/TR/DOM-Level-3-Core/core.html\#Node3-textContent}{\texttt{ Node}}
+
+attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily text\+Content}
+\end{DoxyItemize}
+
+method\+:
+\begin{DoxyItemize}
+\item {\ttfamily is\+Default\+Namespace(namespace\+URI)}
+\item {\ttfamily lookup\+Namespace\+URI(prefix)}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1789}{}\doxysubsection{\texorpdfstring{DOM extension by xmldom}{DOM extension by xmldom}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1789}
+
+\begin{DoxyItemize}
+\item \mbox{[}Node\mbox{]} Source position extension;
+
+attribute\+:
+\begin{DoxyItemize}
+\item {\ttfamily line\+Number} //number starting from {\ttfamily 1}
+\item {\ttfamily column\+Number} //number starting from {\ttfamily 1}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1790}{}\doxysection{\texorpdfstring{Specs}{Specs}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1790}
+The implementation is based on several specifications\+:
+
+\href{https://raw.githubusercontent.com/xmldom/xmldom/master/docs/specs.svg}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1791}{}\doxysubsection{\texorpdfstring{DOM Parsing and Serialization}{DOM Parsing and Serialization}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1791}
+From the \href{https://www.w3.org/TR/2016/WD-DOM-Parsing-20160517/}{\texttt{ W3C DOM Parsing and Serialization (WD 2016)}} {\ttfamily xmldom} provides an implementation for the interfaces\+:
+\begin{DoxyItemize}
+\item {\ttfamily DOMParser}
+\item {\ttfamily XMLSerializer}
+\end{DoxyItemize}
+
+Note that there are some known deviations between this implementation and the W3 specifications.
+
+Note\+: \href{https://w3c.github.io/DOM-Parsing/}{\texttt{ The latest version of this spec}} has the status "{}\+Editors Draft"{}, since it is under active development. One major change is that \href{https://w3c.github.io/DOM-Parsing/\#the-domparser-interface}{\texttt{ the definition of the {\ttfamily DOMParser} interface has been moved to the HTML spec}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1792}{}\doxysubsection{\texorpdfstring{DOM}{DOM}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1792}
+The original author claims that xmldom implements \mbox{[}DOM Level 2\mbox{]} in a "{}fully compatible"{} way and some parts of \mbox{[}DOM Level 3\mbox{]}, but there are not enough tests to prove this. Both Specifications are now superseded by the \mbox{[}DOM Level 4 aka Living standard\mbox{]} wich has a much broader scope than xmldom.
+
+xmldom implements the following interfaces (most constructors are currently not exposed)\+:
+\begin{DoxyItemize}
+\item {\ttfamily Attr}
+\item {\ttfamily CDATASection}
+\item {\ttfamily Character\+Data}
+\item {\ttfamily Comment}
+\item {\ttfamily Document}
+\item {\ttfamily Document\+Fragment}
+\item {\ttfamily Document\+Type}
+\item {\ttfamily DOMException} (constructor exposed)
+\item {\ttfamily DOMImplementation} (constructor exposed)
+\item {\ttfamily Element}
+\item {\ttfamily Entity}
+\item {\ttfamily Entity\+Reference}
+\item {\ttfamily Live\+Node\+List}
+\item {\ttfamily Named\+Node\+Map}
+\item {\ttfamily Node} (constructor exposed)
+\item {\ttfamily Node\+List}
+\item {\ttfamily Notation}
+\item {\ttfamily Processing\+Instruction}
+\item {\ttfamily Text}
+\end{DoxyItemize}
+
+more details are available in the (incomplete) API Reference section.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1793}{}\doxysubsection{\texorpdfstring{HTML}{HTML}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1793}
+xmldom does not have any goal of supporting the full spec, but it has some capability to parse, report and serialize things differently when "{}detecting HTML"{} (by checking the default namespace). There is an upcoming change to better align the implementation with the latest specs, related to \href{https://github.com/xmldom/xmldom/issues/203}{\texttt{ https\+://github.\+com/xmldom/xmldom/issues/203}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1794}{}\doxysubsection{\texorpdfstring{SAX, XML, XMLNS}{SAX, XML, XMLNS}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b04a944b5390ac595140a588eda936f4_autotoc_md1794}
+xmldom has an own SAX parser implementation to do the actual parsing, which implements some interfaces in alignment with the Java interfaces SAX defines\+:
+\begin{DoxyItemize}
+\item {\ttfamily XMLReader}
+\item {\ttfamily DOMHandler}
+\end{DoxyItemize}
+
+There is an idea/proposal to make it possible to replace it with something else in \href{https://github.com/xmldom/xmldom/issues/55}{\texttt{ https\+://github.\+com/xmldom/xmldom/issues/55}} 

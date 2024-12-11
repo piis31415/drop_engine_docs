@@ -1,0 +1,100 @@
+\chapter{String}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64}\index{String@{String}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7988}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7988}%
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7989}{}\doxysection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7989}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a50eed459a8374be59abf681ed29636ad}{Napi::String::String}}();}
+
+\end{DoxyCode}
+
+
+Returns a new {\bfseries{empty}} {\ttfamily \doxylink{class_napi_1_1_string}{Napi\+::\+String}} instance.
+
+If an error occurs, a {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} will get thrown. If C++ exceptions are not being used, callers should check the result of {\ttfamily Env\+::\+Is\+Exception\+Pending} before attempting to use the returned value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a50eed459a8374be59abf681ed29636ad}{Napi::String::String}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);\ }
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env} -\/ The environment in which to create the string.
+\item {\ttfamily \mbox{[}in\mbox{]} value} -\/ The primitive to wrap.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_string}{Napi\+::\+String}} wrapping a {\ttfamily napi\+\_\+value}.
+
+If an error occurs, a {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} will get thrown. If C++ exceptions are not being used, callers should check the result of {\ttfamily Env\+::\+Is\+Exception\+Pending} before attempting to use the returned value.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7990}{}\doxysection{\texorpdfstring{Operators}{Operators}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7990}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7991}{}\doxysubsection{\texorpdfstring{operator std\+::string}{operator std\+::string}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7991}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::String::operator\ std::string()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a UTF-\/8 encoded C++ string.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7992}{}\doxysubsection{\texorpdfstring{operator std\+::u16string}{operator std\+::u16string}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7992}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::String::operator\ std::u16string()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a UTF-\/16 encoded C++ string.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7993}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7993}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7994}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7994}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}();}
+
+\end{DoxyCode}
+
+
+Returns a new empty {\ttfamily \doxylink{class_napi_1_1_string}{Napi\+::\+String}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7995}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7995}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ std::string\&\ value);}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ std::u16::string\&\ value);}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char16\_t}*\ value);}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ value,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_string_a6689d69d07bad4eea2be440333320925}{Napi::String::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char16\_t}*\ value,\ \textcolor{keywordtype}{size\_t}\ length);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The C++ primitive from which to instantiate the {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}}. {\ttfamily value} may be any of\+:
+\begin{DoxyItemize}
+\item {\ttfamily std\+::string\&} -\/ represents an ANSI string.
+\item {\ttfamily std\+::u16string\&} -\/ represents a UTF16-\/\+LE string.
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}} -\/ represents a UTF8 string.
+\item {\ttfamily const char16\+\_\+t\texorpdfstring{$\ast$}{*}} -\/ represents a UTF16-\/\+LE string.
+\end{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} length}\+: The length of the string (not necessarily null-\/terminated) in code units.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_string}{Napi\+::\+String}} that represents the passed in C++ string.
+
+If an error occurs, a {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} will get thrown. If C++ exceptions are not being used, callers should check the result of {\ttfamily Env\+::\+Is\+Exception\+Pending} before attempting to use the returned value.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7996}{}\doxysubsection{\texorpdfstring{Utf8\+Value}{Utf8\+Value}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7996}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ \mbox{\hyperlink{class_napi_1_1_string_a37fa0f5e1f6f0681049e3e3a3dc46132}{Napi::String::Utf8Value}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a UTF-\/8 encoded C++ string.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7997}{}\doxysubsection{\texorpdfstring{Utf16\+Value}{Utf16\+Value}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28a660726d4d6871b0e25c7b210803f64_autotoc_md7997}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::u16string\ \mbox{\hyperlink{class_napi_1_1_string_acbcccf7113c19fad89314863330fb649}{Napi::String::Utf16Value}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a UTF-\/16 encoded C++ string. 

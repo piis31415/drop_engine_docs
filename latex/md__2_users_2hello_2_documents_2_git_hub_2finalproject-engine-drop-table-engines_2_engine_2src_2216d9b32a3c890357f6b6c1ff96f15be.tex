@@ -1,0 +1,170 @@
+\chapter{Electron Notarize}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be}\index{Electron Notarize@{Electron Notarize}}
+\begin{quote}
+Notarize your Electron apps seamlessly for mac\+OS \end{quote}
+\href{https://circleci.com/gh/electron/notarize}{\texttt{ }} \href{https://npm.im/@electron/notarize}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md425}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md425}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @electron/notarize\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md426}{}\doxysection{\texorpdfstring{What is app "{}notarization"{}?}{What is app "{}notarization"{}?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md426}
+From Apple\textquotesingle{}s docs in XCode\+:
+
+\begin{quote}
+A notarized app is a mac\+OS app that was uploaded to Apple for processing before it was distributed. When you export a notarized app from Xcode, it code signs the app with a Developer ID certificate and staples a ticket from Apple to the app. The ticket confirms that you previously uploaded the app to Apple. \end{quote}
+\begin{quote}
+On mac\+OS 10.\+14 and later, the user can launch notarized apps when Gatekeeper is enabled. When the user first launches a notarized app, Gatekeeper looks for the app’s ticket online. If the user is offline, Gatekeeper looks for the ticket that was stapled to the app. \end{quote}
+As mac\+OS 10.\+15 (Catalina), Apple has made notarization a hard requirement for all applications distributed outside of the Mac App Store. App Store applications do not need to be notarized.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md427}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md427}
+For notarization, you need the following things\+:
+
+
+\begin{DoxyEnumerate}
+\item Xcode 13 or later installed on your Mac.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item An \href{https://developer.apple.com/}{\texttt{ Apple Developer}} account.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item \href{https://support.apple.com/HT204397}{\texttt{ An app-\/specific password for your ADC account’s Apple ID}}.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Your app may need to be signed with {\ttfamily hardened\+Runtime\+: true} option, with the {\ttfamily com.\+apple.\+security.\+cs.\+allow-\/jit} entitlement.
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+If you are using Electron 11 or below, you must add the {\ttfamily com.\+apple.\+security.\+cs.\+allow-\/unsigned-\/executable-\/memory} entitlement too. When using version 12+, this entitlement should not be applied as it increases your app\textquotesingle{}s attack surface.
+\end{DoxyNote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md428}{}\doxysubsection{\texorpdfstring{Notarization on older mac\+OS versions}{Notarization on older mac\+OS versions}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md428}
+Xcode 13 is available from mac\+OS 11.\+3, but notarization can be performed on systems down to mac\+OS 10.\+15 (see \href{https://developer.apple.com/documentation/technotes/tn3147-migrating-to-the-latest-notarization-tool\#Enable-notarization-on-an-older-version-of-macOS}{\texttt{ TN3147}} for more information).
+
+To achieve this, you can copy notarytool binary from a newer mac\+OS version and provide its path as {\ttfamily notarytool\+Path} option.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md429}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md429}
+{\ttfamily @electron/notarize} exposes a single {\ttfamily notarize} function that accepts the following parameters\+:
+\begin{DoxyItemize}
+\item {\ttfamily app\+Path} — the absolute path to your codesigned and packaged Electron application.
+\item {\ttfamily notarytool\+Path} -\/ String (optional) -\/ Path of the notarytool binary (more details)
+\item additional options required for authenticating your Apple ID (see below)
+\end{DoxyItemize}
+
+The method returns a void Promise once app notarization is complete. Please note that notarization may take many minutes.
+
+If the notarization process is unusually log for your application, see Apple Developer\textquotesingle{}s docs to \href{https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow\#3561440}{\texttt{ Avoid long notarization response times and size limits}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md430}{}\doxysubsection{\texorpdfstring{Usage with app-\/specific password}{Usage with app-\/specific password}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md430}
+You can generate an \href{https://support.apple.com/en-us/102654}{\texttt{ app-\/specific password}} for your Apple ID to notarize your Electron applications.
+
+This method also requires you to specify the \href{https://developer.apple.com/help/account/manage-your-team/locate-your-team-id/}{\texttt{ Team ID}} of the Developer Team you want to notarize under. An Apple ID may be part of multiple Teams.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ notarize\ \}\ from\ '@electron/notarize';}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ notarize(\{}
+\DoxyCodeLine{\ \ appPath,}
+\DoxyCodeLine{\ \ appleId,\ //\ Login\ name\ of\ your\ Apple\ Developer\ account}
+\DoxyCodeLine{\ \ appleIdPassword,\ //\ App-\/specific\ password}
+\DoxyCodeLine{\ \ teamId,\ //\ Team\ ID\ for\ your\ developer\ team}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\begin{DoxyImportant}{Important}
+{\bfseries{Never hard code your app-\/specific password into your packaging scripts.}} Use an environment variable at a minimum.
+\end{DoxyImportant}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md431}{}\doxysubsection{\texorpdfstring{Usage with App Store Connect API key}{Usage with App Store Connect API key}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md431}
+Alternatively, you can also authenticate via JSON Web Token (JWT) with App Store Connect.
+
+You can obtain an API key from \href{https://appstoreconnect.apple.com/access/integrations/api}{\texttt{ App Store Connect}}. Create a {\bfseries{Team Key}} (not an {\itshape Individual Key}) with {\bfseries{App Manager}} access.
+
+Note down the Issuer ID (UUID format) and Key ID (10-\/character alphanumeric string), and download the {\ttfamily .p8} API key file ({\ttfamily Auth\+Key\+\_\+\texorpdfstring{$<$}{<}apple\+Api\+Key\+Id\texorpdfstring{$>$}{>}.p8}). For security purposes, the private key can only be downloaded once.
+
+Provide the absolute path to your API key as the {\ttfamily apple\+Api\+Key} argument.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ notarize\ \}\ from\ '@electron/notarize';}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ notarize(\{}
+\DoxyCodeLine{\ \ appPath,}
+\DoxyCodeLine{\ \ appleApiKey,\ //\ Absolute\ path\ to\ API\ key\ (e.g.\ \`{}/path/to/AuthKey\_X0X0X0X0X0.p8`)}
+\DoxyCodeLine{\ \ appleApiIssuer,\ //\ Issuer\ ID\ (e.g.\ \`{}d5631714-\/a680-\/4b4b-\/8156-\/b4ed624c0845`)}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md432}{}\doxysubsection{\texorpdfstring{Usage with Keychain credentials}{Usage with Keychain credentials}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md432}
+As an alternative to passing authentication options, you can also store your authentication credentials (for both API key and app-\/specific password strategies) in the mac\+OS Keychain via the {\ttfamily xcrun notarytool} command-\/line utility.
+
+This method has the advantage of validating your notarization credentials before submitting your application for notarization.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ App-\/specific\ password\ strategy}
+\DoxyCodeLine{xcrun\ notarytool\ store-\/credentials\ "{}my-\/app-\/password-\/profile"{}}
+\DoxyCodeLine{\ \ -\/-\/apple-\/id\ "{}<AppleID>"{}}
+\DoxyCodeLine{\ \ -\/-\/team-\/id\ <DeveloperTeamID>}
+\DoxyCodeLine{\ \ -\/-\/password\ <app\_specific\_password>}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ App\ Store\ Connect\ API\ key\ strategy}
+\DoxyCodeLine{xcrun\ notarytool\ store-\/credentials\ "{}my-\/api-\/key-\/profile"{}}
+\DoxyCodeLine{\ \ -\/-\/key\ "{}<PathToAPIKey>"{}}
+\DoxyCodeLine{\ \ -\/-\/key-\/id\ <KeyID>}
+\DoxyCodeLine{\ \ -\/-\/issuer\ <IssuerID>}
+
+\end{DoxyCode}
+
+
+Successful storage of your credentials will look like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{This\ process\ stores\ your\ credentials\ securely\ in\ the\ Keychain.\ You\ reference\ these\ credentials\ later\ using\ a\ profile\ name.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Validating\ your\ credentials...}
+\DoxyCodeLine{Success.\ Credentials\ validated.}
+\DoxyCodeLine{Credentials\ saved\ to\ Keychain.}
+\DoxyCodeLine{To\ use\ them,\ specify\ \`{}-\/-\/keychain-\/profile\ "{}my-\/api-\/key-\/profile"{}`}
+
+\end{DoxyCode}
+
+
+After successfully storing your credentials, pass the keychain profile name into the {\ttfamily keychain\+Profile} parameter.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ notarize\ \}\ from\ '@electron/notarize';}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ notarize(\{}
+\DoxyCodeLine{\ \ appPath,}
+\DoxyCodeLine{\ \ keychainProfile,}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ \hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md433}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md433}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md434}{}\doxysubsection{\texorpdfstring{Debug logging}{Debug logging}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md434}
+\href{https://www.npmjs.com/package/debug}{\texttt{ {\ttfamily debug}}} is used to display logs and messages. Run your notarization scripts with the {\ttfamily DEBUG=electron-\/notarize\texorpdfstring{$\ast$}{*}} environment variable to log additional debug information from this module.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md435}{}\doxysubsection{\texorpdfstring{Validating credentials}{Validating credentials}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md435}
+When notarizing your application, you may run into issues with validating your notarization credentials.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Error:\ HTTP\ status\ code:\ 401.\ Invalid\ credentials.\ Username\ or\ password\ is\ incorrect.}
+\DoxyCodeLine{Use\ the\ app-\/specific\ password\ generated\ at\ appleid.apple.com.\ Ensure\ that\ all\ authentication\ arguments\ are\ correct.}
+
+\end{DoxyCode}
+
+
+Storing your credentials in Keychain will validate your credentials before even Git\+Hub.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md436}{}\doxysubsection{\texorpdfstring{Validating app notarization}{Validating app notarization}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md436}
+To validate that notarization worked, you can use the {\ttfamily stapler} command-\/line utility\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{stapler\ validate\ path/to/notarized.app}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md437}{}\doxysubsection{\texorpdfstring{Apple documentation}{Apple documentation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2216d9b32a3c890357f6b6c1ff96f15be_autotoc_md437}
+Apple also provides additional debugging documentation on \href{https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues}{\texttt{ Resolving common notarization issues}}. 

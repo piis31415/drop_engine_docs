@@ -1,0 +1,41 @@
+\chapter{infer-\/owner}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b}\index{infer-\/owner@{infer-\/owner}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md5999}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md5999}%
+
+
+Infer the owner of a path based on the owner of its nearest existing parent\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md6000}{}\doxysection{\texorpdfstring{USAGE}{USAGE}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md6000}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ inferOwner\ =\ require('infer-\/owner')}
+\DoxyCodeLine{}
+\DoxyCodeLine{inferOwner('/some/cache/folder/file').then(owner\ =>\ \{}
+\DoxyCodeLine{\ \ //\ owner\ is\ \{uid,\ gid\}\ that\ should\ be\ attached\ to}
+\DoxyCodeLine{\ \ //\ the\ /some/cache/folder/file,\ based\ on\ ownership}
+\DoxyCodeLine{\ \ //\ of\ /some/cache/folder,\ /some/cache,\ /some,\ or\ /,}
+\DoxyCodeLine{\ \ //\ whichever\ is\ the\ first\ to\ exist}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ same,\ but\ not\ async}
+\DoxyCodeLine{const\ owner\ =\ inferOwner.sync('/some/cache/folder/file')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ results\ are\ cached!\ \ to\ reset\ the\ cache\ (eg,\ to\ change}
+\DoxyCodeLine{//\ permissions\ for\ whatever\ reason),\ do\ this:}
+\DoxyCodeLine{inferOwner.clearCache()}
+
+\end{DoxyCode}
+
+
+This module endeavors to be as performant as possible. Parallel requests for ownership of the same path will only stat the directories one time.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md6001}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_251a3a73fae40a8429cd0188fda61790b_autotoc_md6001}
+
+\begin{DoxyItemize}
+\item {\ttfamily infer\+Owner(path) -\/\texorpdfstring{$>$}{>} Promise\texorpdfstring{$<$}{<}\{ uid, gid \}\texorpdfstring{$>$}{>}}
+
+If the path exists, return its uid and gid. If it does not, look to its parent, then its grandparent, and so on.
+\item {\ttfamily infer\+Owner(path) -\/\texorpdfstring{$>$}{>} \{ uid, gid \}}
+
+Sync form of {\ttfamily infer\+Owner(path)}.
+\item {\ttfamily infer\+Owner.\+clear\+Cache()}
+
+Delete all cached ownership information and in-\/flight tracking. 
+\end{DoxyItemize}

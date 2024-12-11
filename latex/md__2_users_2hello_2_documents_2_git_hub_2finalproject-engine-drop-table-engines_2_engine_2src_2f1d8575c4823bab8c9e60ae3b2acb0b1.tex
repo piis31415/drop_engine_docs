@@ -1,0 +1,81 @@
+\chapter{onetime \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/github/sindresorhus/onetime"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/onetime.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1}\index{onetime $<$a href="{}https://travis-\/ci.com/github/sindresorhus/onetime"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/onetime.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{onetime $<$a href=""https://travis-\/ci.com/github/sindresorhus/onetime"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/onetime.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8418}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8418}%
+
+
+\begin{quote}
+Ensure a function is only called once \end{quote}
+When called multiple times it will return the return value from the first call.
+
+{\itshape Unlike the module \href{https://github.com/isaacs/once}{\texttt{ once}}, this one isn\textquotesingle{}t naughty and extending {\ttfamily Function.\+prototype}.}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8419}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8419}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ onetime}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8420}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8420}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ onetime\ =\ require('onetime');}
+\DoxyCodeLine{}
+\DoxyCodeLine{let\ i\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ foo\ =\ onetime(()\ =>\ ++i);}
+\DoxyCodeLine{}
+\DoxyCodeLine{foo();\ //=>\ 1}
+\DoxyCodeLine{foo();\ //=>\ 1}
+\DoxyCodeLine{foo();\ //=>\ 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{onetime.callCount(foo);\ //=>\ 3}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ onetime\ =\ require('onetime');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ foo\ =\ onetime(()\ =>\ \{\},\ \{throw:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{foo();}
+\DoxyCodeLine{}
+\DoxyCodeLine{foo();}
+\DoxyCodeLine{//=>\ Error:\ Function\ \`{}foo`\ can\ only\ be\ called\ once}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8421}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8421}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8422}{}\doxysubsection{\texorpdfstring{onetime(fn, options?)}{onetime(fn, options?)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8422}
+Returns a function that only calls {\ttfamily fn} once.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8423}{}\doxysubsubsection{\texorpdfstring{fn}{fn}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8423}
+Type\+: {\ttfamily Function}
+
+Function that should only be called once.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8424}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8424}
+Type\+: {\ttfamily object}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8425}{}\doxysubsubsubsection{\texorpdfstring{throw}{throw}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8425}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Throw an error when called more than once.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8426}{}\doxysubsection{\texorpdfstring{onetime.\+call\+Count(fn)}{onetime.\+call\+Count(fn)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8426}
+Returns a number representing how many times {\ttfamily fn} has been called.
+
+Note\+: It throws an error if you pass in a function that is not wrapped by {\ttfamily onetime}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ onetime\ =\ require('onetime');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ foo\ =\ onetime(()\ =>\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{foo();}
+\DoxyCodeLine{foo();}
+\DoxyCodeLine{foo();}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(onetime.callCount(foo));}
+\DoxyCodeLine{//=>\ 3}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8427}{}\doxysubsubsection{\texorpdfstring{fn}{fn}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8427}
+Type\+: {\ttfamily Function}
+
+Function to get call count from.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8428}{}\doxysection{\texorpdfstring{onetime for enterprise}{onetime for enterprise}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2f1d8575c4823bab8c9e60ae3b2acb0b1_autotoc_md8428}
+Available as part of the Tidelift Subscription.
+
+The maintainers of onetime and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-onetime?utm_source=npm-onetime&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}} 

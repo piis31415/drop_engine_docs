@@ -1,0 +1,174 @@
+\chapter{README}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0}\index{README@{README}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7215}{}\doxysection{\texorpdfstring{Mime}{Mime}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7215}
+A comprehensive, compact MIME type module.
+
+\href{https://travis-ci.org/broofa/mime}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7216}{}\doxysubsection{\texorpdfstring{Version 2 Notes}{Version 2 Notes}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7216}
+Version 2 is a breaking change from 1.\+x as the semver implies. Specifically\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily lookup()} renamed to {\ttfamily get\+Type()}
+\item {\ttfamily extension()} renamed to {\ttfamily get\+Extension()}
+\item {\ttfamily charset()} and {\ttfamily load()} methods have been removed
+\end{DoxyItemize}
+
+If you prefer the legacy version of this module please {\ttfamily npm install mime@\texorpdfstring{$^\wedge$}{\string^}1}. Version 1 docs may be found \href{https://github.com/broofa/mime/tree/v1.4.0}{\texttt{ here}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7217}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7217}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7218}{}\doxysubsubsection{\texorpdfstring{NPM}{NPM}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7218}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ mime}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7219}{}\doxysubsubsection{\texorpdfstring{Browser}{Browser}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7219}
+It is recommended that you use a bundler such as \href{https://webpack.github.io/}{\texttt{ webpack}} or \href{http://browserify.org/}{\texttt{ browserify}} to package your code. However, browser-\/ready versions are available via wzrd.\+in. E.\+g. For the full version\+: \begin{DoxyVerb}<script src="https://wzrd.in/standalone/mime@latest"></script>
+<script>
+mime.getType(...); // etc.
+</script>
+\end{DoxyVerb}
+
+
+Or, for the {\ttfamily mime/lite} version\+: \begin{DoxyVerb}<script src="https://wzrd.in/standalone/mime%2flite@latest"></script>
+<script>
+mimelite.getType(...); // (Note `mimelite` here)
+</script>
+\end{DoxyVerb}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7220}{}\doxysubsection{\texorpdfstring{Quick Start}{Quick Start}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7220}
+For the full version (800+ MIME types, 1,000+ extensions)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ mime\ =\ require('mime');}
+\DoxyCodeLine{}
+\DoxyCodeLine{mime.getType('txt');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'text/plain'}
+\DoxyCodeLine{mime.getExtension('text/plain');\ \ \ \ \ \ \ \ //\ ⇨\ 'txt'}
+
+\end{DoxyCode}
+
+
+See Mime API below for API details.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7221}{}\doxysubsection{\texorpdfstring{Lite Version}{Lite Version}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7221}
+There is also a "{}lite"{} version of this module that omits vendor-\/specific ({\ttfamily \texorpdfstring{$\ast$}{*}/vnd.\texorpdfstring{$\ast$}{*}}) and experimental ({\ttfamily \texorpdfstring{$\ast$}{*}/x-\/\texorpdfstring{$\ast$}{*}}) types. It weighs in at \texorpdfstring{$\sim$}{\string~}2.5KB, compared to 8KB for the full version. To load the lite version\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ mime\ =\ require('mime/lite');}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7222}{}\doxysubsection{\texorpdfstring{Mime .vs. mime-\/types .vs. mime-\/db modules}{Mime .vs. mime-\/types .vs. mime-\/db modules}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7222}
+For those of you wondering about the difference between these \mbox{[}popular\mbox{]} NPM modules, here\textquotesingle{}s a brief rundown ...
+
+\href{https://github.com/jshttp/mime-db}{\texttt{ {\ttfamily mime-\/db}}} is "{}the source of truth"{} for MIME type information. It is not an API. Rather, it is a canonical dataset of mime type definitions pulled from IANA, Apache, NGINX, and custom mappings submitted by the Node.\+js community.
+
+\href{https://github.com/jshttp/mime-types}{\texttt{ {\ttfamily mime-\/types}}} is a thin wrapper around mime-\/db that provides an API drop-\/in compatible(ish) with {\ttfamily mime @ \texorpdfstring{$<$}{<} v1.\+3.\+6} API.
+
+{\ttfamily mime} is, as of v2, a self-\/contained module bundled with a pre-\/optimized version of the {\ttfamily mime-\/db} dataset. It provides a simplified API with the following characteristics\+:
+
+
+\begin{DoxyItemize}
+\item Intelligently resolved type conflicts (See \href{https://github.com/broofa/mime-score}{\texttt{ mime-\/score}} for details)
+\item Method naming consistent with industry best-\/practices
+\item Compact footprint. E.\+g. The minified+compressed sizes of the various modules\+:
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Module   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Module   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Size    }\\\cline{1-2}
+\endhead
+{\ttfamily mime-\/db}   &18 KB    \\\cline{1-2}
+{\ttfamily mime-\/types}   &same as mime-\/db    \\\cline{1-2}
+{\ttfamily mime}   &8 KB    \\\cline{1-2}
+{\ttfamily mime/lite}   &2 KB   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7223}{}\doxysubsection{\texorpdfstring{Mime API}{Mime API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7223}
+Both `require(\textquotesingle{}mime'){\ttfamily and}require(\textquotesingle{}mime/lite\textquotesingle{})\`{} return instances of the MIME class, documented below.
+
+Note\+: Inputs to this API are case-\/insensitive. Outputs (returned values) will be lowercase.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7224}{}\doxysubsubsection{\texorpdfstring{new Mime(type\+Map, ... more maps)}{new Mime(type\+Map, ... more maps)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7224}
+Most users of this module will not need to create Mime instances directly. However if you would like to create custom mappings, you may do so as follows ...
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Require\ Mime\ class}
+\DoxyCodeLine{const\ Mime\ =\ require('mime/Mime');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Define\ mime\ type\ -\/>\ extensions\ map}
+\DoxyCodeLine{const\ typeMap\ =\ \{}
+\DoxyCodeLine{\ \ 'text/abc':\ ['abc',\ 'alpha',\ 'bet'],}
+\DoxyCodeLine{\ \ 'text/def':\ ['leppard']}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Create\ and\ use\ Mime\ instance}
+\DoxyCodeLine{const\ myMime\ =\ new\ Mime(typeMap);}
+\DoxyCodeLine{myMime.getType('abc');\ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'text/abc'}
+\DoxyCodeLine{myMime.getExtension('text/def');\ \ //\ ⇨\ 'leppard'}
+
+\end{DoxyCode}
+
+
+If more than one map argument is provided, each map is {\ttfamily define()}ed (see below), in order.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7225}{}\doxysubsubsection{\texorpdfstring{mime.\+get\+Type(path\+Or\+Extension)}{mime.\+get\+Type(path\+Or\+Extension)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7225}
+Get mime type for the given path or extension. E.\+g.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mime.getType('js');\ \ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'application/javascript'}
+\DoxyCodeLine{mime.getType('json');\ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'application/json'}
+\DoxyCodeLine{}
+\DoxyCodeLine{mime.getType('txt');\ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'text/plain'}
+\DoxyCodeLine{mime.getType('dir/text.txt');\ \ \ //\ ⇨\ 'text/plain'}
+\DoxyCodeLine{mime.getType('dir\(\backslash\)\(\backslash\)text.txt');\ \ //\ ⇨\ 'text/plain'}
+\DoxyCodeLine{mime.getType('.text.txt');\ \ \ \ \ \ //\ ⇨\ 'text/plain'}
+\DoxyCodeLine{mime.getType('.txt');\ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'text/plain'}
+
+\end{DoxyCode}
+
+
+{\ttfamily null} is returned in cases where an extension is not detected or recognized
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mime.getType('foo/txt');\ \ \ \ \ \ \ \ //\ ⇨\ null}
+\DoxyCodeLine{mime.getType('bogus\_type');\ \ \ \ \ //\ ⇨\ null}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7226}{}\doxysubsubsection{\texorpdfstring{mime.\+get\+Extension(type)}{mime.\+get\+Extension(type)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7226}
+Get extension for the given mime type. Charset options (often included in Content-\/\+Type headers) are ignored.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mime.getExtension('text/plain');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'txt'}
+\DoxyCodeLine{mime.getExtension('application/json');\ \ \ \ \ \ \ \ \ //\ ⇨\ 'json'}
+\DoxyCodeLine{mime.getExtension('text/html;\ charset=utf8');\ \ //\ ⇨\ 'html'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7227}{}\doxysubsubsection{\texorpdfstring{mime.\+define(type\+Map\mbox{[}, force = false\mbox{]})}{mime.\+define(type\+Map\mbox{[}, force = false\mbox{]})}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7227}
+Define \mbox{[}more\mbox{]} type mappings.
+
+{\ttfamily type\+Map} is a map of type -\/\texorpdfstring{$>$}{>} extensions, as documented in {\ttfamily new Mime}, above.
+
+By default this method will throw an error if you try to map a type to an extension that is already assigned to another type. Passing {\ttfamily true} for the {\ttfamily force} argument will suppress this behavior (overriding any previous mapping).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mime.define(\{'text/x-\/abc':\ ['abc',\ 'abcd']\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{mime.getType('abcd');\ \ \ \ \ \ \ \ \ \ \ \ //\ ⇨\ 'text/x-\/abc'}
+\DoxyCodeLine{mime.getExtension('text/x-\/abc')\ \ //\ ⇨\ 'abc'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7228}{}\doxysubsection{\texorpdfstring{Command Line}{Command Line}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28ec5ecaa3f12731e6535f6402173fba0_autotoc_md7228}
+\begin{DoxyVerb}mime [path_or_extension]
+\end{DoxyVerb}
+
+
+E.\+g. \begin{DoxyVerb}> mime scripts/jquery.js
+application/javascript
+\end{DoxyVerb}
+
+
+\DoxyHorRuler{0}
+ Markdown generated from src/\+README\+\_\+js.md by \href{https://github.com/broofa/runmd}{\texttt{ }} 

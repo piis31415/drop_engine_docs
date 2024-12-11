@@ -1,0 +1,43 @@
+\chapter{Installation}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237}\index{Installation@{Installation}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1537}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1537}%
+
+
+\begin{quote}
+{\ttfamily npm install -\/-\/save @types/plist} \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1538}{}\doxysection{\texorpdfstring{Summary}{Summary}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1538}
+This package contains type definitions for plist (\href{https://github.com/TooTallNate/node-plist\#readme}{\texttt{ https\+://github.\+com/\+Too\+Tall\+Nate/node-\/plist\#readme}}).\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1539}{}\doxysection{\texorpdfstring{Details}{Details}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1539}
+Files were exported from \href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/plist}{\texttt{ https\+://github.\+com/\+Definitely\+Typed/\+Definitely\+Typed/tree/master/types/plist}}. \hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1540}{}\doxysubsection{\texorpdfstring{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/plist/index.d.ts}{\texttt{ index.\+d.\+ts}}}{\href{https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/plist/index.d.ts}{\texttt{ index.\+d.\+ts}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1540}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{///\ <reference\ types="{}node"{}\ />}
+\DoxyCodeLine{import\ \{\ XMLToStringOptions\ \}\ from\ "{}xmlbuilder"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ plist}
+\DoxyCodeLine{export\ as\ namespace\ plist;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ plist.parse()}
+\DoxyCodeLine{export\ function\ parse(xml:\ string):\ PlistValue;}
+\DoxyCodeLine{//\ plist.build()}
+\DoxyCodeLine{export\ function\ build(obj:\ PlistValue,\ opts?:\ PlistBuildOptions):\ string;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ PlistValue}
+\DoxyCodeLine{export\ type\ PlistValue\ =\ string\ |\ number\ |\ boolean\ |\ Date\ |\ Buffer\ |\ PlistObject\ |\ PlistArray;}
+\DoxyCodeLine{export\ interface\ PlistObject\ \{}
+\DoxyCodeLine{\ \ \ \ readonly\ [x:\ string]:\ PlistValue;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{export\ interface\ PlistArray\ extends\ ReadonlyArray<PlistValue>\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ PlistBuildOptions}
+\DoxyCodeLine{//\ The\ instance\ of\ this\ type\ is\ passed\ to\ 'xmlbuilder'\ module\ as\ it\ is.}
+\DoxyCodeLine{export\ type\ PlistBuildOptions\ =\ XMLToStringOptions;}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1541}{}\doxysubsubsection{\texorpdfstring{Additional Details}{Additional Details}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1541}
+
+\begin{DoxyItemize}
+\item Last updated\+: Tue, 07 Nov 2023 09\+:09\+:39 GMT
+\item Dependencies\+: \href{https://npmjs.com/package/@types/node}{\texttt{ @types/node}}, \href{https://npmjs.com/package/xmlbuilder}{\texttt{ xmlbuilder}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1542}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_28d2f260eb230aff11b814d053ca75237_autotoc_md1542}
+These definitions were written by \href{https://github.com/higuri}{\texttt{ Yusuke Higuchi}}. 

@@ -1,0 +1,110 @@
+\doxysection{Enemy\+Script Class Reference}
+\hypertarget{class_enemy_script}{}\label{class_enemy_script}\index{EnemyScript@{EnemyScript}}
+Inheritance diagram for Enemy\+Script\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_enemy_script}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_enemy_script_aa55c7c0e0b678f8045617f789b3c74de}\label{class_enemy_script_aa55c7c0e0b678f8045617f789b3c74de} 
+{\bfseries this} (size\+\_\+t owner, Game\+Object level=null)
+\item 
+\Hypertarget{class_enemy_script_abdfc42b5a139f2994b1b12aa40b9913c}\label{class_enemy_script_abdfc42b5a139f2994b1b12aa40b9913c} 
+override void {\bfseries Update} ()
+\item 
+\Hypertarget{class_enemy_script_a9fb2cb362e13bad43f0a6e1ae663d386}\label{class_enemy_script_a9fb2cb362e13bad43f0a6e1ae663d386} 
+void {\bfseries Change\+Direction} ()
+\item 
+\Hypertarget{class_enemy_script_a68f18f06c9fb6391348a564a9b210a9b}\label{class_enemy_script_a68f18f06c9fb6391348a564a9b210a9b} 
+{\bfseries this} (size\+\_\+t owner, int lane, Game\+Object level=null)
+\item 
+\Hypertarget{class_enemy_script_abdfc42b5a139f2994b1b12aa40b9913c}\label{class_enemy_script_abdfc42b5a139f2994b1b12aa40b9913c} 
+override void {\bfseries Update} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Input} ()
+\item 
+void {\bfseries Update} ()
+\item 
+void {\bfseries Render} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_enemy_script_a38026a60eea83d44b0d1621ee3caa017}\label{class_enemy_script_a38026a60eea83d44b0d1621ee3caa017} 
+static \mbox{\hyperlink{class_enemy_script}{Enemy\+Script}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\item 
+\Hypertarget{class_enemy_script_a38026a60eea83d44b0d1621ee3caa017}\label{class_enemy_script_a38026a60eea83d44b0d1621ee3caa017} 
+static \mbox{\hyperlink{class_enemy_script}{Enemy\+Script}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_enemy_script_a9bf96f5b79d9e21c3ecaa230710bde97}\label{class_enemy_script_a9bf96f5b79d9e21c3ecaa230710bde97} 
+size\+\_\+t {\bfseries m\+Owner}
+\item 
+\Hypertarget{class_enemy_script_accf2bd15d254a3e7944c1c88a2704ded}\label{class_enemy_script_accf2bd15d254a3e7944c1c88a2704ded} 
+Game\+Object {\bfseries m\+Level}
+\item 
+\Hypertarget{class_enemy_script_a8bad0a6cf7ac102529bfc8cefff7523f}\label{class_enemy_script_a8bad0a6cf7ac102529bfc8cefff7523f} 
+int {\bfseries m\+Steps} = 0
+\item 
+\Hypertarget{class_enemy_script_a157691be4e6e4b646eb80978401d6a34}\label{class_enemy_script_a157691be4e6e4b646eb80978401d6a34} 
+int {\bfseries m\+Speed} = 1
+\item 
+\Hypertarget{class_enemy_script_a49226221f2629c109e4b01f47a3df78d}\label{class_enemy_script_a49226221f2629c109e4b01f47a3df78d} 
+int {\bfseries m\+Health} = 45
+\item 
+\Hypertarget{class_enemy_script_a750131d54a4a73edaf87b8c9553c80c7}\label{class_enemy_script_a750131d54a4a73edaf87b8c9553c80c7} 
+Random {\bfseries rng}
+\item 
+\Hypertarget{class_enemy_script_aa9257383700a08dc2b2f9f017ae157e6}\label{class_enemy_script_aa9257383700a08dc2b2f9f017ae157e6} 
+bool {\bfseries x\+Direction\+Right} = true
+\item 
+\Hypertarget{class_enemy_script_abe21c380d8e3ed1706acdf7c309f08fe}\label{class_enemy_script_abe21c380d8e3ed1706acdf7c309f08fe} 
+int {\bfseries m\+Debounce} = 0
+\item 
+\Hypertarget{class_enemy_script_a2fb279af6ac78961250c3d96c825f09b}\label{class_enemy_script_a2fb279af6ac78961250c3d96c825f09b} 
+int {\bfseries m\+Lane} = -\/1
+\item 
+\Hypertarget{class_enemy_script_a3fc4df9169800a914ee118c687c9d9f1}\label{class_enemy_script_a3fc4df9169800a914ee118c687c9d9f1} 
+bool {\bfseries m\+Initialized} = false
+\item 
+\Hypertarget{class_enemy_script_af13b438235961c5227e470767a3a18d1}\label{class_enemy_script_af13b438235961c5227e470767a3a18d1} 
+bool {\bfseries m\+Hit} = false
+\item 
+\Hypertarget{class_enemy_script_a98153f72e9415858a207a64bc579c39b}\label{class_enemy_script_a98153f72e9415858a207a64bc579c39b} 
+string {\bfseries texture}
+\item 
+\Hypertarget{class_enemy_script_a61d30c815898a2b353e127f72739525e}\label{class_enemy_script_a61d30c815898a2b353e127f72739525e} 
+string {\bfseries command}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries m\+Id}
+\item 
+string {\bfseries name}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_enemy_script_a157691be4e6e4b646eb80978401d6a34}\label{class_enemy_script_a157691be4e6e4b646eb80978401d6a34} 
+static int {\bfseries m\+Speed} = 4
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_script_component}{Script\+Component}}}
+\begin{DoxyCompactItemize}
+\item 
+static int {\bfseries s\+Id}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/games/examplegame/scripts.\+d\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/games/guitarhero/scripts.\+d\end{DoxyCompactItemize}

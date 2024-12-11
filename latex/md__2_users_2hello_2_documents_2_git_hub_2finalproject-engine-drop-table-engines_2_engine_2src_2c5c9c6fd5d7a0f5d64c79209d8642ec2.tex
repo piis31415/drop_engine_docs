@@ -1,0 +1,122 @@
+\chapter{eslint-\/visitor-\/keys}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2}\index{eslint-\/visitor-\/keys@{eslint-\/visitor-\/keys}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4678}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4678}%
+
+
+\href{https://www.npmjs.com/package/eslint-visitor-keys}{\texttt{ }} \href{http://www.npmtrends.com/eslint-visitor-keys}{\texttt{ }} \href{https://github.com/eslint/js/actions}{\texttt{ }}
+
+Constants and utilities about visitor keys to traverse AST.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4679}{}\doxysection{\texorpdfstring{💿 Installation}{💿 Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4679}
+Use \href{https://www.npmjs.com/}{\texttt{ npm}} to install.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ eslint-\/visitor-\/keys}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4680}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4680}
+
+\begin{DoxyItemize}
+\item \href{https://nodejs.org/}{\texttt{ Node.\+js}} {\ttfamily \texorpdfstring{$^\wedge$}{\string^}18.18.\+0}, {\ttfamily \texorpdfstring{$^\wedge$}{\string^}20.9.\+0}, or {\ttfamily \texorpdfstring{$>$}{>}=21.\+1.\+0}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4681}{}\doxysection{\texorpdfstring{📖 Usage}{📖 Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4681}
+To use in an ESM file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ *\ as\ evk\ from\ "{}eslint-\/visitor-\/keys"{}}
+
+\end{DoxyCode}
+
+
+To use in a Common\+JS file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ evk\ =\ require("{}eslint-\/visitor-\/keys"{})}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4682}{}\doxysubsection{\texorpdfstring{evk.\+KEYS}{evk.\+KEYS}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4682}
+\begin{quote}
+type\+: {\ttfamily \{ \mbox{[}type\+: string\mbox{]}\+: string\mbox{[}\mbox{]} \texorpdfstring{$\vert$}{|} undefined \}} \end{quote}
+Visitor keys. This keys are frozen.
+
+This is an object. Keys are the type of \href{https://github.com/estree/estree}{\texttt{ ESTree}} nodes. Their values are an array of property names which have child nodes.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(evk.KEYS.AssignmentExpression)\ //\ →\ ["{}left"{},\ "{}right"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4683}{}\doxysubsection{\texorpdfstring{evk.\+get\+Keys(node)}{evk.\+get\+Keys(node)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4683}
+\begin{quote}
+type\+: {\ttfamily (node\+: object) =\texorpdfstring{$>$}{>} string\mbox{[}\mbox{]}} \end{quote}
+Get the visitor keys of a given AST node.
+
+This is similar to {\ttfamily Object.\+keys(node)} of ES Standard, but some keys are excluded\+: {\ttfamily parent}, {\ttfamily leading\+Comments}, {\ttfamily trailing\+Comments}, and names which start with {\ttfamily \+\_\+}.
+
+This will be used to traverse unknown nodes.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ node\ =\ \{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}AssignmentExpression"{},}
+\DoxyCodeLine{\ \ \ \ left:\ \{\ type:\ "{}Identifier"{},\ name:\ "{}foo"{}\ \},}
+\DoxyCodeLine{\ \ \ \ right:\ \{\ type:\ "{}Literal"{},\ value:\ 0\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{console.log(evk.getKeys(node))\ //\ →\ ["{}type"{},\ "{}left"{},\ "{}right"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4684}{}\doxysubsection{\texorpdfstring{evk.\+union\+With(additional\+Keys)}{evk.\+union\+With(additional\+Keys)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4684}
+\begin{quote}
+type\+: {\ttfamily (additional\+Keys\+: object) =\texorpdfstring{$>$}{>} \{ \mbox{[}type\+: string\mbox{]}\+: string\mbox{[}\mbox{]} \texorpdfstring{$\vert$}{|} undefined \}} \end{quote}
+Make the union set with {\ttfamily evk.\+KEYS} and the given keys.
+
+
+\begin{DoxyItemize}
+\item The order of keys is, {\ttfamily additional\+Keys} is at first, then {\ttfamily evk.\+KEYS} is concatenated after that.
+\item It removes duplicated keys as keeping the first one.
+\end{DoxyItemize}
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(evk.unionWith(\{}
+\DoxyCodeLine{\ \ \ \ MethodDefinition:\ ["{}decorators"{}]}
+\DoxyCodeLine{\}))\ //\ →\ \{\ ...,\ MethodDefinition:\ ["{}decorators"{},\ "{}key"{},\ "{}value"{}],\ ...\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4685}{}\doxysection{\texorpdfstring{📰 Change log}{📰 Change log}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4685}
+See \href{https://github.com/eslint/js/releases}{\texttt{ Git\+Hub releases}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4686}{}\doxysection{\texorpdfstring{🍻 Contributing}{🍻 Contributing}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4686}
+Welcome. See \href{https://eslint.org/docs/developer-guide/contributing/}{\texttt{ ESLint contribution guidelines}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4687}{}\doxysubsection{\texorpdfstring{Development commands}{Development commands}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4687}
+
+\begin{DoxyItemize}
+\item {\ttfamily npm test} runs tests and measures code coverage.
+\item {\ttfamily npm run lint} checks source codes with ESLint.
+\item {\ttfamily npm run test\+:open-\/coverage} opens the code coverage report of the previous test with your default browser.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4688}{}\doxysection{\texorpdfstring{Sponsors}{Sponsors}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2c5c9c6fd5d7a0f5d64c79209d8642ec2_autotoc_md4688}
+The following companies, organizations, and individuals support ESLint\textquotesingle{}s ongoing maintenance and development. \href{https://eslint.org/donate}{\texttt{ Become a Sponsor}} to get your logo on our README and website.
+
+\doxysubsubsection*{Platinum Sponsors}
+
+\href{https://automattic.com}{\texttt{ }} \href{https://www.airbnb.com/}{\texttt{ }}
+
+\doxysubsubsection*{Gold Sponsors}
+
+\href{https://trunk.io/}{\texttt{ }}
+
+\doxysubsubsection*{Silver Sponsors}
+
+\href{https://www.jetbrains.com/}{\texttt{ }} \href{https://liftoff.io/}{\texttt{ }} \href{https://americanexpress.io}{\texttt{ }} \href{https://www.workleap.com}{\texttt{ }}
+
+\doxysubsubsection*{Bronze Sponsors}
+
+\href{https://www.crosswordsolver.org/anagram-solver/}{\texttt{ }} \href{https://icons8.com/}{\texttt{ }} \href{https://discord.com}{\texttt{ }} \href{https://www.gitbook.com}{\texttt{ }} \href{https://nx.dev}{\texttt{ }} \href{https://herocoders.com}{\texttt{ }} \href{https://usenextbase.com}{\texttt{ }}
+
+\doxysubsection*{Technology Sponsors}
+
+\href{https://netlify.com}{\texttt{ }} \href{https://algolia.com}{\texttt{ }} \href{https://1password.com}{\texttt{ }}

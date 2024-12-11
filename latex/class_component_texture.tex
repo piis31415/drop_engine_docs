@@ -1,0 +1,81 @@
+\doxysection{Component\+Texture Class Reference}
+\hypertarget{class_component_texture}{}\label{class_component_texture}\index{ComponentTexture@{ComponentTexture}}
+Inheritance diagram for Component\+Texture\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_component_texture}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_texture_a8c3e89609719d76203d106f4ddcb6253}\label{class_component_texture_a8c3e89609719d76203d106f4ddcb6253} 
+{\bfseries this} (size\+\_\+t owner, string camera, \mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}tex\+\_\+reference)
+\begin{DoxyCompactList}\small\item\em Hold a copy of the texture that is referenced. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_component_texture_a13fea149cff3c2528334a0c3dceb1acf}{Input}} ()
+\item 
+\Hypertarget{class_component_texture_a1b347208d0c3b065ee3668156c072199}\label{class_component_texture_a1b347208d0c3b065ee3668156c072199} 
+void {\bfseries Update} ()
+\item 
+\Hypertarget{class_component_texture_a0e85e99bbb59314feab4ddd7e0a7d528}\label{class_component_texture_a0e85e99bbb59314feab4ddd7e0a7d528} 
+void {\bfseries Render} ()
+\item 
+\Hypertarget{class_component_texture_a09860f2c1245a9ca4e1617016e7649d4}\label{class_component_texture_a09860f2c1245a9ca4e1617016e7649d4} 
+void {\bfseries Set\+Animation} (string name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_texture_a7e43acee0414c419a81b90ab9efceb5e}\label{class_component_texture_a7e43acee0414c419a81b90ab9efceb5e} 
+static \mbox{\hyperlink{class_component_texture}{Component\+Texture}} {\bfseries Load\+From\+JSON} (size\+\_\+t id, JSONValue json)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_component_texture_a3fa843af8f32d0f8d84372c0c4235232}\label{class_component_texture_a3fa843af8f32d0f8d84372c0c4235232} 
+size\+\_\+t {\bfseries m\+Owner}
+\item 
+\Hypertarget{class_component_texture_a0bd80999237a910613fc588359ca4f41}\label{class_component_texture_a0bd80999237a910613fc588359ca4f41} 
+string {\bfseries m\+Camera}
+\item 
+\Hypertarget{class_component_texture_a8d7235a1991c00ee4aeca48dc0a4276b}\label{class_component_texture_a8d7235a1991c00ee4aeca48dc0a4276b} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries m\+Texture\+Ref}
+\item 
+\Hypertarget{class_component_texture_a12a4308d824b79ed58e531f8cd749f12}\label{class_component_texture_a12a4308d824b79ed58e531f8cd749f12} 
+\mbox{\hyperlink{class_component_position}{Component\+Position}} {\bfseries m\+Position}
+\item 
+\Hypertarget{class_component_texture_a13e9c39ec7bd112456f1b8054ea561d3}\label{class_component_texture_a13e9c39ec7bd112456f1b8054ea561d3} 
+\mbox{\hyperlink{struct_frame}{Frame}} \texorpdfstring{$\ast$}{*}\mbox{[}$\,$\mbox{]} {\bfseries m\+Frames}
+\item 
+\Hypertarget{class_component_texture_a05f379302f9643aed44a37ecc9976555}\label{class_component_texture_a05f379302f9643aed44a37ecc9976555} 
+long \texorpdfstring{$\ast$}{*}\mbox{[}$\,$\mbox{]}\mbox{[}string\mbox{]} {\bfseries m\+Frame\+Numbers}
+\item 
+\Hypertarget{class_component_texture_a0e2c04beeb6fc15ded175f98ec2c5565}\label{class_component_texture_a0e2c04beeb6fc15ded175f98ec2c5565} 
+string {\bfseries name}
+\item 
+\Hypertarget{class_component_texture_a6890370032db1ea2a8841c355c320925}\label{class_component_texture_a6890370032db1ea2a8841c355c320925} 
+string {\bfseries m\+Current\+Animation\+Name}
+\item 
+\Hypertarget{class_component_texture_a36516cc030af00da844b2985c4c555d5}\label{class_component_texture_a36516cc030af00da844b2985c4c555d5} 
+long {\bfseries m\+Current\+Frame\+Playing}
+\item 
+\Hypertarget{class_component_texture_a55dcdfd4d2073e6b0b14d7318e2836d2}\label{class_component_texture_a55dcdfd4d2073e6b0b14d7318e2836d2} 
+long {\bfseries m\+Last\+Frame\+In\+Sequence}
+\item 
+\Hypertarget{class_component_texture_a8391b2350da4b3c60e65fa74e2f6a33c}\label{class_component_texture_a8391b2350da4b3c60e65fa74e2f6a33c} 
+int {\bfseries m\+Current\+Frame\+Life}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_component_texture_a13fea149cff3c2528334a0c3dceb1acf}\index{ComponentTexture@{ComponentTexture}!Input@{Input}}
+\index{Input@{Input}!ComponentTexture@{ComponentTexture}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}}
+{\footnotesize\ttfamily \label{class_component_texture_a13fea149cff3c2528334a0c3dceb1acf} 
+void Component\+Texture\+::\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Play an animation based on the name of the animation sequence specified in the data file. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/hello/\+Documents/\+Git\+Hub/finalproject-\/engine-\/drop-\/table-\/engines/\+Engine/src/component.\+d\end{DoxyCompactItemize}

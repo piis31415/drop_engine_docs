@@ -1,0 +1,131 @@
+\chapter{Array\+Buffer}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0}\index{ArrayBuffer@{ArrayBuffer}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7611}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7611}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} class corresponds to the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer}{\texttt{ Java\+Script {\ttfamily Array\+Buffer}}} class.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7612}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7612}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7613}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7613}
+Allocates a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance with a given length.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a6769e53eb421e535f5ca642f19b6e69b}{Napi::ArrayBuffer::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keywordtype}{size\_t}\ byteLength);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Length}\+: The length to be allocated, in bytes.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7614}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7614}
+Wraps the provided external data into a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+
+The {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance does not assume ownership for the data and expects it to be valid for the lifetime of the instance. Since the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} is subject to garbage collection this overload is only suitable for data which is static and never needs to be freed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a6769e53eb421e535f5ca642f19b6e69b}{Napi::ArrayBuffer::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ \textcolor{keywordtype}{void}*\ externalData,\ \textcolor{keywordtype}{size\_t}\ byteLength);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} external\+Data}\+: The pointer to the external data to wrap.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Length}\+: The length of the {\ttfamily external\+Data}, in bytes.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7615}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7615}
+Wraps the provided external data into a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+
+The {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance does not assume ownership for the data and expects it to be valid for the lifetime of the instance. The data can only be freed once the {\ttfamily finalize\+Callback} is invoked to indicate that the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} has been released.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Finalizer>}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a6769e53eb421e535f5ca642f19b6e69b}{Napi::ArrayBuffer::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ externalData,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ byteLength,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Finalizer\ finalizeCallback);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} external\+Data}\+: The pointer to the external data to wrap.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Length}\+: The length of the {\ttfamily external\+Data}, in bytes.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Callback}\+: A function to be called when the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} is destroyed. It must implement {\ttfamily operator()}, accept a {\ttfamily void\texorpdfstring{$\ast$}{*}} (which is the {\ttfamily external\+Data} pointer), and return {\ttfamily void}.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7616}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7616}
+Wraps the provided external data into a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+
+The {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance does not assume ownership for the data and expects it to be valid for the lifetime of the instance. The data can only be freed once the {\ttfamily finalize\+Callback} is invoked to indicate that the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} has been released.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Finalizer,\ \textcolor{keyword}{typename}\ H\textcolor{keywordtype}{int}>}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_array_buffer}{Napi::ArrayBuffer}}\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a6769e53eb421e535f5ca642f19b6e69b}{Napi::ArrayBuffer::New}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ externalData,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ byteLength,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Finalizer\ finalizeCallback,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Hint*\ finalizeHint);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} external\+Data}\+: The pointer to the external data to wrap.
+\item {\ttfamily \mbox{[}in\mbox{]} byte\+Length}\+: The length of the {\ttfamily external\+Data}, in bytes.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Callback}\+: The function to be called when the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} is destroyed. It must implement {\ttfamily operator()}, accept a {\ttfamily void\texorpdfstring{$\ast$}{*}} (which is the {\ttfamily external\+Data} pointer) and {\ttfamily Hint\texorpdfstring{$\ast$}{*}}, and return {\ttfamily void}.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Hint}\+: The hint to be passed as the second parameter of the finalize callback.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7617}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7617}
+Initializes an empty instance of the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} class.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_array_buffer_a970ea0ca3c8e8100809d3dfbe62a39f3}{Napi::ArrayBuffer::ArrayBuffer}}();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7618}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7618}
+Initializes a wrapper instance of an existing {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_array_buffer_a970ea0ca3c8e8100809d3dfbe62a39f3}{Napi::ArrayBuffer::ArrayBuffer}}(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create the {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} instance.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The {\ttfamily \doxylink{class_napi_1_1_array_buffer}{Napi\+::\+Array\+Buffer}} reference to wrap.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7619}{}\doxysubsection{\texorpdfstring{Byte\+Length}{Byte\+Length}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7619}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a973786910791e8ac66d59f625a360939}{Napi::ArrayBuffer::ByteLength}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the length of the wrapped data, in bytes.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7620}{}\doxysubsection{\texorpdfstring{Data}{Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2debaadeb34b52f774129a2a3b3ff13e0_autotoc_md7620}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T*\ \mbox{\hyperlink{class_napi_1_1_array_buffer_a8b15260a2bd327f2d648eed5a26b1d24}{Napi::ArrayBuffer::Data}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a pointer the wrapped data. 

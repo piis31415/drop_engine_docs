@@ -1,0 +1,68 @@
+\chapter{Type\+Error}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2}\index{TypeError@{TypeError}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8013}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8013}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} class is a representation of the Java\+Script {\ttfamily Type\+Error} that is thrown when an operand or argument passed to a function is incompatible with the type expected by the operator or function.
+
+The {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} class inherits its behaviors from the {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} class (for more info see\+: \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e664605b8d5c145ca1e142c966805060}{{\ttfamily Napi\+::Error}}{0}).
+
+For more details about error handling refer to the section titled \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2203d072898c38e99e77857f01173178a}{Error handling}{0}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8014}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8014}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8015}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8015}
+Creates a new instance of the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::TypeError::New(\mbox{\hyperlink{namespace_napi}{Napi}}:Env\ env,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} Env}\+: The environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} message}\+: Null-\/terminated string to be used as the message for the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}}.
+\end{DoxyItemize}
+
+Returns an instance of a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8016}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8016}
+Creates a new instance of a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::TypeError::New(\mbox{\hyperlink{namespace_napi}{Napi}}:Env\ env,\ \textcolor{keyword}{const}\ std::string\&\ message);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} Env}\+: The environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} message}\+: Reference string to be used as the message for the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}}.
+\end{DoxyItemize}
+
+Returns an instance of a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8017}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8017}
+Creates a new empty instance of a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::TypeError::TypeError();}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8018}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_298ead7d73c803a3bc0c0882859a3cbb2_autotoc_md8018}
+Initializes a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} instance from an existing Java\+Script error object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::TypeError::TypeError(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_value\ value);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} Env}\+: The environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} value}\+: The {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} reference to wrap.
+\end{DoxyItemize}
+
+Returns an instance of a {\ttfamily \doxylink{class_napi_1_1_type_error}{Napi\+::\+Type\+Error}} object. 

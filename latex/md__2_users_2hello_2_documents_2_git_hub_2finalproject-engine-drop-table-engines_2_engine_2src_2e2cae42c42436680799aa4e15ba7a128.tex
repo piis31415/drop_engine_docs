@@ -1,0 +1,44 @@
+\chapter{buffer-\/crc32}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128}\index{buffer-\/crc32@{buffer-\/crc32}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2687}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2687}%
+
+
+\href{http://travis-ci.org/brianloveswords/buffer-crc32}{\texttt{ }}
+
+crc32 that works with binary data and fancy character sets, outputs buffer, signed or unsigned data and has tests.
+
+Derived from the sample CRC implementation in the PNG specification\+: \href{http://www.w3.org/TR/PNG/\#D-CRCAppendix}{\texttt{ http\+://www.\+w3.\+org/\+TR/\+PNG/\#\+D-\/\+CRCAppendix}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2688}{}\doxysection{\texorpdfstring{install}{install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2688}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ buffer-\/crc32}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2689}{}\doxysection{\texorpdfstring{example}{example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2689}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ crc32\ =\ require('buffer-\/crc32');}
+\DoxyCodeLine{//\ works\ with\ buffers}
+\DoxyCodeLine{var\ buf\ =\ Buffer([0x00,\ 0x73,\ 0x75,\ 0x70,\ 0x20,\ 0x62,\ 0x72,\ 0x6f,\ 0x00])}
+\DoxyCodeLine{crc32(buf)\ //\ -\/>\ <Buffer\ 94\ 5a\ ab\ 4a>}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ has\ convenience\ methods\ for\ getting\ signed\ or\ unsigned\ ints}
+\DoxyCodeLine{crc32.signed(buf)\ //\ -\/>\ -\/1805997238}
+\DoxyCodeLine{crc32.unsigned(buf)\ //\ -\/>\ 2488970058}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ will\ cast\ to\ buffer\ if\ given\ a\ string,\ so\ you\ can}
+\DoxyCodeLine{//\ directly\ use\ foreign\ characters\ safely}
+\DoxyCodeLine{crc32('自動販売機')\ //\ -\/>\ <Buffer\ cb\ 03\ 1a\ c5>}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ and\ works\ in\ append\ mode\ too}
+\DoxyCodeLine{var\ partialCrc\ =\ crc32('hey');}
+\DoxyCodeLine{var\ partialCrc\ =\ crc32('\ ',\ partialCrc);}
+\DoxyCodeLine{var\ partialCrc\ =\ crc32('sup',\ partialCrc);}
+\DoxyCodeLine{var\ partialCrc\ =\ crc32('\ ',\ partialCrc);}
+\DoxyCodeLine{var\ finalCrc\ =\ crc32('bros',\ partialCrc);\ //\ -\/>\ <Buffer\ 47\ fa\ 55\ 70>}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2690}{}\doxysection{\texorpdfstring{tests}{tests}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2690}
+This was tested against the output of zlib\textquotesingle{}s crc32 method. You can run the tests with{\ttfamily npm test} (requires tap)\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2691}{}\doxysection{\texorpdfstring{see also}{see also}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2691}
+\href{https://github.com/alexgorbatchev/node-crc}{\texttt{ https\+://github.\+com/alexgorbatchev/node-\/crc}}, {\ttfamily crc.\+buffer.\+crc32} also supports buffer inputs and return unsigned ints (thanks @tjholowaychuk).\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2692}{}\doxysection{\texorpdfstring{license}{license}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2e2cae42c42436680799aa4e15ba7a128_autotoc_md2692}
+MIT/\+X11 

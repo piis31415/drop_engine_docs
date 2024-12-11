@@ -1,0 +1,66 @@
+\chapter{Handle\+Scope}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730}\index{HandleScope@{HandleScope}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7872}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7872}%
+
+
+The Handle\+Scope class is used to manage the lifetime of object handles which are created through the use of node-\/addon-\/api. These handles keep an object alive in the heap in order to ensure that the objects are not collected while native code is using them. A handle may be created when any new node-\/addon-\/api Value or one of its subclasses is created or returned. For more details refer to the section titled \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25b21788b17525e496ee9502470401272}{Object lifetime management}{0}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7873}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7873}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7874}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7874}
+Creates a new handle scope on the stack.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::HandleScope::HandleScope(\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}} object.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7875}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7875}
+Creates a new handle scope on the stack.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::HandleScope::HandleScope(\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_handle_scope}{Napi::HandleScope}}\ scope);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}} in which the scope passed in was created.
+\item {\ttfamily \mbox{[}in\mbox{]} scope}\+: pre-\/existing {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}}.
+\end{DoxyItemize}
+
+Returns a new {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}} instance which wraps the napi\+\_\+handle\+\_\+scope handle passed in. This can be used to mix usage of the C N-\/\+API and node-\/addon-\/api.
+
+operator Handle\+Scope\+::napi\+\_\+handle\+\_\+scope
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{operator}\ Napi::HandleScope::napi\_handle\_scope()\ const}
+
+\end{DoxyCode}
+
+
+Returns the N-\/\+API napi\+\_\+handle\+\_\+scope wrapped by the {\ttfamily \doxylink{class_napi_1_1_escapable_handle_scope}{Napi\+::\+Escapable\+Handle\+Scope}} object. This can be used to mix usage of the C N-\/\+API and node-\/addon-\/api by allowing the class to be used be converted to a napi\+\_\+handle\+\_\+scope.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7876}{}\doxysubsection{\texorpdfstring{Destructor}{Destructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7876}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::HandleScope::\string~HandleScope();}
+
+\end{DoxyCode}
+
+
+Deletes the {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}} instance and allows any objects/handles created in the scope to be collected by the garbage collector. There is no guarantee as to when the gargbage collector will do this.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7877}{}\doxysubsection{\texorpdfstring{Env}{Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2117f0f247dfc3ce1c5a14452f0eec730_autotoc_md7877}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ Napi::HandleScope::Env()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}} associated with the {\ttfamily \doxylink{class_napi_1_1_handle_scope}{Napi\+::\+Handle\+Scope}}. 

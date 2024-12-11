@@ -1,0 +1,39 @@
+\chapter{@jridgewell/set-\/array}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231}\index{"@jridgewell/set-\/array@{"@jridgewell/set-\/array}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md999}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md999}%
+
+
+\begin{quote}
+Like a Set, but provides the index of the {\ttfamily key} in the backing array \end{quote}
+This is designed to allow synchronizing a second array with the contents of the backing array, like how in a sourcemap {\ttfamily sources\+Content\mbox{[}i\mbox{]}} is the source content associated with {\ttfamily source\mbox{[}i\mbox{]}}, and there are never duplicates.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md1000}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md1000}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @jridgewell/set-\/array}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md1001}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_280362c9a2a8bc0530e6829cf20496231_autotoc_md1001}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ SetArray,\ get,\ put,\ pop\ \}\ from\ '@jridgewell/set-\/array';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ sa\ =\ new\ SetArray();}
+\DoxyCodeLine{}
+\DoxyCodeLine{let\ index\ =\ put(sa,\ 'first');}
+\DoxyCodeLine{assert.strictEqual(index,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{index\ =\ put(sa,\ 'second');}
+\DoxyCodeLine{assert.strictEqual(index,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert.deepEqual(sa.array,\ [\ 'first',\ 'second'\ ]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{index\ =\ get(sa,\ 'first');}
+\DoxyCodeLine{assert.strictEqual(index,\ 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{pop(sa);}
+\DoxyCodeLine{index\ =\ get(sa,\ 'second');}
+\DoxyCodeLine{assert.strictEqual(index,\ undefined);}
+\DoxyCodeLine{assert.deepEqual(sa.array,\ [\ 'first'\ ]);}
+
+\end{DoxyCode}
+ 

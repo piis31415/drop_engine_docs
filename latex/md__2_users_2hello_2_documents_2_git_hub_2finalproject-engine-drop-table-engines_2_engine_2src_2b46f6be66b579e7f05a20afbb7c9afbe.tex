@@ -1,0 +1,50 @@
+\chapter{dmg-\/license}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe}\index{dmg-\/license@{dmg-\/license}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3880}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3880}%
+
+
+A Type\+Script/\+Java\+Script library and command-\/line tool for attaching license agreements to mac\+OS {\ttfamily .dmg} files, which the user must accept before mounting the disk image. Doing this correctly is surprisingly complicated, so this package is here to automate it.
+
+{\bfseries{Warning\+:}} Attaching license agreements to disk images may become impossible in future versions of mac\+OS. It is done using the {\ttfamily hdiutil udifrez} command, which is deprecated as of mac\+OS 12 with no apparent replacement. See \href{https://github.com/argv-minus-one/dmg-license/issues/11}{\texttt{ issue \#11}} for details.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3881}{}\doxysection{\texorpdfstring{Contents}{Contents}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3881}
+
+\begin{DoxyItemize}
+\item License
+\item Command Line Usage
+\begin{DoxyItemize}
+\item Installation
+\item Command Syntax
+\end{DoxyItemize}
+\item API
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3882}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3882}
+{\ttfamily dmg-\/license} itself is provided under the terms of the MIT license. You can find the text of the MIT license in the \mbox{[}LICENSE\mbox{]}(LICENSE) file.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3883}{}\doxysection{\texorpdfstring{Command Line Usage}{Command Line Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3883}
+Although this package is mainly intended for use by {\ttfamily .dmg}-\/generating tools like \href{https://github.com/LinusU/node-appdmg}{\texttt{ node-\/appdmg}}, it can also be used by itself from the command line, to attach a license agreement to an existing {\ttfamily .dmg} file.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3884}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3884}
+You can install this package and use the command-\/line tool by running {\ttfamily npm install -\/-\/global dmg-\/license}. This will add a {\ttfamily dmg-\/license} command to your system.
+
+Alternatively, you can run it without installing, using {\ttfamily npx dmg-\/license}. Note that running it this way is relatively slow.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3885}{}\doxysubsection{\texorpdfstring{Command Syntax}{Command Syntax}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3885}
+Usage\+: {\ttfamily dmg-\/license \mbox{[}{\itshape options…}\mbox{]} {\itshape json-\/path} {\itshape dmg-\/path}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3886}{}\doxysubsubsection{\texorpdfstring{Parameters}{Parameters}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3886}
+
+\begin{DoxyDescription}
+\item[{\ttfamily {\itshape json-\/path}} ]\hfill \\
+Path to a \href{docs/License\%20Specifications.md}{\texttt{ JSON license specification}} file. 
+\item[{\ttfamily {\itshape dmg-\/path}} ]\hfill \\
+Path to a disk image ({\ttfamily .dmg}) file. 
+\end{DoxyDescription}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3887}{}\doxysubsubsection{\texorpdfstring{Options}{Options}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3887}
+
+\begin{DoxyDescription}
+\item[{\ttfamily -\/v}, {\ttfamily --verbose} ]\hfill \\
+Show stack traces for warnings and errors.
+
+
+\item[{\ttfamily -\/q}, {\ttfamily --quiet} ]\hfill \\
+Don\textquotesingle{}t show warnings at all.
+
+
+\item[{\ttfamily -\/h}, {\ttfamily -\/?}, {\ttfamily --help} ]\hfill \\
+Show help, without doing anything else.
+
+
+\item[{\ttfamily -\/V}, {\ttfamily --version} ]\hfill \\
+Show version. 
+\end{DoxyDescription}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3888}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2b46f6be66b579e7f05a20afbb7c9afbe_autotoc_md3888}
+API documentation is in the {\ttfamily docs/api} folder. 

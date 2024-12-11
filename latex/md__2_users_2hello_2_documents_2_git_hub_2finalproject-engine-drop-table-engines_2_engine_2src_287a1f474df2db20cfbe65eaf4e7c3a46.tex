@@ -1,0 +1,21 @@
+\chapter{truncate-\/utf8-\/bytes \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/parshap/truncate-\/utf8-\/bytes"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/parshap/truncate-\/utf8-\/bytes.\+svg?branch=master"{} alt="{}build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46}\index{truncate-\/utf8-\/bytes $<$a href="{}http://travis-\/ci.org/parshap/truncate-\/utf8-\/bytes"{} $>$$<$img src="{}https://secure.travis-\/ci.org/parshap/truncate-\/utf8-\/bytes.svg?branch=master"{} alt="{}build status"{}/$>$$<$/a$>$@{truncate-\/utf8-\/bytes $<$a href=""http://travis-\/ci.org/parshap/truncate-\/utf8-\/bytes"" $>$$<$img src=""https://secure.travis-\/ci.org/parshap/truncate-\/utf8-\/bytes.svg?branch=master"" alt=""build status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10355}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10355}%
+
+
+Truncate a string to the given length in bytes. Correctly handles multi-\/byte characters and surrogate pairs.
+
+A browser implementation that doesn\textquotesingle{}t use {\ttfamily Buffer.\+byte\+Length} is provided to minimize build size.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10356}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10356}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ truncate\ =\ require("{}truncate-\/utf8-\/bytes"{})}
+\DoxyCodeLine{var\ str\ =\ "{}a☃"{}\ //\ a\ =\ 1\ byte,\ ☃\ =\ 3\ bytes}
+\DoxyCodeLine{console.log(truncate(str,\ 2))}
+\DoxyCodeLine{//\ -\/>\ "{}a"{}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10357}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10357}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10358}{}\doxysubsection{\texorpdfstring{{\ttfamily var truncate = require("{}truncate-\/utf8-\/bytes"{})}}{{\ttfamily var truncate = require("{}truncate-\/utf8-\/bytes"{})}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10358}
+{\itshape When using browserify or webpack}, this automatically resolves to an implementation that does not use {\ttfamily Buffer.\+byte\+Length}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10359}{}\doxysubsection{\texorpdfstring{{\ttfamily truncate(string, length)}}{{\ttfamily truncate(string, length)}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_287a1f474df2db20cfbe65eaf4e7c3a46_autotoc_md10359}
+Returns {\ttfamily string} truncated to at most {\ttfamily length} bytes in length. 

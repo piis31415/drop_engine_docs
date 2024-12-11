@@ -1,0 +1,71 @@
+\chapter{External (template)}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a}\index{External (template)@{External (template)}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7826}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7826}%
+
+
+The {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} template class implements the ability to create a {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} object with arbitrary C++ data. It is the user\textquotesingle{}s responsibility to manage the memory for the arbitrary C++ data.
+
+{\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} objects can be created with an optional Finalizer function and optional Hint value. The Finalizer function, if specified, is called when your {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object is released by Node\textquotesingle{}s garbage collector. It gives your code the opportunity to free any dynamically created data. If you specify a Hint value, it is passed to your Finalizer function.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7827}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7827}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7828}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7828}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_external}{Napi::External}}\ Napi::External::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ T*\ data);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: The arbitrary C++ data to be held by the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\end{DoxyItemize}
+
+Returns the created {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7829}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7829}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_external}{Napi::External}}\ Napi::External::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ data,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Finalizer\ finalizeCallback);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: The arbitrary C++ data to be held by the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Callback}\+: A function called when the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object is released by the garbage collector accepting a T\texorpdfstring{$\ast$}{*} and returning void.
+\end{DoxyItemize}
+
+Returns the created {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7830}{}\doxysubsection{\texorpdfstring{New}{New}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7830}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_external}{Napi::External}}\ Napi::External::New(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T*\ data,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Finalizer\ finalizeCallback,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Hint*\ finalizeHint);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: The arbitrary C++ data to be held by the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Callback}\+: A function called when the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object is released by the garbage collector accepting T\texorpdfstring{$\ast$}{*} and Hint\texorpdfstring{$\ast$}{*} parameters and returning void.
+\item {\ttfamily \mbox{[}in\mbox{]} finalize\+Hint}\+: A hint value passed to the {\ttfamily finalize\+Callback} function.
+\end{DoxyItemize}
+
+Returns the created {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7831}{}\doxysubsection{\texorpdfstring{Data}{Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_219b282456deffe06518846faa6a2b25a_autotoc_md7831}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T*\ Napi::External::Data()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a pointer to the arbitrary C++ data held by the {\ttfamily \doxylink{class_napi_1_1_external}{Napi\+::\+External}} object. 

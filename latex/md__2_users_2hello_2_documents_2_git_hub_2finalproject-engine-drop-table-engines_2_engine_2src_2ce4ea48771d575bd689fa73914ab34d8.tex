@@ -1,0 +1,278 @@
+\chapter{Property Descriptor}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8}\index{Property Descriptor@{Property Descriptor}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7957}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7957}%
+
+
+A \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2664783051e3556aa75aa8a5d3640a968}{{\ttfamily Napi\+::Object}}{0} can be assigned properites via its \href{object.md\#defineproperty}{\texttt{ {\ttfamily Define\+Property}}} and \href{object.md\#defineproperties}{\texttt{ {\ttfamily Define\+Properties}}} functions, which take Property\+Descrptor(s) as their parameters. The {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} can contain either values or functions, which are then assigned to the {\ttfamily \doxylink{class_napi_1_1_object}{Napi\+::\+Object}}. Note that a single instance of a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} class can only contain either one value, or at most two functions. Property\+Descriptors can only be created through the class methods \`{}\+Accessor\`{}, \`{}\+Function\`{}, or \`{}\+Value\`{}, each of which return a new static instance of a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7958}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7958}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <napi.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_napi}{Napi}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Value}}\ TestGetter(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_callback_info}{CallbackInfo}}\&\ info)\ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ Boolean::New(info.Env(),\ testValue);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ TestSetter(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_callback_info}{CallbackInfo}}\&\ info)\ \{}
+\DoxyCodeLine{\ \ \ testValue\ =\ info[0].As<\mbox{\hyperlink{class_napi_1_1_boolean}{Boolean}}>();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Value}}\ TestFunction(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_callback_info}{CallbackInfo}}\&\ info)\ \{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ Boolean::New(info.Env(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Void\ Init(\mbox{\hyperlink{class_napi_1_1_env}{Env}}\ env)\ \{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Create\ an\ object.}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_object}{Object}}\ obj\ =\ Object::New(env);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Accessor}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{PropertyDescriptor}}\ pd1\ =\ PropertyDescriptor::Accessor(env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ obj,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}pd1"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TestGetter);}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{PropertyDescriptor}}\ pd2\ =\ PropertyDescriptor::Accessor(env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ obj,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}pd2"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TestGetter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TestSetter);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Function}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{PropertyDescriptor}}\ pd3\ =\ PropertyDescriptor::Function(env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}function"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TestFunction);}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Value}}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_boolean}{Boolean}}\ true\_bool\ =\ Boolean::New(env,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{PropertyDescriptor}}\ pd4\ =}
+\DoxyCodeLine{\ \ \ \ \ \ PropertyDescriptor::Value(\textcolor{stringliteral}{"{}boolean\ value"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_boolean_aabad369f3cb107c7c1f6ddd2c6054d0a}{Napi::Boolean::New}}(env,\ \textcolor{keyword}{true}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_writable);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Assign\ properties\ to\ the\ object.}}
+\DoxyCodeLine{\ \ obj.\mbox{\hyperlink{class_napi_1_1_object_aa1166d009326308db792243afbb2c878}{DefineProperties}}(\{pd1,\ pd2,\ pd3,\ pd4\});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7959}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7959}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7960}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7960}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::PropertyDescriptor::PropertyDescriptor\ (\mbox{\hyperlink{structnapi__property__descriptor}{napi\_property\_descriptor}}\ desc);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} desc}\+: A Property\+Descriptor that is needed in order to create another Property\+Descriptor.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7961}{}\doxysubsection{\texorpdfstring{Accessor}{Accessor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7961}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Accessor\ (\_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Getter\ getter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name used for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} getter}\+: A getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a Property\+Descriptor that contains a function.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily napi\+\_\+value value}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}
+
+{\bfseries{This signature is deprecated. It will result in a memory leak if used.}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Accessor\ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ \textcolor{keywordtype}{object},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Getter\ getter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environemnt in which to create this accessor.
+\item {\ttfamily \mbox{[}in\mbox{]} object}\+: The object on which the accessor will be defined.
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name used for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} getter}\+: A getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} that contains a {\ttfamily Getter} accessor.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Accessor\ (\_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Getter\ getter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Setter\ setter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name of the getter and setter function.
+\item {\ttfamily \mbox{[}in\mbox{]} getter}\+: The getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} setter}\+: The setter function.
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} that contains a {\ttfamily Getter} and {\ttfamily Setter} function.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily napi\+\_\+value value}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}
+
+{\bfseries{This signature is deprecated. It will result in a memory leak if used.}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Accessor\ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ \textcolor{keywordtype}{object},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Getter\ getter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Setter\ setter,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environemnt in which to create this accessor.
+\item {\ttfamily \mbox{[}in\mbox{]} object}\+: The object on which the accessor will be defined.
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name of the getter and setter function.
+\item {\ttfamily \mbox{[}in\mbox{]} getter}\+: The getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} setter}\+: The setter function.
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} that contains a {\ttfamily Getter} and {\ttfamily Setter} function.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7962}{}\doxysubsection{\texorpdfstring{Function}{Function}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7962}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Function\ (\_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Callable\ cb,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name of the Callable function.
+\item {\ttfamily \mbox{[}in\mbox{]} cb}\+: The function
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} that contains a callable {\ttfamily \doxylink{class_napi_1_1_function}{Napi\+::\+Function}}.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily napi\+\_\+value value}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}
+
+{\bfseries{This signature is deprecated. It will result in a memory leak if used.}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Function\ (}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Callable\ cb,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *data\ =\ \textcolor{keyword}{nullptr});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The environment in which to create this accessor.
+\item {\ttfamily \mbox{[}in\mbox{]} name}\+: The name of the Callable function.
+\item {\ttfamily \mbox{[}in\mbox{]} cb}\+: The function
+\item {\ttfamily \mbox{[}in\mbox{]} attributes}\+: Potential attributes for the getter function.
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: A pointer to data of any type, default is a null pointer.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_property_descriptor}{Napi\+::\+Property\+Descriptor}} that contains a callable {\ttfamily \doxylink{class_napi_1_1_function}{Napi\+::\+Function}}.
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7963}{}\doxysubsection{\texorpdfstring{Value}{Value}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7963}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \mbox{\hyperlink{class_napi_1_1_property_descriptor}{Napi::PropertyDescriptor}}\ Napi::PropertyDescriptor::Value\ (\_\_\_\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_value\ value,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ napi\_property\_attributes\ attributes\ =\ napi\_default);}
+
+\end{DoxyCode}
+
+
+The name of the property can be any of the following types\+:
+\begin{DoxyItemize}
+\item {\ttfamily const char\texorpdfstring{$\ast$}{*}}
+\item {\ttfamily const std\+::string \&}
+\item {\ttfamily napi\+\_\+value value}
+\item {\ttfamily \doxylink{class_napi_1_1_name}{Napi\+::\+Name}}
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7964}{}\doxysection{\texorpdfstring{Related Information}{Related Information}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7964}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7965}{}\doxysubsection{\texorpdfstring{napi\+\_\+property\+\_\+attributes}{napi\+\_\+property\+\_\+attributes}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2ce4ea48771d575bd689fa73914ab34d8_autotoc_md7965}
+{\ttfamily napi\+\_\+property\+\_\+attributes} are flags used to indicate to Java\+Script certain permissions that the property is meant to have. The following are the flag options\+:
+\begin{DoxyItemize}
+\item napi\+\_\+default,
+\item napi\+\_\+writable,
+\item napi\+\_\+enumerable,
+\item napi\+\_\+configurable For more information on the flags and on napi\+\_\+property\+\_\+attributes, please read the documentation \href{https://github.com/nodejs/node/blob/master/doc/api/n-api.md\#napi_property_attributes}{\texttt{ here}}. 
+\end{DoxyItemize}

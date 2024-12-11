@@ -1,0 +1,68 @@
+\chapter{node-\/gyp}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2}\index{node-\/gyp@{node-\/gyp}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7881}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7881}%
+
+
+C++ code needs to be compiled into executable form whether it be as an object file to linked with others, a shared library, or a standalone executable.
+
+The main reason for this is that we need to link to the Node.\+js dependencies and headers correctly, another reason is that we need a cross platform way to build C++ source into binary for the target platform.
+
+Until now {\bfseries{node-\/gyp}} is the {\bfseries{de-\/facto}} standard build tool for writing Node.\+js addons. It\textquotesingle{}s based on Google\textquotesingle{}s {\bfseries{gyp}} build tool, which abstract away many of the tedious issues related to cross platform building.
+
+{\bfseries{node-\/gyp}} uses a file called {\ttfamily binding.\+gyp} that is located on the root of your addon project.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.gyp}
+
+\end{DoxyCode}
+ file, contains all building configurations organized with a JSON like syntax. The most important parameter is the {\bfseries{target}} that must be set to the same value used on the initialization code of the addon as in the examples reported below\+:\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7882}{}\doxysubsection{\texorpdfstring{{\bfseries{binding.\+gyp}}}{{\bfseries{binding.\+gyp}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7882}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}targets"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \#\ myModule\ is\ the\ name\ of\ your\ native\ addon}
+\DoxyCodeLine{\ \ \ \ \ \ "{}target\_name"{}:\ "{}myModule"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}sources"{}:\ ["{}src/my\_module.cc"{},\ ...],}
+\DoxyCodeLine{\ \ \ \ \ \ ...}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7883}{}\doxysubsection{\texorpdfstring{{\bfseries{my\+\_\+module.\+cc}}}{{\bfseries{my\+\_\+module.\+cc}}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7883}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <napi.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ Init(\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ env,\ \mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ exports)\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ exports;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{NODE\_API\_MODULE(NODE\_GYP\_MODULE\_NAME,\ Init)}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7884}{}\doxysection{\texorpdfstring{{\bfseries{node-\/gyp}} reference}{{\bfseries{node-\/gyp}} reference}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2a999124e5d2185f5a4fa2a8fca0b7ae2_autotoc_md7884}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/node-gyp\#installation}{\texttt{ Installation}}
+\item \href{https://www.npmjs.com/package/node-gyp\#how-to-use}{\texttt{ How to use}}
+\item \href{https://www.npmjs.com/package/node-gyp\#the-bindinggyp-file}{\texttt{ The binding.\+gyp file}}
+\item \href{https://www.npmjs.com/package/node-gyp\#commands}{\texttt{ Commands}}
+\item \href{https://www.npmjs.com/package/node-gyp\#command-options}{\texttt{ Command options}}
+\item \href{https://www.npmjs.com/package/node-gyp\#configuration}{\texttt{ Configuration}}
+\end{DoxyItemize}
+
+Sometimes finding the right settings for {\ttfamily binding.\+gyp} is not easy so to accomplish at most complicated task please refer to\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://gyp.gsrc.io/index.md}{\texttt{ GYP documentation}}
+\item \href{https://github.com/nodejs/node-gyp/wiki}{\texttt{ node-\/gyp wiki}} 
+\end{DoxyItemize}

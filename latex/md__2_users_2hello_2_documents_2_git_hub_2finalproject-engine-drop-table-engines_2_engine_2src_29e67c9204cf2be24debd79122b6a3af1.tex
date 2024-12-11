@@ -1,0 +1,69 @@
+\chapter{Env}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1}\index{Env@{Env}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7783}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7783}%
+
+
+The opaque data structure containing the environment in which the request is being run.
+
+The Env object is usually created and passed by the Node.\+js runtime or node-\/addon-\/api infrastructure.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7784}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7784}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7785}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7785}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::Env::Env(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment from which to construct the {\ttfamily \doxylink{class_napi_1_1_env}{Napi\+::\+Env}} object.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7786}{}\doxysubsection{\texorpdfstring{napi\+\_\+env}{napi\+\_\+env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7786}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{operator}\ \mbox{\hyperlink{structnapi__env____}{napi\_env}}()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily napi\+\_\+env} opaque data structure representing the environment.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7787}{}\doxysubsection{\texorpdfstring{Global}{Global}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7787}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_object}{Napi::Object}}\ Napi::Env::Global()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_object}{Napi\+::\+Object}} representing the environment\textquotesingle{}s Java\+Script Global Object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7788}{}\doxysubsection{\texorpdfstring{Undefined}{Undefined}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7788}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ Napi::Env::Undefined()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} representing the environment\textquotesingle{}s Java\+Script Undefined Object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7789}{}\doxysubsection{\texorpdfstring{Null}{Null}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7789}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ Napi::Env::Null()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} representing the environment\textquotesingle{}s Java\+Script Null Object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7790}{}\doxysubsection{\texorpdfstring{Is\+Exception\+Pending}{Is\+Exception\+Pending}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7790}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ Napi::Env::IsExceptionPending()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a {\ttfamily bool} indicating if an exception is pending in the environment.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7791}{}\doxysubsection{\texorpdfstring{Get\+And\+Clear\+Pending\+Exception}{Get\+And\+Clear\+Pending\+Exception}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_29e67c9204cf2be24debd79122b6a3af1_autotoc_md7791}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_error}{Napi::Error}}\ Napi::Env::GetAndClearPendingException();}
+
+\end{DoxyCode}
+
+
+Returns an {\ttfamily \doxylink{class_napi_1_1_error}{Napi\+::\+Error}} object representing the environment\textquotesingle{}s pending exception, if any. 

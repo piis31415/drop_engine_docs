@@ -1,0 +1,25 @@
+\chapter{@electron/universal}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19}\index{"@electron/universal@{"@electron/universal}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md775}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md775}%
+
+
+\begin{quote}
+Create universal mac\+OS Electron applications \end{quote}
+\href{https://circleci.com/gh/electron/universal}{\texttt{ }} \href{https://npm.im/@electron/universal}{\texttt{ }}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md776}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md776}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ makeUniversalApp\ \}\ from\ '@electron/universal';}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ makeUniversalApp(\{}
+\DoxyCodeLine{\ \ x64AppPath:\ 'path/to/App\_x64.app',}
+\DoxyCodeLine{\ \ arm64AppPath:\ 'path/to/App\_arm64.app',}
+\DoxyCodeLine{\ \ outAppPath:\ 'path/to/App\_universal.app',}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md777}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md777}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md778}{}\doxysubsubsection{\texorpdfstring{The app is twice as big now, why?}{The app is twice as big now, why?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md778}
+Well, a Universal app isn\textquotesingle{}t anything magical. It is literally the x64 app and the arm64 app glued together into a single application. It\textquotesingle{}s twice as big because it contains two apps in one.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md779}{}\doxysubsubsection{\texorpdfstring{What about native modules?}{What about native modules?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md779}
+The way {\ttfamily @electron/universal} works today means you don\textquotesingle{}t need to worry about things like building universal versions of your native modules. As long as your x64 and arm64 apps work in isolation the Universal app will work as well.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md780}{}\doxysubsubsection{\texorpdfstring{How do I build my app for Apple silicon in the first place?}{How do I build my app for Apple silicon in the first place?}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_24bee799b98e95b5ae172fbc051145f19_autotoc_md780}
+Check out the \href{https://www.electronjs.org/blog/apple-silicon}{\texttt{ Electron Apple silicon blog post}} 

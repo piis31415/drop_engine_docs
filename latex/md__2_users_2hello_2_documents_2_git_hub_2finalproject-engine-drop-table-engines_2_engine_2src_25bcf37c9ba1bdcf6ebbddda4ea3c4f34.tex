@@ -1,0 +1,52 @@
+\chapter{Force npm to use global installed node-\/gyp}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34}\index{Force npm to use global installed node-\/gyp@{Force npm to use global installed node-\/gyp}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8202}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8202}%
+
+
+{\bfseries{Note\+: These instructions only work with npm 6 or older. For a solution that works with npm 8 (or older), see \doxysectlink{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2293b1e162a2446c3e18a466b5be067cf}{Updating-\/npm-\/bundled-\/node-\/gyp.md}{0}.}}
+
+\href{https://github.com/nodejs/node-gyp/labels/ERR\%21\%20node-gyp\%20-v\%20\%3C\%3D\%20v5.1.0}{\texttt{ Many issues}} are opened by users who are not running a \href{https://github.com/nodejs/node-gyp/releases}{\texttt{ current version of node-\/gyp}}.
+
+npm bundles its own, internal, copy of node-\/gyp located at {\ttfamily npm/node\+\_\+modules}, within npm\textquotesingle{}s private dependencies which are separate from {\itshape globally} accessible packages. Therefore this internal copy of node-\/gyp is independent from any globally installed copy of node-\/gyp that may have been installed via {\ttfamily npm install -\/g node-\/gyp}.
+
+So npm\textquotesingle{}s internal copy of node-\/gyp {\bfseries{isn\textquotesingle{}t}} stored inside {\itshape global} {\ttfamily node\+\_\+modules} and thus isn\textquotesingle{}t available for use as a standalone package. npm uses it\textquotesingle{}s {\itshape internal} copy of {\ttfamily node-\/gyp} to automatically build native addons.
+
+When you install a {\itshape new} version of node-\/gyp outside of npm, it\textquotesingle{}ll go into your {\itshape global} {\ttfamily node\+\_\+modules}, but not under the {\ttfamily npm/node\+\_\+modules} (where internal copy of node-\/gyp is stored). So it will get into your {\ttfamily \$PATH} and you will be able to use this globally installed version ({\bfseries{but not internal node-\/gyp of npm}}) as any other globally installed package.
+
+The catch is that npm {\bfseries{won\textquotesingle{}t}} use global version unless you tell it to, it\textquotesingle{}ll keep on using the {\bfseries{internal one}}. You need to instruct it to by setting the {\ttfamily node\+\_\+gyp} config variable (which goes into your {\ttfamily \texorpdfstring{$\sim$}{\string~}/.npmrc}). You do this by running the {\ttfamily npm config set} command as below. Then npm will use the command in the path you supply whenever it needs to build a native addon.
+
+{\bfseries{Important}}\+: You also need to remember to unset this when you upgrade npm with a newer version of node-\/gyp, or you have to manually keep your globally installed node-\/gyp to date. See "{}\+Undo"{} below.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8203}{}\doxysection{\texorpdfstring{Linux and mac\+OS}{Linux and mac\+OS}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8203}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/global\ node-\/gyp@latest}
+\DoxyCodeLine{npm\ config\ set\ node\_gyp\ \$(npm\ prefix\ -\/g)/lib/node\_modules/node-\/gyp/bin/node-\/gyp.js}
+
+\end{DoxyCode}
+
+
+{\ttfamily sudo} may be required for the first command if you get a permission error.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8204}{}\doxysection{\texorpdfstring{Windows}{Windows}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8204}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8205}{}\doxysubsection{\texorpdfstring{Windows Command Prompt}{Windows Command Prompt}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8205}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/global\ node-\/gyp@latest}
+\DoxyCodeLine{for\ /f\ "{}delims="{}\ \%P\ in\ ('npm\ prefix\ -\/g')\ do\ npm\ config\ set\ node\_gyp\ "{}\%P\(\backslash\)node\_modules\(\backslash\)node-\/gyp\(\backslash\)bin\(\backslash\)node-\/gyp.js"{}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8206}{}\doxysubsection{\texorpdfstring{Powershell}{Powershell}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8206}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/global\ node-\/gyp@latest}
+\DoxyCodeLine{npm\ prefix\ -\/g\ |\ \%\ \{npm\ config\ set\ node\_gyp\ "{}\$\_\(\backslash\)node\_modules\(\backslash\)node-\/gyp\(\backslash\)bin\(\backslash\)node-\/gyp.js"{}\}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8207}{}\doxysection{\texorpdfstring{Undo}{Undo}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_25bcf37c9ba1bdcf6ebbddda4ea3c4f34_autotoc_md8207}
+{\bfseries{Beware}} if you don\textquotesingle{}t unset the {\ttfamily node\+\_\+gyp} config option, npm will continue to use the globally installed version of node-\/gyp rather than the one it ships with, which may end up being newer.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ config\ delete\ node\_gyp}
+\DoxyCodeLine{npm\ uninstall\ -\/-\/global\ node-\/gyp}
+
+\end{DoxyCode}
+ 

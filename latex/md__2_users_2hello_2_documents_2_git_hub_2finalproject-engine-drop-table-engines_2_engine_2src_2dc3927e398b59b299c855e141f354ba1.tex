@@ -1,0 +1,53 @@
+\chapter{mimic-\/fn \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/fn"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/mimic-\/fn.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1}\index{mimic-\/fn $<$a href="{}https://travis-\/ci.org/sindresorhus/mimic-\/fn"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/mimic-\/fn.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{mimic-\/fn $<$a href=""https://travis-\/ci.org/sindresorhus/mimic-\/fn"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/mimic-\/fn.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7229}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7229}%
+
+
+\begin{quote}
+Make a function mimic another one \end{quote}
+Useful when you wrap a function in another function and like to preserve the original name and other properties.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7230}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7230}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ mimic-\/fn}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7231}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7231}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ mimicFn\ =\ require('mimic-\/fn');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ foo()\ \{\}}
+\DoxyCodeLine{foo.unicorn\ =\ '🦄';}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ wrapper()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ foo();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.name);}
+\DoxyCodeLine{//=>\ 'wrapper'}
+\DoxyCodeLine{}
+\DoxyCodeLine{mimicFn(wrapper,\ foo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.name);}
+\DoxyCodeLine{//=>\ 'foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(wrapper.unicorn);}
+\DoxyCodeLine{//=>\ '🦄'}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7232}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7232}
+It will copy over the properties {\ttfamily name}, {\ttfamily length}, {\ttfamily display\+Name}, and any custom properties you may have set.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7233}{}\doxysubsection{\texorpdfstring{mimic\+Fn(to, from)}{mimic\+Fn(to, from)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7233}
+Modifies the {\ttfamily to} function and returns it.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7234}{}\doxysubsubsection{\texorpdfstring{to}{to}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7234}
+Type\+: {\ttfamily Function}
+
+Mimicking function.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7235}{}\doxysubsubsection{\texorpdfstring{from}{from}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7235}
+Type\+: {\ttfamily Function}
+
+Function to mimic.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7236}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7236}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/rename-fn}{\texttt{ rename-\/fn}} -\/ Rename a function
+\item \href{https://github.com/ehmicky/keep-func-props}{\texttt{ keep-\/func-\/props}} -\/ Wrap a function without changing its name, length and other properties
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7237}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2dc3927e398b59b299c855e141f354ba1_autotoc_md7237}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

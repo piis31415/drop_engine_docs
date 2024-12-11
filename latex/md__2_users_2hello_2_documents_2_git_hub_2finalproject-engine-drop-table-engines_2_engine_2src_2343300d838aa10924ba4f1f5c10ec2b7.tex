@@ -1,0 +1,35 @@
+\chapter{to-\/fast-\/properties \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/to-\/fast-\/properties"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/to-\/fast-\/properties.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7}\index{to-\/fast-\/properties $<$a href="{}https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{to-\/fast-\/properties $<$a href=""https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/to-\/fast-\/properties.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10330}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10330}%
+
+
+\begin{quote}
+Force V8 to use fast properties for an object \end{quote}
+\href{http://stackoverflow.com/questions/24987896/}{\texttt{ Read more.}}
+
+Use {\ttfamily Has\+Fast\+Properties(object)} and {\ttfamily -\/-\/allow-\/natives-\/syntax} to check whether an object already has fast properties.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10331}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10331}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ to-\/fast-\/properties}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10332}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10332}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ toFastProperties\ =\ require('to-\/fast-\/properties');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ true,}
+\DoxyCodeLine{\ \ \ \ bar:\ true}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{delete\ obj.foo;}
+\DoxyCodeLine{//\ \`{}obj`\ now\ has\ slow\ properties}
+\DoxyCodeLine{}
+\DoxyCodeLine{toFastProperties(obj);}
+\DoxyCodeLine{//\ \`{}obj`\ now\ has\ fast\ properties}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10333}{}\doxysection{\texorpdfstring{License}{License}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2343300d838aa10924ba4f1f5c10ec2b7_autotoc_md10333}
+MIT © Petka Antonov, John-\/\+David Dalton, Sindre Sorhus 

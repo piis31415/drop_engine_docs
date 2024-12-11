@@ -1,0 +1,72 @@
+\chapter{mimic-\/response \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/sindresorhus/mimic-\/response"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/mimic-\/response.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42}\index{mimic-\/response $<$a href="{}https://travis-\/ci.com/sindresorhus/mimic-\/response"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/mimic-\/response.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{mimic-\/response $<$a href=""https://travis-\/ci.com/sindresorhus/mimic-\/response"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/mimic-\/response.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3686}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3686}%
+
+
+\begin{quote}
+Mimic a \href{https://nodejs.org/api/http.html\#http_class_http_incomingmessage}{\texttt{ Node.\+js HTTP response stream}} \end{quote}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3687}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3687}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ mimic-\/response}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3688}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3688}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stream\ =\ require('stream');}
+\DoxyCodeLine{const\ mimicResponse\ =\ require('mimic-\/response');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ responseStream\ =\ getHttpResponseStream();}
+\DoxyCodeLine{const\ myStream\ =\ new\ stream.PassThrough();}
+\DoxyCodeLine{}
+\DoxyCodeLine{mimicResponse(responseStream,\ myStream);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(myStream.statusCode);}
+\DoxyCodeLine{//=>\ 200}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3689}{}\doxysection{\texorpdfstring{API}{API}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3689}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3690}{}\doxysubsection{\texorpdfstring{mimic\+Response(from, to)}{mimic\+Response(from, to)}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3690}
+{\bfseries{Note \#1\+:}} The {\ttfamily from.\+destroy(error)} function is not proxied. You have to call it manually\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stream\ =\ require('stream');}
+\DoxyCodeLine{const\ mimicResponse\ =\ require('mimic-\/response');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ responseStream\ =\ getHttpResponseStream();}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ myStream\ =\ new\ stream.PassThrough(\{}
+\DoxyCodeLine{\ \ \ \ destroy(error,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ responseStream.destroy();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(error);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{myStream.destroy();}
+
+\end{DoxyCode}
+
+
+Please note that {\ttfamily my\+Stream} and {\ttfamily response\+Stream} never throws. The error is passed to the request instead.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3691}{}\doxysubsubsection{\texorpdfstring{from}{from}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3691}
+Type\+: {\ttfamily Stream}
+
+\href{https://nodejs.org/api/http.html\#http_class_http_incomingmessage}{\texttt{ Node.\+js HTTP response stream.}}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3692}{}\doxysubsubsection{\texorpdfstring{to}{to}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3692}
+Type\+: {\ttfamily Stream}
+
+Any stream.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3693}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_2254bac6341f3b8826672ab27db1eda42_autotoc_md3693}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/mimic-fn}{\texttt{ mimic-\/fn}} -\/ Make a function mimic another one
+\item \href{https://github.com/lukechilds/clone-response}{\texttt{ clone-\/response}} -\/ Clone a Node.\+js response stream
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-mimic-response?utm_source=npm-mimic-response&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for this package with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

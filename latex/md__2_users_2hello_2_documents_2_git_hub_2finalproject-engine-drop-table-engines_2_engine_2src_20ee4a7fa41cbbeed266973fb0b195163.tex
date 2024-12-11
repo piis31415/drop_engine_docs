@@ -1,0 +1,90 @@
+\chapter{exponential-\/backoff}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163}\index{exponential-\/backoff@{exponential-\/backoff}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4846}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4846}%
+
+
+A utility that allows retrying a function with an exponential delay between attempts.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4847}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4847}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ exponential-\/backoff}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4848}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4848}
+The {\ttfamily back\+Off\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}} function takes a promise-\/returning function to retry, and an optional {\ttfamily Back\+Off\+Options} object. It returns a {\ttfamily Promise\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ backOff<T>(}
+\DoxyCodeLine{\ \ request:\ ()\ =>\ Promise<T>,}
+\DoxyCodeLine{\ \ options?:\ BackOffOptions}
+\DoxyCodeLine{):\ Promise<T>;}
+
+\end{DoxyCode}
+
+
+Here is an example retrying a function that calls a hypothetical weather endpoint\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ backOff\ \}\ from\ "{}exponential-\/backoff"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ getWeather()\ \{}
+\DoxyCodeLine{\ \ return\ fetch("{}weather-\/endpoint"{});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{async\ function\ main()\ \{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ const\ response\ =\ await\ backOff(()\ =>\ getWeather());}
+\DoxyCodeLine{\ \ \ \ //\ process\ response}
+\DoxyCodeLine{\ \ \}\ catch\ (e)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ handle\ error}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{main();}
+
+\end{DoxyCode}
+
+
+Migrating across major versions? Here are our \href{https://github.com/coveo/exponential-backoff/tree/master/doc/migration-guide.md}{\texttt{ breaking changes}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4849}{}\doxysubsection{\texorpdfstring{{\ttfamily Back\+Off\+Options}}{{\ttfamily Back\+Off\+Options}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_20ee4a7fa41cbbeed266973fb0b195163_autotoc_md4849}
+
+\begin{DoxyItemize}
+\item {\ttfamily delay\+First\+Attempt?\+: boolean}
+
+Decides whether the {\ttfamily starting\+Delay} should be applied before the first call. If {\ttfamily false}, the first call will occur without a delay.
+
+Default value is {\ttfamily false}.
+\item {\ttfamily jitter?\+: Jitter\+Type \texorpdfstring{$\vert$}{|} string}
+
+Decides whether a \href{https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/}{\texttt{ jitter}} should be applied to the delay. Possible values are {\ttfamily full} and {\ttfamily none}.
+
+Default value is {\ttfamily none}.
+\item {\ttfamily max\+Delay?\+: number}
+
+The maximum delay, in milliseconds, between two consecutive attempts.
+
+Default value is {\ttfamily Infinity}.
+\item {\ttfamily num\+Of\+Attempts?\+: number}
+
+The maximum number of times to attempt the function.
+
+Default value is {\ttfamily 10}.
+
+Minimum value is {\ttfamily 1}.
+\item {\ttfamily retry?\+: (e\+: any, attempt\+Number\+: number) =\texorpdfstring{$>$}{>} boolean \texorpdfstring{$\vert$}{|} Promise\texorpdfstring{$<$}{<}boolean\texorpdfstring{$>$}{>}}
+
+The {\ttfamily retry} function can be used to run logic after every failed attempt (e.\+g. logging a message, assessing the last error, etc.). It is called with the last error and the upcoming attempt number. Returning {\ttfamily true} will retry the function as long as the {\ttfamily num\+Of\+Attempts} has not been exceeded. Returning {\ttfamily false} will end the execution.
+
+Default value is a function that always returns {\ttfamily true}.
+\item {\ttfamily starting\+Delay?\+: number}
+
+The delay, in milliseconds, before executing the function for the first time.
+
+Default value is {\ttfamily 100} ms.
+\item {\ttfamily time\+Multiple?\+: number}
+
+The {\ttfamily starting\+Delay} is multiplied by the {\ttfamily time\+Multiple} to increase the delay between reattempts.
+
+Default value is {\ttfamily 2}. 
+\end{DoxyItemize}

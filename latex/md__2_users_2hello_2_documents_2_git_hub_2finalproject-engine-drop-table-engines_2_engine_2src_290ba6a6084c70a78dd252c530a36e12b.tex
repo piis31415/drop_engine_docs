@@ -1,0 +1,206 @@
+\chapter{@electron/asar -\/ Electron Archive}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b}\index{"@electron/asar -\/ Electron Archive@{"@electron/asar -\/ Electron Archive}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md234}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md234}%
+
+
+\href{https://circleci.com/gh/electron/asar/tree/main}{\texttt{ }} \href{https://npmjs.org/package/@electron/asar}{\texttt{ }}
+
+Asar is a simple extensive archive format, it works like {\ttfamily tar} that concatenates all files together without compression, while having random access support.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md235}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md235}
+
+\begin{DoxyItemize}
+\item Support random access
+\item Use JSON to store files\textquotesingle{} information
+\item Very easy to write a parser
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md236}{}\doxysection{\texorpdfstring{Command line utility}{Command line utility}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md236}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md237}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md237}
+This module requires Node 10 or later.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/engine-\/strict\ @electron/asar}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md238}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md238}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ asar\ -\/-\/help}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Usage:\ asar\ [options]\ [command]}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Commands:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ pack|p\ <dir>\ <output>}
+\DoxyCodeLine{\ \ \ \ \ \ \ create\ asar\ archive}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ list|l\ <archive>}
+\DoxyCodeLine{\ \ \ \ \ \ \ list\ files\ of\ asar\ archive}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ extract-\/file|ef\ <archive>\ <filename>}
+\DoxyCodeLine{\ \ \ \ \ \ \ extract\ one\ file\ from\ archive}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ extract|e\ <archive>\ <dest>}
+\DoxyCodeLine{\ \ \ \ \ \ \ extract\ archive}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Options:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ -\/h,\ -\/-\/help\ \ \ \ \ output\ usage\ information}
+\DoxyCodeLine{\ \ \ \ -\/V,\ -\/-\/version\ \ output\ the\ version\ number}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md239}{}\doxysubsubsection{\texorpdfstring{Excluding multiple resources from being packed}{Excluding multiple resources from being packed}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md239}
+Given\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ app}
+\DoxyCodeLine{(a)\ ├──\ x1}
+\DoxyCodeLine{(b)\ ├──\ x2}
+\DoxyCodeLine{(c)\ ├──\ y3}
+\DoxyCodeLine{(d)\ │  \ ├──\ x1}
+\DoxyCodeLine{(e)\ │  \ └──\ z1}
+\DoxyCodeLine{(f)\ │  \ \ \ \ \ └──\ x2}
+\DoxyCodeLine{(g)\ └──\ z4}
+\DoxyCodeLine{(h)\ \ \ \ \ └──\ w1}
+
+\end{DoxyCode}
+
+
+Exclude\+: a, b 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ asar\ pack\ app\ app.asar\ -\/-\/unpack-\/dir\ "{}\{x1,x2\}"{}}
+
+\end{DoxyCode}
+
+
+Exclude\+: a, b, d, f 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ asar\ pack\ app\ app.asar\ -\/-\/unpack-\/dir\ "{}**/\{x1,x2\}"{}}
+
+\end{DoxyCode}
+
+
+Exclude\+: a, b, d, f, h 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ asar\ pack\ app\ app.asar\ -\/-\/unpack-\/dir\ "{}\{**/x1,**/x2,z4/w1\}"{}}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md240}{}\doxysection{\texorpdfstring{Using programmatically}{Using programmatically}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md240}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md241}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md241}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ asar\ =\ require('@electron/asar');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ src\ =\ 'some/path/';}
+\DoxyCodeLine{const\ dest\ =\ 'name.asar';}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ asar.createPackage(src,\ dest);}
+\DoxyCodeLine{console.log('done.');}
+
+\end{DoxyCode}
+
+
+Please note that there is currently {\bfseries{no}} error handling provided!\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md242}{}\doxysubsection{\texorpdfstring{Transform}{Transform}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md242}
+You can pass in a {\ttfamily transform} option, that is a function, which either returns nothing, or a {\ttfamily stream.\+Transform}. The latter will be used on files that will be in the {\ttfamily .asar} file to transform them (e.\+g. compress).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ asar\ =\ require('@electron/asar');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ src\ =\ 'some/path/';}
+\DoxyCodeLine{const\ dest\ =\ 'name.asar';}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ transform\ (filename)\ \{}
+\DoxyCodeLine{\ \ return\ new\ CustomTransformStream()}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ asar.createPackageWithOptions(src,\ dest,\ \{\ transform:\ transform\ \});}
+\DoxyCodeLine{console.log('done.');}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md243}{}\doxysection{\texorpdfstring{Using with grunt}{Using with grunt}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md243}
+There is also an unofficial grunt plugin to generate asar archives at \href{https://github.com/bwin/grunt-asar}{\texttt{ bwin/grunt-\/asar}}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md244}{}\doxysection{\texorpdfstring{Format}{Format}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_290ba6a6084c70a78dd252c530a36e12b_autotoc_md244}
+Asar uses \href{https://chromium.googlesource.com/chromium/src/+/main/base/pickle.h}{\texttt{ Pickle}} to safely serialize binary value to file.
+
+The format of asar is very flat\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{|\ UInt32:\ header\_size\ |\ String:\ header\ |\ Bytes:\ file1\ |\ ...\ |\ Bytes:\ file42\ |}
+
+\end{DoxyCode}
+
+
+The {\ttfamily header\+\_\+size} and {\ttfamily header} are serialized with \href{https://chromium.googlesource.com/chromium/src/+/main/base/pickle.h}{\texttt{ Pickle}} class, and {\ttfamily header\+\_\+size}\textquotesingle{}s \href{https://chromium.googlesource.com/chromium/src/+/main/base/pickle.h}{\texttt{ Pickle}} object is 8 bytes.
+
+The {\ttfamily header} is a JSON string, and the {\ttfamily header\+\_\+size} is the size of {\ttfamily header}\textquotesingle{}s {\ttfamily Pickle} object.
+
+Structure of {\ttfamily header} is something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ "{}files"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}tmp"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}files"{}:\ \{\}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}usr"{}\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}files"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ "{}bin"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}files"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}ls"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}offset"{}:\ "{}0"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}size"{}:\ 100,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}executable"{}:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}integrity"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}algorithm"{}:\ "{}SHA256"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}hash"{}:\ "{}..."{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blockSize"{}:\ 1024,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blocks"{}:\ ["{}..."{},\ "{}..."{}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}cd"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}offset"{}:\ "{}100"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}size"{}:\ 100,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}executable"{}:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}integrity"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}algorithm"{}:\ "{}SHA256"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}hash"{}:\ "{}..."{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blockSize"{}:\ 1024,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blocks"{}:\ ["{}..."{},\ "{}..."{}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}etc"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ "{}files"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ "{}hosts"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}offset"{}:\ "{}200"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}size"{}:\ 32,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}integrity"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}algorithm"{}:\ "{}SHA256"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}hash"{}:\ "{}..."{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blockSize"{}:\ 1024,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}blocks"{}:\ ["{}..."{},\ "{}..."{}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\ttfamily offset} and {\ttfamily size} records the information to read the file from archive, the {\ttfamily offset} starts from 0 so you have to manually add the size of {\ttfamily header\+\_\+size} and {\ttfamily header} to the {\ttfamily offset} to get the real offset of the file.
+
+{\ttfamily offset} is a UINT64 number represented in string, because there is no way to precisely represent UINT64 in Java\+Script {\ttfamily Number}. {\ttfamily size} is a Java\+Script {\ttfamily Number} that is no larger than {\ttfamily Number.\+MAX\+\_\+\+SAFE\+\_\+\+INTEGER}, which has a value of {\ttfamily 9007199254740991} and is about 8PB in size. We didn\textquotesingle{}t store {\ttfamily size} in UINT64 because file size in Node.\+js is represented as {\ttfamily Number} and it is not safe to convert {\ttfamily Number} to UINT64.
+
+{\ttfamily integrity} is an object consisting of a few keys\+:
+\begin{DoxyItemize}
+\item A hashing {\ttfamily algorithm}, currently only {\ttfamily SHA256} is supported.
+\item A hex encoded {\ttfamily hash} value representing the hash of the entire file.
+\item An array of hex encoded hashes for the {\ttfamily blocks} of the file. i.\+e. for a block\+Size of 4KB this array contains the hash of every block if you split the file into N 4KB blocks.
+\item A integer value {\ttfamily block\+Size} representing the size in bytes of each block in the {\ttfamily blocks} hashes above 
+\end{DoxyItemize}

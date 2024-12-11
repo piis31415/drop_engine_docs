@@ -1,0 +1,109 @@
+\chapter{Callback\+Info}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f}{}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f}\index{CallbackInfo@{CallbackInfo}}
+\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7731}%
+\Hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7731}%
+
+
+The object representing the components of the Java\+Script request being made.
+
+The {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object is usually created and passed by the Node.\+js runtime or node-\/addon-\/api infrastructure.
+
+The {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object contains the arguments passed by the caller. The number of arguments is returned by the {\ttfamily Length} method. Each individual argument can be accessed using the {\ttfamily operator\mbox{[}\mbox{]}} method.
+
+The {\ttfamily Set\+Data} and {\ttfamily Data} methods are used to set and retrieve the data pointer contained in the {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7732}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7732}
+\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7733}{}\doxysubsection{\texorpdfstring{Constructor}{Constructor}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7733}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::CallbackInfo::CallbackInfo(\mbox{\hyperlink{structnapi__env____}{napi\_env}}\ env,\ napi\_callback\_info\ info);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} env}\+: The {\ttfamily napi\+\_\+env} environment in which to construct the {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object.
+\item {\ttfamily \mbox{[}in\mbox{]} info}\+: The {\ttfamily napi\+\_\+callback\+\_\+info} data structure from which to construct the {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object.
+\end{DoxyItemize}\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7734}{}\doxysubsection{\texorpdfstring{Env}{Env}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7734}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_env}{Napi::Env}}\ Napi::CallbackInfo::Env()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily Env} object in which the request is being made.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7735}{}\doxysubsection{\texorpdfstring{New\+Target}{New\+Target}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7735}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ Napi::CallbackInfo::NewTarget()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the {\ttfamily new.\+target} value of the constructor call. If the function that was invoked (and for which the {\ttfamily Napi\+::\+NCallback\+Info} was passed) is not a constructor call, a call to {\ttfamily Is\+Empty()} on the returned value returns true.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7736}{}\doxysubsection{\texorpdfstring{Is\+Construct\+Call}{Is\+Construct\+Call}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7736}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ Napi::CallbackInfo::IsConstructCall()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns a {\ttfamily bool} indicating if the function that was invoked (and for which the {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} was passed) is a constructor call.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7737}{}\doxysubsection{\texorpdfstring{Length}{Length}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7737}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{size\_t}\ Napi::CallbackInfo::Length()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the number of arguments passed in the {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7738}{}\doxysubsection{\texorpdfstring{operator \mbox{[}\mbox{]}}{operator \mbox{[}\mbox{]}}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7738}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ \mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ operator\ [](\textcolor{keywordtype}{size\_t}\ index)\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} index}\+: The zero-\/based index of the requested argument.
+\end{DoxyItemize}
+
+Returns a {\ttfamily \doxylink{class_napi_1_1_value}{Napi\+::\+Value}} object containing the requested argument.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7739}{}\doxysubsection{\texorpdfstring{This}{This}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7739}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{class_napi_1_1_value}{Napi::Value}}\ Napi::CallbackInfo::This()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the Java\+Script {\ttfamily this} value for the call\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7740}{}\doxysubsection{\texorpdfstring{Data}{Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7740}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ Napi::CallbackInfo::Data()\ \textcolor{keyword}{const};}
+
+\end{DoxyCode}
+
+
+Returns the data pointer for the callback.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7741}{}\doxysubsection{\texorpdfstring{Set\+Data}{Set\+Data}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7741}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::CallbackInfo::SetData(\textcolor{keywordtype}{void}*\ data);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{[}in\mbox{]} data}\+: The new data pointer to associate with this {\ttfamily \doxylink{class_napi_1_1_callback_info}{Napi\+::\+Callback\+Info}} object.
+\end{DoxyItemize}
+
+Returns {\ttfamily void}.\hypertarget{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7742}{}\doxysubsection{\texorpdfstring{Not documented here}{Not documented here}}\label{md__2_users_2hello_2_documents_2_git_hub_2finalproject-engine-drop-table-engines_2_engine_2src_297aa469565550b7e12a3356d49cc723f_autotoc_md7742}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Napi::CallbackInfo::\string~CallbackInfo();}
+\DoxyCodeLine{\textcolor{comment}{//\ Disallow\ copying\ to\ prevent\ multiple\ free\ of\ \_dynamicArgs}}
+\DoxyCodeLine{Napi::CallbackInfo::CallbackInfo(CallbackInfo\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ Napi::CallbackInfo::operator=(CallbackInfo\ \textcolor{keyword}{const}\ \&)\ =\ \textcolor{keyword}{delete};}
+
+\end{DoxyCode}
+ 
