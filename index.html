@@ -32,11 +32,11 @@
         
         <h4>Game Screenshots</h4>
         <div class="image-row">
-            <img src="./websiteImages/puppy.jpg" alt="first game screenshot" />
-            <img src="./websiteImages/puppy.jpg" alt="second game screenshot" />
-            <img src="./websiteImages/puppy.jpg" alt="third game screenshot" />
+            <img src="./websiteImages/menu.png" alt="first game screenshot" />
+            <img src="./websiteImages/ingame.png" alt="second game screenshot" />
+            <img src="./websiteImages/editor.png" alt="third game screenshot" />
         </div>
-        <p>some information about the screenshots</p>
+        <p>Left to right: Menu screen, Game screen, Beatmap editor. You can record maps in the beatmap editor and play them back in the game.</p>
     </section>
 
     <section id="documentation">
@@ -56,7 +56,11 @@
 
     <section id="post mortem">
         <h2>Part 5: Post Mortem</h2>
-        <p>Given more time, we think we could have done more with the MIDI capabilities of the project. MIDI input also allows for velocity data, how hard the note was pressed, and incorporating this data into a game would have been interesting and worthwhile.</p>
+        <p>One thing that was turned out to be troubling towards the end of the project was building into an executable. Our build process is still relatively complicated, requiring multiple executables to be built independently of one another. This is in part due to our file organization, which places temporary (application-generated) files in the same directory as the source code. If we thought about the build process beforehand, we could have avoided this error.</p>
+        <p>Another point that we could still improve is that the GUI is still quite lacking in terms of feature parity compared to what is enabled by the core engine. This is because making each part of the engine usable from the GUI often required custom GUI components and recreating JSON shapes in both the frontend and backend. Before proceeding with this, it might be worth looking into some way to use the same component "templates" which are shared between the editor and engine.</p>
+        <p>Some example of missing feature parity is the lack of granular control over the JSON objects in the editor. Ideally, the editor would be a safe (non-breaking) way to interface with the JSON configurations, while still allowing any legal configuration that could be produced in a text editor.</p>
+        <p>Given more time, we think we could have done more with the MIDI capabilities of the project. MIDI input also allows for velocity data, how hard the note was pressed, and incorporating this data into a game would have been interesting and worthwhile. However, it is worth noting that this may be incompatible with keyboard-based input systems.</p>
+        <p>Finally, one thing that we learned was that we had to continuously change our code because we built while testing with a single game. We went off the assumption that premature abstractions are bad, but this only turned out to be partially true because of the abstract nature of a game engine as a tool (you don't know what you will encounter in a game), and the fact that we wanted our game engine to be usable for all kinds of 2D games. Hence, starting with more generalizable implementations of systems like input would have facilitated our development process (we ended up with a deprecated input component by the end).</p>
         <p>This documentation website could also be polished up a bit more :)</p>
     </section>
 </body>
