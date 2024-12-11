@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frame_0',['Frame',['../struct_frame.html',1,'']]]
+  ['notestatus_0',['NoteStatus',['../classmidi_1_1_note_status.html',1,'midi']]]
 ];
